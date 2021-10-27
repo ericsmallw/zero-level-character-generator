@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import ICharactersBusinessManager from '../interfaces/ICharactersBusinessManager';
-import { Character } from '../../models/character';
-import { inject, injectable } from 'inversify';
+import {Character} from '../../models/character';
+import {inject, injectable} from 'inversify';
 import types from '../../inversify/types';
 import ICharactersDataManager from '../interfaces/ICharactersDataManager';
 import RacialMix from '../../enums/racialMixEnum';
@@ -15,7 +15,6 @@ import {
 import AbilityModifiers from '../../models/abilityModifiers';
 import DragonbornAncestry from '../../models/dragonbornAncestry';
 import Profession from '../../models/profession';
-import { Professions } from '../../constants/professions';
 import ProfessionTypeEnum from '../../enums/professionTypeEnum';
 import SexEnums from '../../enums/sexEnums';
 import INamesBusinessManager from '../../names/interfaces/INamesBusinessManager';
@@ -33,16 +32,16 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
   ) {
   }
 
-  async generateCharacter(racialMix: RacialMix): Promise<Character> {
+  async generateCharacter(racialMix: RacialMix, sex: SexEnums): Promise<Character> {
     const raceName = this.selectRace(racialMix);
 
     const character = new Character();
     character.age = this.getAge();
     character.race = await this._charactersDataManager.getRaceByName(raceName);
     let abilityModifiers = this.getAbilityModifiers(character.race);
-    const sex = this.getSex();
-    character.sex = SexEnums[sex];
-    character.name = this.getName(character.race, sex);
+    const randomSex = sex === SexEnums.None ? this.getSex() : sex;
+    character.sex = SexEnums[randomSex];
+    character.name = this.getName(character.race, randomSex);
     character.abilityModifiers = abilityModifiers;
     character.hitPoints = this.getHitPoints();
     character.proficiency = 2;
