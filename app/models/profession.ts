@@ -11,7 +11,7 @@ export default class Profession {
     coin: string,
     proficiency: Proficiency,
     weapon: Weapon,
-    item: Item,
+    item: Item[],
     clothes: Clothes,
     type: ProfessionTypeEnum)
   {
@@ -30,7 +30,7 @@ export default class Profession {
   coin: string;
   proficiency: Proficiency;
   weapon: Weapon;
-  item: Item;
+  item: Item[];
   clothes: Clothes;
   type: ProfessionTypeEnum;
 }

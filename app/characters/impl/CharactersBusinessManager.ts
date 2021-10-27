@@ -36,10 +36,10 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
   async generateCharacter(racialMix: RacialMix): Promise<Character> {
     const raceName = this.selectRace(racialMix);
 
-    const abilityModifiers = this.getAbilityModifiers();
     const character = new Character();
     character.age = this.getAge();
     character.race = await this._charactersDataManager.getRaceByName(raceName);
+    let abilityModifiers = this.getAbilityModifiers(character.race);
     const sex = this.getSex();
     character.sex = SexEnums[sex];
     character.name = this.getName(character.race, sex);
@@ -92,14 +92,20 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
     return selectedRacialMix[raceKey];
   }
 
-  private getAbilityModifiers(): AbilityModifiers {
+  private getAbilityModifiers(race: Race | undefined): AbilityModifiers {
+    const strengthBonus = race ? (race.abilityBonus.Strength || 0) : 0;
+    const dexterityBonus = race ? (race.abilityBonus.Dexterity || 0): 0;
+    const constitutionBonus = race ? (race.abilityBonus.Constitution || 0) : 0;
+    const intelligenceBonus = race ? (race.abilityBonus.Intelligence || 0) : 0;
+    const wisdomBonus = race ? (race.abilityBonus.Wisdom || 0) : 0;
+    const charismaBonus = race ? (race.abilityBonus.Charisma || 0) : 0;
     return new AbilityModifiers(
-      this.threeD6(),
-      this.threeD6(),
-      this.threeD6(),
-      this.threeD6(),
-      this.threeD6(),
-      this.threeD6(),
+      this.threeD6() + strengthBonus,
+      this.threeD6() + dexterityBonus,
+      this.threeD6() + constitutionBonus,
+      this.threeD6() + intelligenceBonus,
+      this.threeD6() + wisdomBonus,
+      this.threeD6() + charismaBonus,
     );
   }
 

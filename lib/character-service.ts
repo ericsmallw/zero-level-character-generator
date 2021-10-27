@@ -22,6 +22,6 @@ export class CharacterService extends core.Construct {
         });
 
         const createCharacterResource = api.root.addResource('characters');
-        createCharacterResource.addMethod("POST", getWidgetsIntegration);
+        createCharacterResource.addMethod("GET", getWidgetsIntegration);
     }
 }

@@ -7,7 +7,7 @@ import RacialMix from "../enums/racialMixEnum";
 const charactersBusinessManager = container.get<CharactersBusinessManager>(types.CharactersBusinessManager);
 
 export const createCharacter = async (event: any) => {
-  const racialMixValue = RacialMix[parseInt(JSON.parse(event.body).racialMix)];
+  const racialMixValue = event.queryStringParameters ? RacialMix[parseInt(event.queryStringParameters)] : 0;
   const racialMix = RacialMix[racialMixValue as keyof typeof RacialMix];
   const result: any = await charactersBusinessManager.generateCharacter(racialMix);
 
