@@ -49,6 +49,7 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
     character.initiative = abilityModifiers.Dexterity;
     character.armorClass = abilityModifiers.DexterityModifier + 10;
     character.profession = await this.setProfession(abilityModifiers);
+    character.coin = character.profession ? this.getCoin(character.profession.coin) : "2 sp"
 
     if (raceName === 'Dragonborn') {
       character.dragonBornAncestry = this.getDragonBornAncestry();
@@ -205,5 +206,13 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
       default:
         return this._namesBusinessManager.getHumanName(sex);
     }
+  }
+
+  private getCoin(coinDie: string): string {
+    const coinValArray = coinDie.split(" ");
+    const die = parseInt(coinValArray[0].split("d")[1]);
+    const generator = randomNumber.generator({min: 1, max: die});
+
+    return `${Math.round(generator())} ${coinValArray[1]}`;
   }
 }
