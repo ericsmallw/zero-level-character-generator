@@ -1,4 +1,5 @@
 import Item from "../models/item";
+import Proficiency from "../models/proficiency";
 
 export const ThievesTools = new Item(0, "Thieves' Tools");
 export const SackOfManure = new Item(1, "Sack of Manure");
@@ -17,5 +18,7 @@ export const BeggarCup = new Item(12, "A Beggar's Cup");
 export const LeatherworkerTools = new Item(13, "Leatherworker's Tools");
 export const ArcaneBook = new Item(14, "Book on arcane subject");
 export const GroceryList = new Item(15, "A Grocery List");
-
-
+export const Ringmail = new Item(16, "Ringmail");
+export const Soil = new Item(17, "A bag of good soil");
+export const PortableTrampoline = new Item(17, "Portable Trampoline");
+export const GlassblowersToolsItem = new Proficiency(18, "Glassblower's Tools");

@@ -17,3 +17,7 @@ export const LeatherWorkersToolsProf = new Proficiency(11, "Leatherworker's Tool
 export const Arcana = new Proficiency(12, 'Arcana');
 export const History = new Proficiency(13, 'History');
 export const CharismaSavingThrows = new Proficiency(14, "Charisma Saving Throws");
+export const HeavyArmor = new Proficiency(15, "Heavy Armor");
+export const Nature = new Proficiency(16, "Nature");
+export const Acrobatics = new Proficiency(17, "Acrobatics");
+export const GlassblowersTools = new Proficiency(18, "Glassblower's Tools");

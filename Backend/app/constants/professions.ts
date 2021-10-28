@@ -1,35 +1,37 @@
 import Profession from "../models/profession";
 import {
+  Acrobatics,
   AnimalHandling, Arcana, CharismaSavingThrows,
-  ConSavingThrows, History, Intimidation,
+  ConSavingThrows, GlassblowersTools, HeavyArmor, History, Intimidation,
   Investigation, LeatherWorkersToolsProf, Lute,
-  Medicine,
+  Medicine, Nature,
   Perception,
   Persuasion, Religion,
   SleightOfHand,
   SmithsTools, Stealth, StrengthSavingThrows
 } from "./proficiencies";
 import {
+  Blowgun,
   Club,
   Dagger,
   Handaxe,
   LightHammer,
   Longsword,
-  Mace,
+  Mace, Maul,
   Pitchfork,
-  Quarterstaff,
+  Quarterstaff, Scimitar,
   Shortsword,
   Whip
 } from "./weapons";
-import {Common, Costume, Fine, Shield, Vestments} from "./clothes";
+import {Common, Costume, Fine, Shield, Travelers, Vestments} from "./clothes";
 import {
   Abacus, ALute, ArcaneBook, BeggarCup, BlockAndTackle,
   CuredHam,
-  FineCloth, GroceryList,
+  FineCloth, GlassblowersToolsItem, GroceryList,
   HealersKit, HolySymbolEmblem, LeatherworkerTools,
   MinersTools, MoneySack,
-  Pick,
-  SackOfManure,
+  Pick, PortableTrampoline, Ringmail,
+  SackOfManure, Soil,
   SpeakingTrumpet,
   ThievesTools
 } from "./items";
@@ -38,10 +40,14 @@ import ProfessionTypeEnum from "../enums/professionTypeEnum";
 export const Blacksmith = new Profession(1, "Blacksmith", "d12 sp", SmithsTools, LightHammer, [SmithsTools], Common, ProfessionTypeEnum.Strength);
 export const Miner = new Profession(2, "Miner", "d20 cp", Investigation, Handaxe, [Pick, MinersTools], Common, ProfessionTypeEnum.Strength);
 export const Teamster = new Profession(2, "Teamster", "d8 sp", StrengthSavingThrows, Whip, [BlockAndTackle], Common, ProfessionTypeEnum.Strength);
+export const Bodyguard = new Profession(2, "Bodyguard", "d10 gp", HeavyArmor, Maul, [Ringmail], Travelers, ProfessionTypeEnum.Strength);
+export const Plowman = new Profession(2, "Plowman", "d10 dp", Nature, Quarterstaff, [Soil], Common, ProfessionTypeEnum.Strength);
 
 export const Pickpocket = new Profession(1, "Pickpocket", "d12 sp", SleightOfHand, Shortsword, [ThievesTools], Common, ProfessionTypeEnum.Dexterity);
 export const Haberdasher = new Profession(2, "Haberdasher", "d12 gp", Persuasion , Dagger, [FineCloth], Fine, ProfessionTypeEnum.Dexterity);
 export const Orphan = new Profession(2, "Orphan", "d4 cp", Stealth, Club, [BeggarCup], Common, ProfessionTypeEnum.Dexterity);
+export const CircusAcrobat = new Profession(2, "Circus Acrobat", "d8 sp", Acrobatics, Scimitar, [PortableTrampoline], Costume, ProfessionTypeEnum.Dexterity);
+export const GlassBlower = new Profession(2, "Glass Blower", "d10 sp", GlassblowersTools, Blowgun, [GlassblowersToolsItem], Common, ProfessionTypeEnum.Dexterity);
 
 export const GongFarmer = new Profession(1, "GongFarmer", "d12 cp", ConSavingThrows, Club, [SackOfManure], Common, ProfessionTypeEnum.Constitution);
 export const PigFarmer = new Profession(1, "PigFarmer", "d10 sp", AnimalHandling, Pitchfork, [CuredHam], Common, ProfessionTypeEnum.Constitution);
@@ -61,5 +67,5 @@ export const Innkeeper = new Profession(1, "Innkeeper", "d6 gp", CharismaSavingT
 
 export const Professions = [
   Blacksmith, Pickpocket, GongFarmer, Bookkeeper, Herbalist, Barker, Miner, Haberdasher, PigFarmer, TaxCollector,
-  Sexton, Minstrel, Teamster, Orphan, Leatherworker, WizardsApprentice, Squire, Innkeeper
+  Sexton, Minstrel, Teamster, Orphan, Leatherworker, WizardsApprentice, Squire, Innkeeper, Bodyguard
 ]
