@@ -13,6 +13,17 @@ export const FirstNames = [
   new Name("Dayne", RaceEnums.Human, SexEnums.Male),
   new Name("Stephon", RaceEnums.Human, SexEnums.Male),
   new Name("Sydney", RaceEnums.Human, SexEnums.Male),
+  new Name("Warwick", RaceEnums.Human, SexEnums.Male),
+  new Name("Nestor", RaceEnums.Human, SexEnums.Male),
+  new Name("Falcon", RaceEnums.Human, SexEnums.Male),
+  new Name("Reed", RaceEnums.Human, SexEnums.Male),
+  new Name("William", RaceEnums.Human, SexEnums.Male),
+  new Name("George", RaceEnums.Human, SexEnums.Male),
+  new Name("Robert", RaceEnums.Human, SexEnums.Male),
+  new Name("Cane", RaceEnums.Human, SexEnums.Male),
+  new Name("Abram", RaceEnums.Human, SexEnums.Male),
+  new Name("Abraham", RaceEnums.Human, SexEnums.Male),
+
 
   new Name("Edna", RaceEnums.Human, SexEnums.Female),
   new Name("Nadia", RaceEnums.Human, SexEnums.Female),
@@ -24,6 +35,12 @@ export const FirstNames = [
   new Name("Lena", RaceEnums.Human, SexEnums.Female),
   new Name("Uta", RaceEnums.Human, SexEnums.Female),
   new Name("Klara", RaceEnums.Human, SexEnums.Female),
+  new Name("Rose", RaceEnums.Human, SexEnums.Female),
+  new Name("Odena", RaceEnums.Human, SexEnums.Female),
+  new Name("Stacy", RaceEnums.Human, SexEnums.Female),
+  new Name("Kimberly", RaceEnums.Human, SexEnums.Female),
+  new Name("Tara", RaceEnums.Human, SexEnums.Female),
+
 
   new Name("Sankin", RaceEnums.Halfling, SexEnums.Male),
   new Name("Falgin", RaceEnums.Halfling, SexEnums.Male),
