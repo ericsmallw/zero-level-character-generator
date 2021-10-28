@@ -12,8 +12,11 @@ export const createCharacter = async (event: any) => {
       ? RacialMix[parseInt(event.queryStringParameters.racialMix)]
       : 0;
   const racialMix = RacialMix[racialMixValue as keyof typeof RacialMix];
-
-  const sexValue = event.queryStringParameters && event.queryStringParameters.sex ? RacialMix[parseInt(event.queryStringParameters)] : 2;
+  console.log("qsp::::::", event.queryStringParameters);
+  const sexValue = event.queryStringParameters && event.queryStringParameters.sex
+      ? SexEnums[parseInt(event.queryStringParameters.sex)]
+      : 2;
+  console.log('sexValues:::::', sexValue);
   const sex = SexEnums[sexValue as keyof typeof SexEnums];
 
   const result: any = await charactersBusinessManager.generateCharacter(racialMix, sex);

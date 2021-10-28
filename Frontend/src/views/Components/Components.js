@@ -14,7 +14,6 @@ import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import Parallax from "components/Parallax/Parallax.js";
 // sections for this page
-import HeaderLinks from "components/Header/HeaderLinks.js";
 import SectionBasics from "./Sections/SectionBasics.js";
 import SectionNavbars from "./Sections/SectionNavbars.js";
 import SectionTabs from "./Sections/SectionTabs.js";
@@ -30,6 +29,8 @@ import SectionDownload from "./Sections/SectionDownload.js";
 
 import styles from "assets/jss/material-kit-react/views/components.js";
 
+import Tavern from "assets/img/art-kate-fox-katrin-joshua.jpg";
+
 const useStyles = makeStyles(styles);
 
 export default function Components(props) {
@@ -38,8 +39,7 @@ export default function Components(props) {
   return (
     <div>
       <Header
-        brand="Material Kit React"
-        rightLinks={<HeaderLinks />}
+        brand="Zero Level"
         fixed
         color="transparent"
         changeColorOnScroll={{
@@ -48,15 +48,18 @@ export default function Components(props) {
         }}
         {...rest}
       />
-      <Parallax image={require("assets/img/bg4.jpg").default}>
+      <Parallax image={Tavern}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem>
               <div className={classes.brand}>
-                <h1 className={classes.title}>Material Kit React.</h1>
-                <h3 className={classes.subtitle}>
-                  A Badass Material-UI Kit based on Material Design.
-                </h3>
+                <h1 className={classes.title}>
+                  Zero Level Character Generator
+                </h1>
+                <h2 className={classes.subtitle}>
+                  Create a commoner and hope they survive the meat grinder of
+                  the hero&apos;s life.
+                </h2>
               </div>
             </GridItem>
           </GridContainer>

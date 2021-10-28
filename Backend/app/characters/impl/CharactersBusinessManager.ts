@@ -39,7 +39,7 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
     character.age = this.getAge();
     character.race = await this._charactersDataManager.getRaceByName(raceName);
     let abilityModifiers = this.getAbilityModifiers(character.race);
-    const randomSex = sex === SexEnums.None ? this.getSex() : sex;
+    const randomSex = String(sex) == SexEnums[2] ? this.getSex() : sex;
     character.sex = SexEnums[randomSex];
     character.name = this.getName(character.race, randomSex);
     character.abilityModifiers = abilityModifiers;
