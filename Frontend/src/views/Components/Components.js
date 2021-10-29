@@ -30,6 +30,7 @@ import SectionDownload from "./Sections/SectionDownload.js";
 import styles from "assets/jss/material-kit-react/views/components.js";
 
 import Tavern from "assets/img/art-kate-fox-katrin-joshua.jpg";
+import CharacterSettings from "./Sections/CharacterSettings";
 
 const useStyles = makeStyles(styles);
 
@@ -67,6 +68,7 @@ export default function Components(props) {
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
+        <CharacterSettings />
         <SectionBasics />
         <SectionNavbars />
         <SectionTabs />

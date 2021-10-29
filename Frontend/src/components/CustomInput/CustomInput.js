@@ -25,6 +25,7 @@ export default function CustomInput(props) {
     white,
     inputRootCustomClasses,
     success,
+    type,
   } = props;
 
   const labelClasses = classNames({
@@ -73,6 +74,7 @@ export default function CustomInput(props) {
         }}
         id={id}
         {...inputProps}
+        type={type || 'text'}
       />
     </FormControl>
   );

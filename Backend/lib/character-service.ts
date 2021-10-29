@@ -15,13 +15,22 @@ export class CharacterService extends core.Construct {
         const api = new apigateway.RestApi(this, "characters-api", {
             restApiName: "Characters Service",
             description: "This service creates characters.",
+            defaultCorsPreflightOptions: {
+                allowHeaders: [
+                    'Content-Type',
+                    'X-Amz-Date',
+                    'Authorization',
+                    'X-Api-Key',
+                ],
+                allowMethods: ['GET', 'POST', 'OPTIONS'],
+                allowOrigins: ['*'],
+            }
         });
 
         const getWidgetsIntegration = new apigateway.LambdaIntegration(handler, {
             requestTemplates: { "application/json": '{ "statusCode": "200" }' },
         });
 
-        const createCharacterResource = api.root.addResource('characters');
-        createCharacterResource.addMethod("GET", getWidgetsIntegration);
+        api.root.addMethod("POST", getWidgetsIntegration);
     }
 }

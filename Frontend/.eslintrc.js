@@ -18,4 +18,10 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:prettier/recommended",
   ],
+  rules: {
+    "@typescript-eslint/no-unused-vars": "off",
+    'prettier/prettier': 0,
+    'no-unused-vars': 'off',
+    "react/prop-types": 0
+  }
 };

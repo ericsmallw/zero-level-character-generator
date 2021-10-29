@@ -40,6 +40,16 @@ export const FirstNames = [
   new Name("Stacy", RaceEnums.Human, SexEnums.Female),
   new Name("Kimberly", RaceEnums.Human, SexEnums.Female),
   new Name("Tara", RaceEnums.Human, SexEnums.Female),
+  new Name("Ester", RaceEnums.Human, SexEnums.Female),
+  new Name("Maisy", RaceEnums.Human, SexEnums.Female),
+  new Name("Rhonda", RaceEnums.Human, SexEnums.Female),
+  new Name("Mara", RaceEnums.Human, SexEnums.Female),
+  new Name("Mary", RaceEnums.Human, SexEnums.Female),
+  new Name("Sonia", RaceEnums.Human, SexEnums.Female),
+  new Name("Rebeccah", RaceEnums.Human, SexEnums.Female),
+  new Name("Edith", RaceEnums.Human, SexEnums.Female),
+  new Name("Margaret", RaceEnums.Human, SexEnums.Female),
+  new Name("Tracy", RaceEnums.Human, SexEnums.Female),
 
 
   new Name("Sankin", RaceEnums.Halfling, SexEnums.Male),

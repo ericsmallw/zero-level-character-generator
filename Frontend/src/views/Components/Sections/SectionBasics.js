@@ -194,7 +194,7 @@ export default function SectionBasics() {
                 }}
               />
             </GridItem>
-            <GridItem xs={12} sm={4} md={4} lg={3}>
+            <GridItem xs={12} sm={4} md={4} lg={4}>
               <CustomInput
                 labelText="With Font Awesome Icons"
                 id="font-awesome"
