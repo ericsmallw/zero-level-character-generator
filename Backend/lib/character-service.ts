@@ -23,7 +23,7 @@ export class CharacterService extends core.Construct {
                     'X-Api-Key',
                 ],
                 allowMethods: ['GET', 'POST', 'OPTIONS'],
-                allowOrigins: ['*'],
+                allowOrigins: apigateway.Cors.ALL_ORIGINS,
             }
         });
 

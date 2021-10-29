@@ -26,8 +26,14 @@
     "@aws-cdk/aws-lambda": "^1.129.0",
     "@aws-cdk/aws-lambda-nodejs": "^1.129.0",
     "@aws-cdk/core": "1.129.0",
+    "@types/lodash": "^4.14.176",
+    "@types/random-number": "^0.0.1",
     "aws-lambda": "^1.0.6",
     "axios": "^0.24.0",
+    "inversify": "5.1.1",
+    "lodash": "^4.17.21",
+    "random-number": "^0.0.9",
+    "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.16"
   }
 }
