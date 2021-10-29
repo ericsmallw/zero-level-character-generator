@@ -14,6 +14,7 @@ import CustomInput from "../../../components/CustomInput/CustomInput";
 import {Input, TextField} from "@material-ui/core";
 import {PersonAdd} from "@material-ui/icons";
 import axios from "axios";
+import CharacterCard from "./CharacterCard";
 
 const useStyles = makeStyles(styles);
 
@@ -25,6 +26,7 @@ export default function CharacterSettings(props) {
     const [minAge, setMinAge] = useState(18);
     const [maxAge, setMaxAge] = useState(60);
     const [character, setCharacter] = useState();
+    const [playerName, setPlayerName] = useState('');
 
     const url = 'https://ju42x0s1t1.execute-api.us-east-1.amazonaws.com/prod';
 
@@ -46,6 +48,16 @@ export default function CharacterSettings(props) {
                     <GridContainer>
                         <GridItem xs={3} sm={3} md={3} lg={3}>
                             <GridContainer>
+                                <GridItem xs={12} sm={12} md={12} lg={12}>
+                                    <h3>Player Name</h3>
+                                    <TextField
+                                        label='Player Name'
+                                        value={playerName}
+                                        onChange={(event) => {
+                                            setPlayerName(event.target.value)
+                                        }}
+                                    />
+                                </GridItem>
                                 <GridItem xs={12} sm={12} md={12} lg={12}>
                                     <div
                                         className={
@@ -253,32 +265,7 @@ export default function CharacterSettings(props) {
                                 width: '100%'
                             }}
                         >
-                            <GridContainer>
-                                <GridItem xs={4} sm={4} md={4} lg={4}>
-                                    <div
-                                        style={{
-                                            width: '100%',
-                                        }}
-                                    >
-                                        <div
-                                            style={{
-                                                marginTop: '20px',
-                                                marginLeft: '20px',
-                                                border: '3px darkgray solid',
-                                                borderRadius: '20px'
-                                            }}
-                                        >
-                                    <span
-                                        style={{
-                                            padding: '5px'
-                                        }}
-                                    >
-                                        {character ? character.name : ''}
-                                    </span>
-                                        </div>
-                                    </div>
-                                </GridItem>
-                            </GridContainer>
+                            <CharacterCard character={character} playerName={playerName}/>
                         </GridItem>
                     </GridContainer>
                     <div
