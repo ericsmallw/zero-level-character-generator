@@ -35,7 +35,7 @@ export default class NamesBusinessManager implements INamesBusinessManager {
   }
 
   getHalfElfName(sex: SexEnums): string {
-    const generator = randomNumber.generator({min: 0, max: 1});
+    const generator = randomNumber.generator({min: 0, max: 1, integer: true});
 
     const firstName = generator() === 0
       ? this.namesDataManager.getElfFirstName(sex)
@@ -49,7 +49,7 @@ export default class NamesBusinessManager implements INamesBusinessManager {
   }
 
   getHalfOrcName(sex: SexEnums): string {
-    const generator = randomNumber.generator({min: 0, max: 1});
+    const generator = randomNumber.generator({min: 0, max: 1, integer: true});
 
     if(generator() === 0) {
       return this.namesDataManager.getHalfOrcFirstName(sex);
@@ -79,7 +79,7 @@ export default class NamesBusinessManager implements INamesBusinessManager {
   }
 
   getTieflingName(sex: SexEnums): string {
-    const generator = randomNumber.generator({min: 0, max: 1});
+    const generator = randomNumber.generator({min: 0, max: 1, integer: true});
 
     if(generator() === 0) {
       return this.namesDataManager.getTieflingFirstName(sex);

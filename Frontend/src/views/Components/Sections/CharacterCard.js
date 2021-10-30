@@ -5,8 +5,8 @@ import {StarBorderOutlined} from "@material-ui/icons";
 
 export default function CharacterCard(props) {
   const labelStyle = {fontFamily: "Roboto-slab !important", fontWeight: '700'};
-  const textContainerStyle = {border: '3px darkgray solid', borderRadius: '20px', paddingLeft: '10px'};
-  const statsContainerStyle = {border: '2px darkgrey solid', borderRadius: '10px'}
+  const textContainerStyle = {border: '3px darkgray solid', borderRadius: '20px', paddingLeft: '10px', minHeight: '25px'};
+  const statsContainerStyle = {border: '2px darkgrey solid', borderRadius: '10px', minHeight: '25px'}
   return (
       <>
         <GridContainer>
@@ -63,13 +63,13 @@ export default function CharacterCard(props) {
                 <h4 style={labelStyle}>Occupation</h4>
               </GridItem>
               <GridItem xs={3} sm={3} md={3} lg={3} style={statsContainerStyle}>
-                {props.character.race.name}
+                {props.character ? props.character.race.name : ""}
               </GridItem>
               <GridItem xs={2} sm={2} md={2} lg={2} style={statsContainerStyle}>
-                {props.character.race.size === 0 ? 'Small' : "Med"}
+                {props.character ? (props.character.race.size === 0 ? 'Small' : "Med") : ""}
               </GridItem>
               <GridItem xs={7} sm={7} md={7} lg={7} style={statsContainerStyle}>
-                {props.character.profession.name}
+                {props.character ? props.character.profession.name : ""}
               </GridItem>
             </GridContainer>
           </GridItem>

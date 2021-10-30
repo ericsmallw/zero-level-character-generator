@@ -32,11 +32,10 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
   ) {
   }
 
-  async generateCharacter(racialMix: RacialMix, sex: SexEnums): Promise<Character> {
+  async generateCharacter(racialMix: RacialMix, sex: SexEnums, minAge: number, maxAge: number): Promise<Character> {
     const raceName = this.selectRace(racialMix);
-
     const character = new Character();
-    character.age = this.getAge();
+    character.age = this.getAge(minAge, maxAge);
     character.race = await this._charactersDataManager.getRaceByName(raceName);
     let abilityModifiers = this.getAbilityModifiers(character.race);
     const randomSex = String(sex) == SexEnums[2] ? this.getSex() : sex;
@@ -61,9 +60,10 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
     const numberGenerator = randomNumber.generator({
       min: 1,
       max: 100,
+      integer: true
     });
 
-    const number = Math.round(numberGenerator());
+    const number = numberGenerator();
 
     let selectedRacialMix: any = DefaultRacialMix;
     if (racialMix === RacialMix.HighFantasy) {
@@ -109,14 +109,15 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
   }
 
   private threeD6() {
-    const d6 = randomNumber.generator({ min:1, max: 6 });
-    return Math.round(d6() + d6() + d6());
+    const d6 = randomNumber.generator({ min:1, max: 6, integer: true });
+    return d6() + d6() + d6();
   }
 
   private getDragonBornAncestry(): DragonbornAncestry {
     const numberGenerator = randomNumber.generator({
       min: 1,
       max: 100,
+      integer: true
     });
 
     const number = numberGenerator();
@@ -137,9 +138,10 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
     const numberGenerator = randomNumber.generator({
       min: 1,
       max: 4,
+      integer: true
     });
 
-    return Math.round(numberGenerator());
+    return numberGenerator();
   }
 
   private setProfession(abilityModifiers: AbilityModifiers): Promise<Profession | undefined> {
@@ -175,15 +177,15 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
   }
 
   private getSex(): SexEnums {
-    const generator = randomNumber.generator({ min: 0, max: 1 });
-    const sexEnumValue = SexEnums[Math.round(generator())];
+    const generator = randomNumber.generator({ min: 0, max: 1, integer: true });
+    const sexEnumValue = SexEnums[generator()];
     return SexEnums[sexEnumValue as keyof typeof SexEnums];
   }
 
-  private getAge(): number {
-    const generator = randomNumber.generator({ min: 18, max: 60 });
+  private getAge(minAge: number, maxAge: number): number {
+    const generator = randomNumber.generator({ min: minAge, max: maxAge, integer: true});
 
-    return Math.round(generator());
+    return generator();
   }
 
   private getName(race: Race | undefined, sex: SexEnums): string {
@@ -216,8 +218,8 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
   private getCoin(coinDie: string): string {
     const coinValArray = coinDie.split(" ");
     const die = parseInt(coinValArray[0].split("d")[1]);
-    const generator = randomNumber.generator({min: 1, max: die});
+    const generator = randomNumber.generator({min: 1, max: die, integer: true});
 
-    return `${Math.round(generator())} ${coinValArray[1]}`;
+    return `${generator()} ${coinValArray[1]}`;
   }
 }

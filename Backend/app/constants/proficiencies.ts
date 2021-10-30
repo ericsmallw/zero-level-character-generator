@@ -21,3 +21,6 @@ export const HeavyArmor = new Proficiency(15, "Heavy Armor");
 export const Nature = new Proficiency(16, "Nature");
 export const Acrobatics = new Proficiency(17, "Acrobatics");
 export const GlassblowersTools = new Proficiency(18, "Glassblower's Tools");
+export const SailingShip = new Proficiency(19, "Sailing Ship");
+export const TinkersTools = new Proficiency(20, "Tinker's Tools");
+export const Deception = new Proficiency(21, "Deception");
