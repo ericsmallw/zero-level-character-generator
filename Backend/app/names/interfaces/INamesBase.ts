@@ -12,7 +12,7 @@ export default interface INamesBase {
   getElfFirstName(sex: SexEnums): string;
   getElfLastName(): string;
   getTieflingFirstName(sex: SexEnums): string;
-  getHalfOrcFirstName(sex: SexEnums): string;
+  getOrcFirstName(sex: SexEnums): string;
   getDragonbornFirstName(sex: SexEnums): string;
   getDragonbornLastName(): string;
 }

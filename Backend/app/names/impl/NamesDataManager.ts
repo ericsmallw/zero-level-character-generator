@@ -41,8 +41,8 @@ export default class NamesDataManager implements INamesDataManager {
     return this._dao.getGnomeLastName();
   }
 
-  getHalfOrcFirstName(sex: SexEnums): string {
-    return this._dao.getHalfOrcFirstName(sex);
+  getOrcFirstName(sex: SexEnums): string {
+    return this._dao.getOrcFirstName(sex);
   }
 
   getHalflingFirstName(sex: SexEnums): string {

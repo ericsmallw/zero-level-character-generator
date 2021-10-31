@@ -13,20 +13,16 @@ export const createCharacter = async (event: any) => {
       ? RacialMix[parseInt(body.racialMix)]
       : 0;
   const racialMix = RacialMix[racialMixValue as keyof typeof RacialMix];
-
-  const sexValue = body.sex
-      ? SexEnums[parseInt(body.sex)]
-      : 2;
+  const sexValue = body.sex;
   const sex = SexEnums[sexValue as keyof typeof SexEnums];
-  console.log(`min age: ${body.minAge}`);
-  const minAge = parseInt(body.minAge);
-  console.log(`parsed min age: ${minAge}`);
 
+  const minAge = body.minAge;
+  const maxAge = body.maxAge;
   const result: any = await charactersBusinessManager.generateCharacter(
       racialMix,
       sex,
-      parseInt(event.body.minAge),
-      parseInt(event.body.maxAge)
+      minAge,
+      maxAge
   );
 
   return {

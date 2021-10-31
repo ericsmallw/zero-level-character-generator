@@ -52,11 +52,11 @@ export default class NamesBusinessManager implements INamesBusinessManager {
     const generator = randomNumber.generator({min: 0, max: 1, integer: true});
 
     if(generator() === 0) {
-      return this.namesDataManager.getHalfOrcFirstName(sex);
+      return this.namesDataManager.getOrcFirstName(sex);
     }
 
     const firstName = generator() === 0
-      ? this.namesDataManager.getHalfOrcFirstName(sex)
+      ? this.namesDataManager.getOrcFirstName(sex)
       : this.namesDataManager.getHumanFirstName(sex);
 
     const lastName = this.namesDataManager.getHumanLastName();

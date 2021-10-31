@@ -9,7 +9,9 @@ import SexEnums from "../../enums/sexEnums";
 export default class NamesDataObject implements INamesDataObject {
 
   getDragonbornFirstName(sex: SexEnums): string {
-    const dragonBornFirstNames = FirstNames.filter(name => name.race === RaceEnums.Dragonborn && name.sex === sex);
+    const dragonBornFirstNames = FirstNames.filter(name => {
+      return name.race === RaceEnums.Dragonborn && SexEnums[name.sex.toString() as keyof typeof SexEnums] === sex;
+    });
     const randomName = dragonBornFirstNames[Math.floor(Math.random() * dragonBornFirstNames.length)];
     return randomName.value;
   }
@@ -21,7 +23,9 @@ export default class NamesDataObject implements INamesDataObject {
   }
 
   getDwarfFirstName(sex: SexEnums): string {
-    const dwarfFirstNames = FirstNames.filter(name => name.race === RaceEnums.Dwarf && name.sex === sex);
+    const dwarfFirstNames = FirstNames.filter(name => {
+      return name.race === RaceEnums.Dwarf && SexEnums[name.sex.toString() as keyof typeof SexEnums] === sex;
+    });
     const randomName = dwarfFirstNames[Math.floor(Math.random() * dwarfFirstNames.length)];
     return randomName.value;
   }
@@ -33,7 +37,10 @@ export default class NamesDataObject implements INamesDataObject {
   }
 
   getElfFirstName(sex: SexEnums): string {
-    const elfFirstNames = FirstNames.filter(name => name.race === RaceEnums.Elf && name.sex === sex);
+    const elfFirstNames = FirstNames.filter(name => {
+      return name.race === RaceEnums.Elf && SexEnums[name.sex.toString() as keyof typeof SexEnums] === sex;
+    });
+
     const randomName = elfFirstNames[Math.floor(Math.random() * elfFirstNames.length)];
     return randomName.value;
   }
@@ -45,7 +52,10 @@ export default class NamesDataObject implements INamesDataObject {
   }
 
   getGnomeFirstName(sex: SexEnums): string {
-    const gnomeFirstNames = FirstNames.filter(name => name.race === RaceEnums.Gnome && name.sex === sex);
+    const gnomeFirstNames = FirstNames.filter(name => {
+      return name.race === RaceEnums.Gnome && SexEnums[name.sex.toString() as keyof typeof SexEnums] === sex;
+    });
+
     const randomName = gnomeFirstNames[Math.floor(Math.random() * gnomeFirstNames.length)];
     return randomName.value;
   }
@@ -56,14 +66,18 @@ export default class NamesDataObject implements INamesDataObject {
     return randomName.value;
   }
 
-  getHalfOrcFirstName(sex: SexEnums): string {
-    const halfOrcFirstNames = FirstNames.filter(name => name.race === RaceEnums.HalfOrc && name.sex === sex);
+  getOrcFirstName(sex: SexEnums): string {
+    const halfOrcFirstNames = FirstNames.filter(name => {
+      return name.race === RaceEnums.HalfOrc && SexEnums[name.sex.toString() as keyof typeof SexEnums] === sex;
+    });
     const randomName = halfOrcFirstNames[Math.floor(Math.random() * halfOrcFirstNames.length)];
     return randomName.value;
   }
 
   getHalflingFirstName(sex: SexEnums): string {
-    const halflingFirstNames = FirstNames.filter(name => name.race === RaceEnums.Halfling && name.sex === sex);
+    const halflingFirstNames = FirstNames.filter(name => {
+      return name.race === RaceEnums.Halfling && SexEnums[name.sex.toString() as keyof typeof SexEnums] === sex;
+    });
     const randomName = halflingFirstNames[Math.floor(Math.random() * halflingFirstNames.length)];
     return randomName.value;
   }
@@ -75,19 +89,24 @@ export default class NamesDataObject implements INamesDataObject {
   }
 
   getHumanFirstName(sex: SexEnums): string {
-    const humanFirstNames = FirstNames.filter(name => name.race === RaceEnums.Human && name.sex === sex);
+    const humanFirstNames = FirstNames.filter(name => {
+      return name.race === RaceEnums.Human && SexEnums[name.sex.toString() as keyof typeof SexEnums] === sex;
+    });
+
     const randomName = humanFirstNames[Math.floor(Math.random() * humanFirstNames.length)];
     return randomName.value;
   }
 
   getHumanLastName(): string {
-    const humanLastNames = LastNames.filter(name => name.race === RaceEnums.Human);
+    const humanLastNames = LastNames.filter(name => name.race == RaceEnums.Human);
     const randomName = humanLastNames[Math.floor(Math.random() * humanLastNames.length)];
     return randomName.value;
   }
 
   getTieflingFirstName(sex: SexEnums): string {
-    const tieflingFirstNames = FirstNames.filter(name => name.race === RaceEnums.Tiefling && name.sex === sex);
+    const tieflingFirstNames = FirstNames.filter(name => {
+      return name.race === RaceEnums.Tiefling && SexEnums[name.sex.toString() as keyof typeof SexEnums] === sex;
+    });
     const randomName = tieflingFirstNames[Math.floor(Math.random() * tieflingFirstNames.length)];
     return randomName.value;
   }

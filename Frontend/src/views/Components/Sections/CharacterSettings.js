@@ -25,10 +25,11 @@ export default function CharacterSettings(props) {
     const [sex, setSex] = useState(2);
     const [minAge, setMinAge] = useState(18);
     const [maxAge, setMaxAge] = useState(60);
+    const [age, setAge] = useState(0);
     const [character, setCharacter] = useState();
     const [playerName, setPlayerName] = useState('');
 
-    const url = 'https://7871p5aik2.execute-api.us-east-1.amazonaws.com/prod/';
+    const url = 'https://ju42x0s1t1.execute-api.us-east-1.amazonaws.com/prod/';
 
     const createCharacter = async () => {
         try {
@@ -253,6 +254,19 @@ export default function CharacterSettings(props) {
                                         value={maxAge}
                                         onChange={(event) => {
                                             setMaxAge(event.target.value)
+                                        }}
+                                    />
+                                </GridItem>
+                            </GridContainer>
+                            <GridContainer>
+                                <GridItem xs={12} sm={12} md={12} lg={12}>
+                                    <h3>setAge</h3>
+                                    <TextField
+                                        label='Age'
+                                        type='number'
+                                        value={age}
+                                        onChange={(event) => {
+                                            setAge(event.target.value)
                                         }}
                                     />
                                 </GridItem>
