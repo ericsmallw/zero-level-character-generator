@@ -3,14 +3,12 @@ import GridContainer from "../../../components/Grid/GridContainer";
 import GridItem from "../../../components/Grid/GridItem";
 import {StarBorderOutlined} from "@material-ui/icons";
 import CharacterRaceOccupation from "./CharacterRaceOccupation";
+import CharacterProficiencyWeapons from "./CharacterProficiencyWeapons";
 
 export default function CharacterCard(props) {
   const labelStyle = {fontFamily: "Roboto-slab !important", fontWeight: '700'};
   const textContainerStyle = {border: '3px darkgray solid', borderRadius: '20px', paddingLeft: '10px !important', minHeight: '25px'};
-  const statsContainerLeftStyle = {border: '2px darkgrey solid', borderRadius: '10px 0px 0px 10px', paddingLeft: '5px !important', minHeight: '25px'}
-  const statsContainerRightStyle = {border: '2px darkgrey solid', borderRadius: '0px 10px 10px 0px', paddingLeft: '5px !important', minHeight: '25px'}
-  const subLabelStyle = {color: 'darkgray', fontSize: '12px', fontWeight: 'bold', marginBottom: '0px'};
-  const statDetailsContainer = {height: '12vh'};
+
   return (
       <>
         <GridContainer>
@@ -54,33 +52,7 @@ export default function CharacterCard(props) {
           </GridItem>
           <GridItem xs={6} sm={6} md={6} lg={6}>
             <CharacterRaceOccupation labelStyle={labelStyle} character={props.character}/>
-            <GridContainer>
-              <GridItem xs={6} sm={6} md={6} lg={6}>
-                <h4 style={labelStyle}>Proficiency (+2)</h4>
-              </GridItem>
-              <GridItem xs={6} sm={6} md={6} lg={6}>
-                <h4 style={labelStyle}>Weapons</h4>
-              </GridItem>
-              <GridItem xs={6} sm={6} md={6} lg={6} style={{...statsContainerLeftStyle,...statDetailsContainer}}>
-                <h4 style={subLabelStyle}>Weapon Proficiency</h4>
-                {
-                  props.character
-                      ? <span style={{fontSize: '10px'}}>{props.character.profession.weapon.name}</span>
-                      : ""
-                }
-                <h4 style={{...subLabelStyle, ...{marginTop: '10px'}}}>Skill Proficiency</h4>
-                {
-                  props.character
-                      ? <span style={{fontSize: '10px'}}>{props.character.profession.proficiency.name}</span>
-                      : ""
-                }
-
-              </GridItem>
-              <GridItem xs={6} sm={6} md={6} lg={6} style={statsContainerRightStyle}>
-                <br />
-
-              </GridItem>
-            </GridContainer>
+            <CharacterProficiencyWeapons labelStyle={labelStyle} character={props.character}/>
           </GridItem>
           <GridItem xs={3} sm={3} md={3} lg={3}>
 
