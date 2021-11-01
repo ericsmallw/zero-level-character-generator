@@ -62,13 +62,16 @@ export default function CharacterRaceOccupation (props) {
                         })
                         : ""
                 }
-                <span style={{fontSize: '12px'}}>
-                  {
-                      props.character && props.character.clothes
-                          ? props.character.clothes.name
-                          : ""
-                  }
+                <div>
+                  <span style={{fontSize: '12px'}}>
+                  {props.character ? props.character.profession.clothes.name + " Clothes" : ""}
                 </span>
+                </div>
+                <div>
+                  <span style={{fontSize: '12px'}}>
+                  {props.character ? props.character.coin : ""}
+                </span>
+                </div>
             </GridItem>
         </GridContainer>
     )
