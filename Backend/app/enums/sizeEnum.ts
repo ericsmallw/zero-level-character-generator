@@ -1,6 +1,4 @@
-enum SizeEnum {
-  small,
-  medium
+export default class SizeEnum {
+  static readonly small = 0;
+  static readonly medium = 1;
 }
-
-export default SizeEnum;

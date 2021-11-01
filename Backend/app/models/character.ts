@@ -2,7 +2,7 @@ import AbilityModifiers from "./abilityModifiers";
 import DragonbornAncestry from "./dragonbornAncestry";
 import Race from "./race";
 import Profession from "./profession";
-import SexEnums from "../enums/sexEnums";
+import SexEnum from "../enums/sexEnum";
 
 export class Character {
     name: string;

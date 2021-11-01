@@ -1,18 +1,16 @@
-import SexEnums from "../../enums/sexEnums";
-
 export default interface INamesBase {
-  getHumanFirstName(sex: SexEnums): string;
+  getHumanFirstName(sex: number): string;
   getHumanLastName(): string;
-  getHalflingFirstName(sex: SexEnums): string;
+  getHalflingFirstName(sex: number): string;
   getHalflingLastName(): string;
-  getDwarfFirstName(sex: SexEnums): string;
+  getDwarfFirstName(sex: number): string;
   getDwarfLastName(): string;
-  getGnomeFirstName(sex: SexEnums): string;
+  getGnomeFirstName(sex: number): string;
   getGnomeLastName(): string;
-  getElfFirstName(sex: SexEnums): string;
+  getElfFirstName(sex: number): string;
   getElfLastName(): string;
-  getTieflingFirstName(sex: SexEnums): string;
-  getOrcFirstName(sex: SexEnums): string;
-  getDragonbornFirstName(sex: SexEnums): string;
+  getTieflingFirstName(sex: number): string;
+  getOrcFirstName(sex: number): string;
+  getDragonbornFirstName(sex: number): string;
   getDragonbornLastName(): string;
 }

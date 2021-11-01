@@ -23,7 +23,7 @@
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["node"],
+    "types": ["node", "jest", "reflect-metadata"],
     "typeRoots": [
       "./node_modules/@types"
     ]

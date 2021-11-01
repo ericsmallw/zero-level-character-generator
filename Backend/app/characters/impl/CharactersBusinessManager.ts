@@ -16,11 +16,11 @@ import AbilityModifiers from '../../models/abilityModifiers';
 import DragonbornAncestry from '../../models/dragonbornAncestry';
 import Profession from '../../models/profession';
 import ProfessionTypeEnum from '../../enums/professionTypeEnum';
-import SexEnums from '../../enums/sexEnums';
 import INamesBusinessManager from '../../names/interfaces/INamesBusinessManager';
 import Race from '../../models/race';
-import RaceEnums from '../../enums/raceEnums';
+import RaceEnum from '../../enums/raceEnum';
 import IProfessionsDataManager from "../../professions/interfaces/IProfessionsDataManager";
+import SexEnum from "../../enums/sexEnum";
 
 // @ts-ignore
 @injectable()
@@ -32,14 +32,14 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
   ) {
   }
 
-  async generateCharacter(racialMix: RacialMix, sex: SexEnums, minAge: number, maxAge: number): Promise<Character> {
+  async generateCharacter(racialMix: RacialMix, sex: number, minAge: number, maxAge: number): Promise<Character> {
     const raceName = this.selectRace(racialMix);
     const character = new Character();
     character.age = this.getAge(minAge, maxAge);
     character.race = await this._charactersDataManager.getRaceByName(raceName);
     let abilityModifiers = this.getAbilityModifiers(character.race);
-    const randomSex = String(sex) == SexEnums[2] ? this.getSex() : sex;
-    character.sex = SexEnums[randomSex];
+    const randomSex = sex === SexEnum.None ? this.getSex() : sex;
+    character.sex = randomSex === 0 ? "Male" : "Female";
     character.name = this.getName(character.race, randomSex);
     character.abilityModifiers = abilityModifiers;
     character.hitPoints = this.getHitPoints();
@@ -176,39 +176,37 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
     }
   }
 
-  private getSex(): SexEnums {
+  private getSex(): number {
     const generator = randomNumber.generator({ min: 0, max: 1, integer: true });
-    const sexEnumValue = SexEnums[generator()];
-    return SexEnums[sexEnumValue as keyof typeof SexEnums];
+    return generator();
   }
 
   private getAge(minAge: number, maxAge: number): number {
     const generator = randomNumber.generator({ min: minAge, max: maxAge, integer: true});
-
     return generator();
   }
 
-  private getName(race: Race | undefined, sex: SexEnums): string {
+  private getName(race: Race | undefined, sex: number): string {
     if (typeof race === 'undefined') {
       return this._namesBusinessManager.getHumanName(sex);
     }
 
-    switch (race.name) {
-      case RaceEnums[RaceEnums.Halfling]:
+    switch (race.id) {
+      case RaceEnum.Halfling:
         return this._namesBusinessManager.getHalflingName(sex);
-      case RaceEnums[RaceEnums.Elf]:
+      case RaceEnum.Elf:
         return this._namesBusinessManager.getElfName(sex);
-      case RaceEnums[RaceEnums.Gnome]:
+      case RaceEnum.Gnome:
         return this._namesBusinessManager.getGnomeName(sex);
-      case RaceEnums[RaceEnums.HalfElf]:
+      case RaceEnum.HalfElf:
         return this._namesBusinessManager.getHalfElfName(sex);
-      case RaceEnums[RaceEnums.Tiefling]:
+      case RaceEnum.Tiefling:
         return this._namesBusinessManager.getTieflingName(sex);
-      case RaceEnums[RaceEnums.HalfOrc]:
+      case RaceEnum.HalfOrc:
         return this._namesBusinessManager.getHalfOrcName(sex);
-      case RaceEnums[RaceEnums.Dragonborn]:
+      case RaceEnum.Dragonborn:
         return this._namesBusinessManager.getDragonbornName(sex);
-      case RaceEnums[RaceEnums.Dwarf]:
+      case RaceEnum.Dwarf:
         return this._namesBusinessManager.getDwarfName(sex);
       default:
         return this._namesBusinessManager.getHumanName(sex);

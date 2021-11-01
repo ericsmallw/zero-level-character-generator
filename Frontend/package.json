@@ -39,7 +39,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && gulp licenses",
-    "deploy": "yarn build && aws s3 sync build/ s3://zero-level-character-generator-frontend --acl public-read",
+    "deploy": "yarn build && aws s3 sync build/ s3://zero-level-character-generator-frontend --acl public-read --profile personal",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint:check": "eslint . --ext=js,jsx;  exit 0",

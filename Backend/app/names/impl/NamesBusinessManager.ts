@@ -1,6 +1,5 @@
 import INamesBusinessManager from "../interfaces/INamesBusinessManager";
 import {inject, injectable} from "inversify";
-import SexEnums from "../../enums/sexEnums";
 import types from "../../inversify/types";
 import INamesDataManager from "../interfaces/INamesDataManager";
 import randomNumber from "random-number";
@@ -10,31 +9,31 @@ export default class NamesBusinessManager implements INamesBusinessManager {
   constructor(@inject(types.NamesDataManager) private readonly namesDataManager: INamesDataManager) {
   }
 
-  getDragonbornName(sex: SexEnums): string {
+  getDragonbornName(sex: number): string {
     const firstName = this.namesDataManager.getDragonbornFirstName(sex);
     const lastName = this.namesDataManager.getDragonbornLastName();
     return `${firstName} ${lastName}`;
   }
 
-  getDwarfName(sex: SexEnums): string {
+  getDwarfName(sex: number): string {
     const firstName = this.namesDataManager.getDwarfFirstName(sex);
     const lastName = this.namesDataManager.getDwarfLastName();
     return `${firstName} ${lastName}`;
   }
 
-  getElfName(sex: SexEnums): string {
+  getElfName(sex: number): string {
     const firstName = this.namesDataManager.getElfFirstName(sex);
     const lastName = this.namesDataManager.getElfLastName();
     return `${firstName} ${lastName}`;
   }
 
-  getGnomeName(sex: SexEnums): string {
+  getGnomeName(sex: number): string {
     const firstName = this.namesDataManager.getGnomeFirstName(sex);
     const lastName = this.namesDataManager.getGnomeLastName();
     return `${firstName} ${lastName}`;
   }
 
-  getHalfElfName(sex: SexEnums): string {
+  getHalfElfName(sex: number): string {
     const generator = randomNumber.generator({min: 0, max: 1, integer: true});
 
     const firstName = generator() === 0
@@ -48,7 +47,7 @@ export default class NamesBusinessManager implements INamesBusinessManager {
     return `${firstName} ${lastName}`;
   }
 
-  getHalfOrcName(sex: SexEnums): string {
+  getHalfOrcName(sex: number): string {
     const generator = randomNumber.generator({min: 0, max: 1, integer: true});
 
     if(generator() === 0) {
@@ -64,21 +63,21 @@ export default class NamesBusinessManager implements INamesBusinessManager {
     return `${firstName} ${lastName}`;
   }
 
-  getHalflingName(sex: SexEnums): string {
+  getHalflingName(sex: number): string {
     const firstName = this.namesDataManager.getHalflingFirstName(sex);
     const lastName = this.namesDataManager.getHalflingLastName();
 
     return `${firstName} ${lastName}`;
   }
 
-  getHumanName(sex: SexEnums): string {
+  getHumanName(sex: number): string {
     const firstName = this.namesDataManager.getHumanFirstName(sex);
     const lastName = this.namesDataManager.getHumanLastName();
 
     return `${firstName} ${lastName}`;
   }
 
-  getTieflingName(sex: SexEnums): string {
+  getTieflingName(sex: number): string {
     const generator = randomNumber.generator({min: 0, max: 1, integer: true});
 
     if(generator() === 0) {

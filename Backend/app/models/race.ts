@@ -1,9 +1,9 @@
 import SizeEnum from "../enums/sizeEnum";
-import RaceEnums from "../enums/raceEnums";
+import RaceEnum from "../enums/raceEnum";
 import AbilityBonus from "./abilityBonus";
 
 export default class Race {
-  id: RaceEnums;
+  id: number;
   name: string;
   size: SizeEnum;
   speed: number;

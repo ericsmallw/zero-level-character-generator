@@ -1,5 +1,4 @@
 import INamesDataManager from "../interfaces/INamesDataManager";
-import SexEnums from "../../enums/sexEnums";
 import {inject, injectable} from "inversify";
 import types from "../../inversify/types";
 import INamesDataObject from "../interfaces/INamesDataObject";
@@ -9,7 +8,7 @@ export default class NamesDataManager implements INamesDataManager {
   constructor(@inject(types.NamesDataObject) private readonly _dao: INamesDataObject) {
   }
 
-  getDragonbornFirstName(sex: SexEnums): string {
+  getDragonbornFirstName(sex: number): string {
     return this._dao.getDragonbornFirstName(sex);
   }
 
@@ -17,7 +16,7 @@ export default class NamesDataManager implements INamesDataManager {
     return this._dao.getDragonbornLastName();
   }
 
-  getDwarfFirstName(sex: SexEnums): string {
+  getDwarfFirstName(sex: number): string {
     return this._dao.getDwarfFirstName(sex);
   }
 
@@ -25,7 +24,7 @@ export default class NamesDataManager implements INamesDataManager {
     return this._dao.getDwarfLastName();
   }
 
-  getElfFirstName(sex: SexEnums): string {
+  getElfFirstName(sex: number): string {
     return this._dao.getElfFirstName(sex);
   }
 
@@ -33,7 +32,7 @@ export default class NamesDataManager implements INamesDataManager {
     return this._dao.getElfLastName();
   }
 
-  getGnomeFirstName(sex: SexEnums): string {
+  getGnomeFirstName(sex: number): string {
     return this._dao.getGnomeFirstName(sex);
   }
 
@@ -41,11 +40,11 @@ export default class NamesDataManager implements INamesDataManager {
     return this._dao.getGnomeLastName();
   }
 
-  getOrcFirstName(sex: SexEnums): string {
+  getOrcFirstName(sex: number): string {
     return this._dao.getOrcFirstName(sex);
   }
 
-  getHalflingFirstName(sex: SexEnums): string {
+  getHalflingFirstName(sex: number): string {
     return this._dao.getHalflingFirstName(sex);
   }
 
@@ -53,7 +52,7 @@ export default class NamesDataManager implements INamesDataManager {
     return this._dao.getHalflingLastName();
   }
 
-  getHumanFirstName(sex: SexEnums): string {
+  getHumanFirstName(sex: number): string {
     return this._dao.getHumanFirstName(sex);
   }
 
@@ -61,7 +60,7 @@ export default class NamesDataManager implements INamesDataManager {
     return this._dao.getHumanLastName();
   }
 
-  getTieflingFirstName(sex: SexEnums): string {
+  getTieflingFirstName(sex: number): string {
     return this._dao.getTieflingFirstName(sex);
   }
 
