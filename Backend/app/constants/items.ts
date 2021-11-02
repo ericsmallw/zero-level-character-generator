@@ -1,5 +1,6 @@
 import Item from "../models/item";
 import Proficiency from "../models/proficiency";
+import Clothes from "../models/clothes";
 
 export const ThievesTools = new Item(0, "Thieves' Tools");
 export const SackOfManure = new Item(1, "Sack of Manure");
@@ -18,13 +19,24 @@ export const BeggarCup = new Item(12, "A Beggar's Cup");
 export const LeatherworkerTools = new Item(13, "Leatherworker's Tools");
 export const ArcaneBook = new Item(14, "Book on arcane subject");
 export const GroceryList = new Item(15, "A Grocery List");
-export const Ringmail = new Item(16, "Ringmail");
+export const Ringmail = new Item(16, "Ringmail", 14);
 export const Soil = new Item(17, "A bag of good soil");
 export const PortableTrampoline = new Item(17, "Portable Trampoline");
-export const GlassblowersToolsItem = new Proficiency(18, "Glassblower's Tools");
-export const DeadRatBag = new Proficiency(19, "Bag with dead rats");
-export const Rope50Ft = new Proficiency(19, "50' Rope");
+export const GlassblowersToolsItem = new Item(18, "Glassblower's Tools");
+export const DeadRatBag = new Item(19, "Bag with dead rats");
+export const Rope50Ft = new Item(19, "50' Rope");
 export const HolySymbolReliquary = new Item(20, "Holy Symbol (Reliquary)");
 export const DruidicFocusTotem = new Item(20, "Druidic Focus (Totem)");
 export const NobilityPapers = new Item(21, "Papers declaring nobility");
 export const ADozenApples = new Item(22, "A dozen perfect apples");
+export const LeatherArmor = new Item(23, "Leather armor", 11);
+export const Jerky = new Item(24, "5 lbs of Jerky");
+export const ChainShirt = new Item(25, "Chain Shirt");
+export const Bell = new Item(26, "Bell");
+export const Lock = new Item(27, "Lock");
+export const FineCandles = new Item(28, "Fine Candles (50)");
+export const SchoolBook = new Item(28, "School Book");
+export const Shield = new Item(5, "Shield", 0, 2);
+export const HideArmor = new Item(5, "Hide Armor", 12);
+export const HideArmor = new Item(5, "Saddle Bags");
+
