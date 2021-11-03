@@ -51,21 +51,27 @@ export default function CharacterRaceOccupation (props) {
                 <span style={subLabelStyle}>Inventory</span>
                 {
                     props.character
-                        ? props.character.profession.item.map((item, index) => {
-                            return (
-                                <div key={`ability${index}`}>
+                        ? props.character.profession.item.length === 0
+                          ? <div>
                               <span style={{fontSize: '12px'}}>
-                                {item.name}
+                                {props.character.profession.proficiency.name}
                               </span>
-                                </div>
-                            );
-                        })
+                            </div>
+                          : props.character.profession.item.map((item, index) => {
+                                return (
+                                    <div key={`ability${index}`}>
+                                      <span style={{fontSize: '12px'}}>
+                                        {item.name}
+                                      </span>
+                                    </div>
+                                );
+                            })
                         : ""
                 }
                 <div>
                   <span style={{fontSize: '12px'}}>
-                  {props.character ? props.character.profession.clothes.name + " Clothes" : ""}
-                </span>
+                    {props.character ? props.character.profession.clothes.name + " Clothes" : ""}
+                  </span>
                 </div>
                 <div>
                   <span style={{fontSize: '12px'}}>

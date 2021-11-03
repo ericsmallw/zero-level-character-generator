@@ -23,16 +23,22 @@ export default class AbilityModifiers {
 
   Strength: number;
   StrengthModifier: number;
+  StrengthAbbr = 'STR';
   Dexterity: number;
   DexterityModifier: number;
+  DexterityAbbr = 'DEX'
   Constitution: number;
   ConstitutionModifier: number;
+  ConstitutionAbbr = 'CON';
   Intelligence: number;
   IntelligenceModifier: number;
+  IntelligenceAbbr = 'INT';
   Wisdom: number;
   WisdomModifier: number;
+  WisdomAbbr = 'WIS'
   Charisma: number;
   CharismaModifier: number;
+  CharismaAbbr = 'CHA';
 
   private setModifier(score: number) {
     if (score === 3) {

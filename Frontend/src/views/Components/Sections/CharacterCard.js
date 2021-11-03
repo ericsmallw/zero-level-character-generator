@@ -4,11 +4,13 @@ import GridItem from "../../../components/Grid/GridItem";
 import {StarBorderOutlined} from "@material-ui/icons";
 import CharacterRaceOccupation from "./CharacterRaceOccupation";
 import CharacterProficiencyWeapons from "./CharacterProficiencyWeapons";
+import CharacterOtherDetails from "./CharacterOtherDetails";
+import {partition} from 'lodash';
 
 export default function CharacterCard(props) {
   const labelStyle = {fontFamily: "Roboto-slab !important", fontWeight: '700'};
   const textContainerStyle = {border: '3px darkgray solid', borderRadius: '20px', paddingLeft: '10px !important', minHeight: '25px'};
-  const speedInitAcValStyle = {color: '#9c27b0', fontWeight: 'bold', minHeight: '0', marginBottom: '0', marginTop: '0'};
+  const statBoxStyle = {display: 'inline-block', border: 'darkgray solid', height: '50px', width: '50px', position: 'relative'};
 
   return (
       <>
@@ -50,59 +52,31 @@ export default function CharacterCard(props) {
         </GridContainer>
         <GridContainer>
           <GridItem xs={3} sm={3} md={3} lg={3}>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={12} lg={12}>
+                <h3 style={labelStyle}>Stats</h3>
+              </GridItem>
+              <GridItem xs={12} sm={12} md={12} lg={12}>
+                <div style={{position: 'absolute'}}>
+                  <div style={{...statBoxStyle, borderRightWidth: '2px'}}>
+
+                  </div>
+                  <div style={{...statBoxStyle, ...{width: '70px', borderLeftWidth: '1px'}}}>
+
+                  </div>
+                  <div style={{...statBoxStyle, ...{borderRadius: '50%', backgroundColor: 'white', right: '28px'}}}>
+
+                  </div>
+                </div>
+              </GridItem>
+            </GridContainer>
           </GridItem>
           <GridItem xs={6} sm={6} md={6} lg={6}>
             <CharacterRaceOccupation labelStyle={labelStyle} character={props.character}/>
             <CharacterProficiencyWeapons labelStyle={labelStyle} character={props.character}/>
           </GridItem>
           <GridItem xs={3} sm={3} md={3} lg={3}>
-            <GridContainer>
-              <GridItem xs={4} sm={4} md={4} lg={4}>
-                <center><h4 style={labelStyle}>Init</h4></center>
-              </GridItem>
-              <GridItem xs={4} sm={4} md={4} lg={4}>
-                <center><h4 style={labelStyle}>Speed</h4></center>
-              </GridItem>
-              <GridItem xs={4} sm={4} md={4} lg={4}>
-                <center><h4 style={labelStyle}>AC</h4></center>
-              </GridItem>
-              <GridItem xs={4} sm={4} md={4} lg={4}>
-                <center>
-                  <h3 style={speedInitAcValStyle}>
-                    {props.character
-                        ? (props.character.initiative >= 0
-                            ? `+${props.character.initiative}`
-                            : props.character.initiative)
-                        : ""}
-                  </h3>
-                </center>
-              </GridItem>
-              <GridItem xs={4} sm={4} md={4} lg={4}>
-                <center>
-                  <h3 style={speedInitAcValStyle}>
-                    {props.character ? props.character.race.speed : ""}
-                  </h3>
-                </center>
-              </GridItem>
-              <GridItem xs={4} sm={4} md={4} lg={4}>
-                <center>
-                  <h3 style={speedInitAcValStyle}>
-                    {props.character ? props.character.armorClass : ""}
-                  </h3>
-                </center>
-              </GridItem>
-              <GridItem xs={12} sm={12} md={12} lg={12} style={{marginTop: '30px'}}>
-                <center><h2 style={labelStyle}>Max HP</h2></center>
-                <center>
-                  <h2 style={speedInitAcValStyle}>
-                    {props.character ? props.character.hitPoints : ""}
-                  </h2>
-                </center>
-              </GridItem>
-              <GridItem xs={12} sm={12} md={12} lg={12} style={{marginTop: '30px'}}>
-                <center><h2 style={labelStyle}>Current HP</h2></center>
-              </GridItem>
-            </GridContainer>
+            <CharacterOtherDetails labelStyle={labelStyle} character={props.character} />
           </GridItem>
         </GridContainer>
       </>

@@ -54,3 +54,4 @@ export const OfficialPapers = new Item(41, "Official papers");
 export const MetalBucket = new Item(41, "Metal bucket");
 export const Basket = new Item(41, "Basket");
 export const AnimalBones = new Item(41, "3 large animal bones");
+export const Caltrops = new Item(41, "Caltrops(10)");
