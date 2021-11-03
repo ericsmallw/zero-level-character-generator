@@ -35,3 +35,4 @@ export const WoodenSpoon = new Weapon(31, "Wooden Spoon", "1d4", 5);
 export const Rapier = new Weapon(32, "Rapier", "1d4", 5);
 export const Mace = new Weapon(33,"Mace", "1d8", 5);
 export const HandCrossbow = new Weapon(34, "Hand Crossbow", "1d6", "30/120");
+export const Greataxe = new Weapon(35,"Greataxe", "1d12", 5);

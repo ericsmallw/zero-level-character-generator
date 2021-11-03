@@ -37,3 +37,5 @@ export const CarpenterTools = new Proficiency(31, "Carpenter's Tools");
 export const CartographersTools = new Proficiency(32, "Cartographer's Tools");
 export const BonusLanguages = new Proficiency(33, "Bonus 2 Languages");
 export const Insight = new Proficiency(34, "Insight");
+export const WoodcarversTools = new Proficiency(31, "Woodcarver's Tools");
+export const MasonsTools = new Proficiency(31, "Mason's Tools");

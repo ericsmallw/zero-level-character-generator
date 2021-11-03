@@ -3,17 +3,17 @@ import {
   Acrobatics,
   AnimalHandling, Arcana, BonusLanguages, BrewersSupplies, CarpenterTools, CartographersTools, CharismaSavingThrows,
   ConSavingThrows, CooksUtensils, Deception, GlassblowersTools, Handaxes, HeavyArmor, History, Insight, Intimidation,
-  Investigation, LeatherWorkersToolsProf, Lute,
+  Investigation, LeatherWorkersToolsProf, Lute, MasonsTools,
   Medicine, Nature, NavigatorsTools, PaintersSupplies,
   Perception, Performance,
   Persuasion, Religion, SailingShip, SimpleWeapons,
   SleightOfHand,
-  SmithsTools, Stealth, StrengthSavingThrows, Survival, TinkersTools, WeaversTools
+  SmithsTools, Stealth, StrengthSavingThrows, Survival, TinkersTools, WeaversTools, WoodcarversTools
 } from "./proficiencies";
 import {
-  Blowgun, ButchersKnife, CastIronPan, Chisel,
+  Blowgun, BoneKnife, ButchersKnife, CastIronPan, Chisel,
   Club,
-  Dagger, Flail,
+  Dagger, Flail, Greataxe,
   Handaxe, HandCrossbow,
   LightHammer,
   Longsword,
@@ -27,8 +27,8 @@ import {Common, Costume, Fine, Travelers, Vestments} from "./clothes";
 import {
   Abacus,
   ADozenApples,
-  ALute,
-  ArcaneBook, BagOfTrinkets,
+  ALute, AnimalBones,
+  ArcaneBook, BagOfTrinkets, Basket,
   BeggarCup,
   Bell,
   BlockAndTackle,
@@ -50,7 +50,7 @@ import {
   JournalPen,
   LeatherArmor,
   LeatherworkerTools,
-  Lock,
+  Lock, MetalBucket,
   MinersTools,
   MoneySack,
   NobilityPapers, OfficialPapers, PaddedArmor,
@@ -78,6 +78,11 @@ export const Butcher = new Profession(2, "Butcher", "d10 sp", Handaxes, Butchers
 export const Gladiator = new Profession(2, "Gladiator", "d12 gp", SimpleWeapons, Net, [ChainShirt], Travelers, ProfessionTypeEnum.Strength);
 export const Woodcutter = new Profession(2, "Woodcutter", "d6 sp", Nature, Handaxe, [CutWood], Common, ProfessionTypeEnum.Strength);
 export const Carpenter = new Profession(2, "Carpenter", "d6 gp", CarpenterTools, LightHammer, [], Common, ProfessionTypeEnum.Strength);
+export const Milkman = new Profession(2, "Milkman/Milkmaid", "d8 sp", AnimalHandling, Club, [MetalBucket], Common, ProfessionTypeEnum.Strength);
+export const Executioner = new Profession(2, "Executioner", "d12 sp", Intimidation, Greataxe, [Basket], Common, ProfessionTypeEnum.Strength);
+export const Mercenary = new Profession(2, "Mercenary", "d12 sp", SimpleWeapons, Shortsword, [LeatherArmor], Travelers, ProfessionTypeEnum.Strength);
+export const BoneCarver = new Profession(2, "Bone Carver", "d6 sp", WoodcarversTools, BoneKnife, [AnimalBones], Common, ProfessionTypeEnum.Strength);
+export const Mason = new Profession(2, "Mason", "d10 cp", MasonsTools, LightHammer, [], Common, ProfessionTypeEnum.Strength);
 
 export const Pickpocket = new Profession(1, "Pickpocket", "d12 sp", SleightOfHand, Shortsword, [ThievesTools], Common, ProfessionTypeEnum.Dexterity);
 export const Haberdasher = new Profession(2, "Haberdasher", "d12 gp", Persuasion , Dagger, [FineCloth], Fine, ProfessionTypeEnum.Dexterity);
@@ -139,5 +144,6 @@ export const Professions = [
   Sexton, Minstrel, Teamster, Orphan, Leatherworker, WizardsApprentice, Squire, Innkeeper, Bodyguard, RatCatcher, Seaman,
   Plowman, Apothecary, Tinker, Friar, Woodward, LowNoble, Costermonger, Fishmonger, Mime, Storyteller, Tracker, Painter,
   Ostler, Tutor, Navigator, PastryCook, TavernCook, Brewer, Chandler, Messenger, Locksmith, Weaver, Rough, Butcher,
-    Gladiator
+    Gladiator, Woodcutter, Carpenter, Hunter, Contortionist, Apiarist, StoneCarver, Cartographer, Interpreter, Barker,
+    Servant, Diplomat, Peddlar
 ]

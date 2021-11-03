@@ -51,3 +51,6 @@ export const Book = new Item(41, "Book");
 export const Towel = new Item(41, "Towel");
 export const BagOfTrinkets = new Item(41, "Bag of trinkets");
 export const OfficialPapers = new Item(41, "Official papers");
+export const MetalBucket = new Item(41, "Metal bucket");
+export const Basket = new Item(41, "Basket");
+export const AnimalBones = new Item(41, "3 large animal bones");
