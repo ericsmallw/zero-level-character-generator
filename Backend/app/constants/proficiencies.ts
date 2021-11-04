@@ -39,3 +39,6 @@ export const BonusLanguages = new Proficiency(33, "Bonus 2 Languages");
 export const Insight = new Proficiency(34, "Insight");
 export const WoodcarversTools = new Proficiency(31, "Woodcarver's Tools");
 export const MasonsTools = new Proficiency(31, "Mason's Tools");
+export const PottersTools = new Proficiency(31, "Potter's Tools");
+export const CalligraphersSupplies = new Proficiency(32, "Calligrapher's Supplies");
+export const Bows = new Proficiency(34, "Bows");

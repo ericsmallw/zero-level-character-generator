@@ -1,25 +1,57 @@
 import Profession from "../models/profession";
 import {
   Acrobatics,
-  AnimalHandling, Arcana, BonusLanguages, BrewersSupplies, CarpenterTools, CartographersTools, CharismaSavingThrows,
-  ConSavingThrows, CooksUtensils, Deception, GlassblowersTools, Handaxes, HeavyArmor, History, Insight, Intimidation,
-  Investigation, LeatherWorkersToolsProf, Lute, MasonsTools,
-  Medicine, Nature, NavigatorsTools, PaintersSupplies,
-  Perception, Performance,
-  Persuasion, Religion, SailingShip, SimpleWeapons,
+  AnimalHandling,
+  Arcana,
+  BonusLanguages, Bows,
+  BrewersSupplies,
+  CalligraphersSupplies,
+  CarpenterTools,
+  CartographersTools,
+  CharismaSavingThrows,
+  ConSavingThrows,
+  CooksUtensils,
+  Deception,
+  GlassblowersTools,
+  Handaxes,
+  HeavyArmor,
+  History,
+  Insight,
+  Intimidation,
+  Investigation,
+  LeatherWorkersToolsProf,
+  Lute,
+  MasonsTools,
+  Medicine,
+  Nature,
+  NavigatorsTools,
+  PaintersSupplies,
+  Perception,
+  Performance,
+  Persuasion,
+  PottersTools,
+  Religion,
+  SailingShip,
+  SimpleWeapons,
   SleightOfHand,
-  SmithsTools, Stealth, StrengthSavingThrows, Survival, TinkersTools, WeaversTools, WoodcarversTools
+  SmithsTools,
+  Stealth,
+  StrengthSavingThrows,
+  Survival,
+  TinkersTools,
+  WeaversTools,
+  WoodcarversTools
 } from "./proficiencies";
 import {
   Blowgun, BoneKnife, ButchersKnife, CastIronPan, Chisel,
   Club,
   Dagger, Flail, Greataxe,
-  Handaxe, HandCrossbow,
+  Handaxe, HandCrossbow, Knife,
   LightHammer,
   Longsword,
   Mace, Maul, Net,
   Pitchfork,
-  Quarterstaff, Rapier, RollingPin, Scimitar, Scissors,
+  Quarterstaff, Rapier, RollingPin, Scimitar, Scissors, Shortbow,
   Shortsword, Sickle, SteelBeerStein,
   Whip
 } from "./weapons";
@@ -31,7 +63,7 @@ import {
   ArcaneBook, BagOfTrinkets, Basket,
   BeggarCup,
   Bell,
-  BlockAndTackle,
+  BlockAndTackle, Caltrops,
   ChainShirt, CircusFlier,
   CuredHam, CutWood,
   DeadRatBag, DeerSkin,
@@ -55,7 +87,7 @@ import {
   MoneySack,
   NobilityPapers, OfficialPapers, PaddedArmor,
   Pick,
-  PortableTrampoline,
+  PortableTrampoline, QuiverOfArrows,
   Ringmail,
   Rope50Ft,
   SackOfManure,
@@ -63,7 +95,7 @@ import {
   SchoolBook,
   Shield,
   Soil,
-  SpeakingTrumpet, StoneBlocks,
+  SpeakingTrumpet, SpoolOfThread, StoneBlocks,
   ThievesTools, Towel
 } from "./items";
 import ProfessionTypeEnum from "../enums/professionTypeEnum";
@@ -94,6 +126,11 @@ export const Locksmith = new Profession(2, "Locksmith", "d4 gp", ThievesTools, D
 export const Weaver = new Profession(2, "Weaver", "d12 sp", WeaversTools, Dagger, [], Common, ProfessionTypeEnum.Dexterity);
 export const Hunter = new Profession(2, "Hunter", "d10 sp", Nature, Shortsword, [DeerSkin], Common, ProfessionTypeEnum.Dexterity);
 export const Contortionist = new Profession(2, "Contortionist", "d6 gp", Performance, Flail, [CircusFlier], Common, ProfessionTypeEnum.Dexterity);
+export const Potter = new Profession(2, "Potter", "d12 sp", PottersTools, Quarterstaff, [], Common, ProfessionTypeEnum.Dexterity);
+export const Bandit = new Profession(2, "Bandit", "d6 sp", Stealth, Shortsword, [Caltrops], Travelers, ProfessionTypeEnum.Dexterity);
+export const BasketWeaver = new Profession(2, "BasketWeaver", "d4 cp", WeaversTools, Dagger, [], Common, ProfessionTypeEnum.Dexterity);
+export const Bookbinder = new Profession(2, "Bookbinder", "d6 sp", CalligraphersSupplies, Knife, [SpoolOfThread], Common, ProfessionTypeEnum.Dexterity);
+export const Fletcher = new Profession(2, "Fletcher", "d8 sp", Bows, Shortbow, [QuiverOfArrows], Common, ProfessionTypeEnum.Dexterity);
 
 export const GongFarmer = new Profession(1, "GongFarmer", "d12 cp", ConSavingThrows, Club, [SackOfManure], Common, ProfessionTypeEnum.Constitution);
 export const PigFarmer = new Profession(1, "PigFarmer", "d10 sp", AnimalHandling, Pitchfork, [CuredHam], Common, ProfessionTypeEnum.Constitution);
@@ -145,5 +182,6 @@ export const Professions = [
   Plowman, Apothecary, Tinker, Friar, Woodward, LowNoble, Costermonger, Fishmonger, Mime, Storyteller, Tracker, Painter,
   Ostler, Tutor, Navigator, PastryCook, TavernCook, Brewer, Chandler, Messenger, Locksmith, Weaver, Rough, Butcher,
     Gladiator, Woodcutter, Carpenter, Hunter, Contortionist, Apiarist, StoneCarver, Cartographer, Interpreter, Barker,
-    Servant, Diplomat, Peddlar
+    Servant, Diplomat, Peddlar, Milkman, Executioner, Mercenary, BoneCarver, Mason, Potter, Bandit, BasketWeaver,
+    Bookbinder, Fletcher
 ]
