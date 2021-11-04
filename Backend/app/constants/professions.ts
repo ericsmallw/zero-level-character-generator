@@ -1,6 +1,7 @@
 import Profession from "../models/profession";
 import {
   Acrobatics,
+  Investigation, LeatherWorkersToolsProf, Lute, MasonsTools,
   AnimalHandling,
   Arcana,
   BonusLanguages, Bows,
@@ -100,6 +101,7 @@ import {
 } from "./items";
 import ProfessionTypeEnum from "../enums/professionTypeEnum";
 
+// strength professions
 export const Blacksmith = new Profession(1, "Blacksmith", "d12 sp", SmithsTools, LightHammer, [], Common, ProfessionTypeEnum.Strength);
 export const Miner = new Profession(2, "Miner", "d20 cp", Investigation, Handaxe, [Pick, MinersTools], Common, ProfessionTypeEnum.Strength);
 export const Teamster = new Profession(2, "Teamster", "d8 sp", StrengthSavingThrows, Whip, [BlockAndTackle], Common, ProfessionTypeEnum.Strength);
@@ -116,6 +118,7 @@ export const Mercenary = new Profession(2, "Mercenary", "d12 sp", SimpleWeapons,
 export const BoneCarver = new Profession(2, "Bone Carver", "d6 sp", WoodcarversTools, BoneKnife, [AnimalBones], Common, ProfessionTypeEnum.Strength);
 export const Mason = new Profession(2, "Mason", "d10 cp", MasonsTools, LightHammer, [], Common, ProfessionTypeEnum.Strength);
 
+// dexterity professions
 export const Pickpocket = new Profession(1, "Pickpocket", "d12 sp", SleightOfHand, Shortsword, [ThievesTools], Common, ProfessionTypeEnum.Dexterity);
 export const Haberdasher = new Profession(2, "Haberdasher", "d12 gp", Persuasion , Dagger, [FineCloth], Fine, ProfessionTypeEnum.Dexterity);
 export const Orphan = new Profession(2, "Orphan", "d4 cp", Stealth, Club, [BeggarCup], Common, ProfessionTypeEnum.Dexterity);
