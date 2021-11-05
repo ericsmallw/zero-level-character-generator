@@ -1,7 +1,6 @@
 import Profession from "../models/profession";
 import {
   Acrobatics,
-  Investigation, LeatherWorkersToolsProf, Lute, MasonsTools,
   AnimalHandling,
   Arcana,
   BonusLanguages, Bows,
