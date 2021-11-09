@@ -48,3 +48,7 @@ export const ShortSwordProf = new Proficiency(34, "Short sword");
 export const BowsAndCrossbows = new Proficiency(34, "Bows and Crossbows");
 export const CobblersTools = new Proficiency(34, "Cobbler's Tools");
 export const Drum = new Proficiency(34, "Drum");
+export const Daggers = new Proficiency(34, "Daggers");
+export const Mauls = new Proficiency(34, "Mauls");
+export const LandVehicles = new Proficiency(34, "Land Vehicles (Wagon)");
+export const JewelersTools = new Proficiency(34, "Jeweler's Tools");
