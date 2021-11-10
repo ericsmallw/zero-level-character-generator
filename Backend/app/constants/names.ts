@@ -23,6 +23,16 @@ export const FirstNames = [
   new Name("Cane", RaceEnum.Human, SexEnum.Male),
   new Name("Abram", RaceEnum.Human, SexEnum.Male),
   new Name("Abraham", RaceEnum.Human, SexEnum.Male),
+  new Name("Mikel", RaceEnum.Human, SexEnum.Male),
+  new Name("Wesley", RaceEnum.Human, SexEnum.Male),
+  new Name("Lincoln", RaceEnum.Human, SexEnum.Male),
+  new Name("Normal", RaceEnum.Human, SexEnum.Male),
+  new Name("Malachi", RaceEnum.Human, SexEnum.Male),
+  new Name("Yamil", RaceEnum.Human, SexEnum.Male),
+  new Name("Jona", RaceEnum.Human, SexEnum.Male),
+  new Name("Trum", RaceEnum.Human, SexEnum.Male),
+  new Name("Roth", RaceEnum.Human, SexEnum.Male),
+  new Name("Brayton", RaceEnum.Human, SexEnum.Male),
 
 
   new Name("Edna", RaceEnum.Human, SexEnum.Female),
