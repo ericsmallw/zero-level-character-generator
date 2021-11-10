@@ -17,6 +17,11 @@ import ProfessionsDataObject from "../professions/impl/ProfessionsDataObject";
 import ProfessionsDataManager from "../professions/impl/ProfessionsDataManager";
 import IProfessionsDataObject from "../professions/interfaces/IProfessionsDataObject";
 
+import IPersonalityTraitsDataManager from "../personality-traits/interfaces/IPersonalityTraitsDataManager";
+import IPersonalityTraitsDataObject from "../personality-traits/interfaces/IPersonalityTraitsDataObject";
+import PersonalityTraitsDataObject from "../personality-traits/impl/PersonalityTraitsDataObject";
+import PersonalityTraitsDataManager from "../personality-traits/impl/PersonalityTraitsDataManager";
+
 const container = new Container();
 
 container.bind<ICharactersBusinessManager>(types.CharactersBusinessManager).to(CharactersBusinessManager);
@@ -29,5 +34,8 @@ container.bind<INamesDataObject>(types.NamesDataObject).to(NamesDataObject);
 
 container.bind<IProfessionsDataManager>(types.ProfessionsDataManager).to(ProfessionsDataManager);
 container.bind<IProfessionsDataObject>(types.ProfessionsDataObject).to(ProfessionsDataObject);
+
+container.bind<IPersonalityTraitsDataManager>(types.PersonalityTraitsDataManager).to(PersonalityTraitsDataManager);
+container.bind<IPersonalityTraitsDataObject>(types.PersonalityTraitsDataObject).to(PersonalityTraitsDataObject);
 
 export default container;

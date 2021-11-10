@@ -29,7 +29,7 @@ export default function CharacterSettings(props) {
     const [character, setCharacter] = useState();
     const [playerName, setPlayerName] = useState('');
 
-    const url = 'https://ju42x0s1t1.execute-api.us-east-1.amazonaws.com/prod/';
+    const url = 'https://7871p5aik2.execute-api.us-east-1.amazonaws.com/prod/';
 
     const createCharacter = async () => {
         try {

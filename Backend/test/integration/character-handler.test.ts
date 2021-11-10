@@ -12,7 +12,6 @@ describe('create character handler', () => {
           expect(character.sex).toBe("Male");
           expect(character.age).toBeLessThanOrEqual(23);
           expect(character.age).toBeGreaterThanOrEqual(18);
-
       })
    });
 });

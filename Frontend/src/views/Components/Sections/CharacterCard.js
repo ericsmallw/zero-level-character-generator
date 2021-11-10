@@ -11,6 +11,11 @@ export default function CharacterCard(props) {
   const labelStyle = {fontFamily: "Roboto-slab !important", fontWeight: '700'};
   const textContainerStyle = {border: '3px darkgray solid', borderRadius: '20px', paddingLeft: '10px !important', minHeight: '25px'};
   const statBoxStyle = {display: 'inline-block', border: 'darkgray solid', height: '50px', width: '50px', position: 'relative'};
+  const personalityTraits = props.character
+      ? props.character.personalityTraits.map((trait, index) => {
+          return <h6 key={`trait${index}`}>{trait.description}</h6>
+        })
+      : "";
 
   return (
       <>
@@ -64,7 +69,7 @@ export default function CharacterCard(props) {
                   <div style={{...statBoxStyle, ...{width: '70px', borderLeftWidth: '1px'}}}>
 
                   </div>
-                  <div style={{...statBoxStyle, ...{borderRadius: '50%', backgroundColor: 'white', right: '28px'}}}>
+                  <div style={{...statBoxStyle, ...{borderRadius: '50%', backgroundColor: 'white', right: '28px', height: '70px', width: '70px', top: '10px'}}}>
 
                   </div>
                 </div>
@@ -77,6 +82,24 @@ export default function CharacterCard(props) {
           </GridItem>
           <GridItem xs={3} sm={3} md={3} lg={3}>
             <CharacterOtherDetails labelStyle={labelStyle} character={props.character} />
+          </GridItem>
+        </GridContainer>
+        <GridContainer>
+          <GridItem xs={3} sm={3} md={3} lg={3}>
+            <h5>Personality Traits</h5>
+            {personalityTraits}
+          </GridItem>
+          <GridItem xs={3} sm={3} md={3} lg={3}>
+            <h5>Ideals</h5>
+
+          </GridItem>
+          <GridItem xs={3} sm={3} md={3} lg={3}>
+            <h5>Bonds</h5>
+
+          </GridItem>
+          <GridItem xs={3} sm={3} md={3} lg={3}>
+            <h5>Flaws</h5>
+
           </GridItem>
         </GridContainer>
       </>
