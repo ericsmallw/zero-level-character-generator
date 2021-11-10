@@ -1,6 +1,7 @@
-export default class PersonalityTrait {
+import Personality from "./personality";
+
+export default class PersonalityTrait extends Personality {
     constructor(description: string) {
-        this.description = description;
+        super(description)
     }
-     description: string;
 }

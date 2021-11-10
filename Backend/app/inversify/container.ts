@@ -21,6 +21,10 @@ import IPersonalityTraitsDataManager from "../personality-traits/interfaces/IPer
 import IPersonalityTraitsDataObject from "../personality-traits/interfaces/IPersonalityTraitsDataObject";
 import PersonalityTraitsDataObject from "../personality-traits/impl/PersonalityTraitsDataObject";
 import PersonalityTraitsDataManager from "../personality-traits/impl/PersonalityTraitsDataManager";
+import IIdealDataManager from "../ideals/interfaces/IIdealDataManager";
+import IdealDataManager from "../ideals/impl/IdealDataManager";
+import IdealDataObject from "../ideals/impl/IdealDataObject";
+import IIdealDataObject from "../ideals/interfaces/IIdealDataObject";
 
 const container = new Container();
 
@@ -37,5 +41,8 @@ container.bind<IProfessionsDataObject>(types.ProfessionsDataObject).to(Professio
 
 container.bind<IPersonalityTraitsDataManager>(types.PersonalityTraitsDataManager).to(PersonalityTraitsDataManager);
 container.bind<IPersonalityTraitsDataObject>(types.PersonalityTraitsDataObject).to(PersonalityTraitsDataObject);
+
+container.bind<IIdealDataManager>(types.IdealDataManager).to(IdealDataManager);
+container.bind<IIdealDataObject>(types.IdealDataObject).to(IdealDataObject);
 
 export default container;
