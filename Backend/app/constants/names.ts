@@ -60,6 +60,11 @@ export const FirstNames = [
   new Name("Edith", RaceEnum.Human, SexEnum.Female),
   new Name("Margaret", RaceEnum.Human, SexEnum.Female),
   new Name("Tracy", RaceEnum.Human, SexEnum.Female),
+  new Name("Fiona", RaceEnum.Human, SexEnum.Female),
+  new Name("Daisy", RaceEnum.Human, SexEnum.Female),
+  new Name("Luna", RaceEnum.Human, SexEnum.Female),
+  new Name("Nanette", RaceEnum.Human, SexEnum.Female),
+  new Name("Rose", RaceEnum.Human, SexEnum.Female),
 
 
   new Name("Sankin", RaceEnum.Halfling, SexEnum.Male),
