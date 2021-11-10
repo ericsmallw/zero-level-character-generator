@@ -3,6 +3,7 @@ import DragonbornAncestry from "./dragonbornAncestry";
 import Race from "./race";
 import Profession from "./profession";
 import SexEnum from "../enums/sexEnum";
+import PersonalityTrait from "./personalityTrait";
 
 export class Character {
     name: string;
@@ -17,4 +18,5 @@ export class Character {
     profession: Profession | undefined;
     sex: string;
     coin: string;
+    personalityTraits: PersonalityTrait[];
 }

@@ -21,6 +21,7 @@ import Race from '../../models/race';
 import RaceEnum from '../../enums/raceEnum';
 import IProfessionsDataManager from "../../professions/interfaces/IProfessionsDataManager";
 import SexEnum from "../../enums/sexEnum";
+import IPersonalityTraitsDataManager from "../../personality-traits/interfaces/IPersonalityTraitsDataManager";
 
 // @ts-ignore
 @injectable()
@@ -28,7 +29,8 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
   constructor(
     @inject(types.CharactersDataManager) private readonly _charactersDataManager: ICharactersDataManager,
     @inject(types.NamesBusinessManager) private readonly _namesBusinessManager: INamesBusinessManager,
-    @inject(types.ProfessionsDataManager)  private readonly _professionsDataManager: IProfessionsDataManager
+    @inject(types.ProfessionsDataManager)  private readonly _professionsDataManager: IProfessionsDataManager,
+    @inject(types.PersonalityTraitsDataManager) private readonly _personalityTraitsDataManager: IPersonalityTraitsDataManager
   ) {
   }
 
@@ -48,6 +50,7 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
     character.armorClass = abilityModifiers.DexterityModifier + 10;
     character.profession = await this.setProfession(abilityModifiers);
     character.coin = character.profession ? this.getCoin(character.profession.coin) : "2 sp"
+    character.personalityTraits = await this._personalityTraitsDataManager.getRandomPersonalityTraits(2);
 
     if (raceName === 'Dragonborn') {
       character.dragonBornAncestry = this.getDragonBornAncestry();

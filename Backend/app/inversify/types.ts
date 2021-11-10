@@ -9,6 +9,10 @@ const types = {
 
   ProfessionsDataManager: Symbol('ProfessionsDataManager'),
   ProfessionsDataObject: Symbol('ProfessionsDataObject'),
+
+  PersonalityTraitsDataManager: Symbol("PersonalityTraitsDataManager"),
+  PersonalityTraitsDataObject: Symbol("PersonalityTraitsDataObject")
+
 };
 
 export default types;
