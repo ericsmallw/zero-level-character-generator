@@ -47,4 +47,9 @@ export default [
     new PersonalityTrait("I have a crude sense of humor."),
     new PersonalityTrait("I’m always polite and respectful."),
     new PersonalityTrait("I face problems head-on. A simple, direct solution is the best path to success."),
+    new PersonalityTrait("I lie, cheat, and steal at every opportunity."),
+    new PersonalityTrait("I use humor to hide my real emotions."),
+    new PersonalityTrait("I do not like losing...ever."),
+    new PersonalityTrait("I find joy in the little things in life."),
+    new PersonalityTrait("I enjoy the comforts of my daily routine, change bothers me."),
 ]
