@@ -24,7 +24,7 @@ export default function CharacterCard(props) {
     const wisdomStatKeys = Object.keys(props.character.abilityModifiers).filter(key => key.toLowerCase().indexOf("wisdom") >= 0);
     const constitutionStatKeys = Object.keys(props.character.abilityModifiers).filter(key => key.toLowerCase().indexOf("constitution") >= 0);
     const intelligenceStatKeys = Object.keys(props.character.abilityModifiers).filter(key => key.toLowerCase().indexOf("intelligence") >= 0);
-    const dexterityStatKeys = Object.keys(props.character.abilityModifiers).filter(key => key.toLowerCase().indexOf("intelligence") >= 0);
+    const dexterityStatKeys = Object.keys(props.character.abilityModifiers).filter(key => key.toLowerCase().indexOf("dexterity") >= 0);
 
     stats.push(strengthStatKeys.map(key => props.character.abilityModifiers[key]));
     stats.push(dexterityStatKeys.map(key => props.character.abilityModifiers[key]));
