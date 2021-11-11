@@ -6,6 +6,7 @@ import SexEnum from "../enums/sexEnum";
 import PersonalityTrait from "./personalityTrait";
 import Ideal from "./ideal";
 import Bond from "./bond";
+import Flaw from "./flaw";
 
 export class Character {
     name: string;
@@ -23,4 +24,5 @@ export class Character {
     personalityTraits: PersonalityTrait[];
     ideal: Ideal;
     bond: Bond;
+    flaw: Flaw;
 }

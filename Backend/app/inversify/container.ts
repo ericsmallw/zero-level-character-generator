@@ -29,6 +29,10 @@ import IBondsDataManager from "../bonds/interfaces/IBondsDataManager";
 import BondsDataManager from "../bonds/impl/BondsDataManager";
 import BondsDataObject from "../bonds/impl/BondsDataObject";
 import IBondsDataObject from "../bonds/interfaces/IBondsDataObject";
+import IFlawsDataObject from "../flaws/interfaces/IFlawsDataObject";
+import IFlawsDataManager from "../flaws/interfaces/IFlawsDataManager";
+import FlawsDataManager from "../flaws/impl/FlawsDataManager";
+import FlawsDataObject from "../flaws/impl/FlawsDataObject";
 
 const container = new Container();
 
@@ -51,5 +55,9 @@ container.bind<IIdealDataObject>(types.IdealDataObject).to(IdealDataObject);
 
 container.bind<IBondsDataManager>(types.BondsDataManager).to(BondsDataManager);
 container.bind<IBondsDataObject>(types.BondsDataObject).to(BondsDataObject);
+
+container.bind<IFlawsDataManager>(types.FlawsDataManager).to(FlawsDataManager);
+container.bind<IFlawsDataObject>(types.FlawsDataObject).to(FlawsDataObject);
+
 
 export default container;

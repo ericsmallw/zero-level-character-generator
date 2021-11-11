@@ -19,6 +19,10 @@ const types = {
   BondsDataManager: Symbol("BondsDataManager"),
   BondsDataObject: Symbol("BondsDataObject"),
 
+  FlawsDataManager: Symbol("FlawsDataManager"),
+  FlawsDataObject: Symbol("FlawsDataObject"),
+
+
 };
 
 export default types;
