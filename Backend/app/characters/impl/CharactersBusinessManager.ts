@@ -50,7 +50,7 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
     character.abilityModifiers = abilityModifiers;
     character.hitPoints = this.getHitPoints();
     character.proficiency = 2;
-    character.initiative = abilityModifiers.Dexterity;
+    character.initiative = abilityModifiers.DexterityModifier;
     character.armorClass = abilityModifiers.DexterityModifier + 10;
     character.profession = await this.setProfession(abilityModifiers);
     character.coin = character.profession ? this.getCoin(character.profession.coin) : "2 sp"
