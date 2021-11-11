@@ -10,12 +10,29 @@ import {partition} from 'lodash';
 export default function CharacterCard(props) {
   const labelStyle = {fontFamily: "Roboto-slab !important", fontWeight: '700'};
   const textContainerStyle = {border: '3px darkgray solid', borderRadius: '20px', paddingLeft: '10px !important', minHeight: '25px'};
-  const statBoxStyle = {display: 'inline-block', border: 'darkgray solid', height: '50px', width: '50px', position: 'relative'};
+  const statBoxStyle = {display: 'inline-block', border: 'darkgray solid', height: '50px', width: '50px', position: 'relative', };
   const personalityTraits = props.character
       ? props.character.personalityTraits.map((trait, index) => {
           return <h6 key={`trait${index}`}>{trait.description}</h6>
         })
       : "";
+
+  let stats = [];
+  if(props.character) {
+    const charismaStatKeys = Object.keys(props.character.abilityModifiers).filter(key => key.toLowerCase().indexOf("charisma") >= 0);
+    const strengthStatKeys = Object.keys(props.character.abilityModifiers).filter(key => key.toLowerCase().indexOf("strength") >= 0);
+    const wisdomStatKeys = Object.keys(props.character.abilityModifiers).filter(key => key.toLowerCase().indexOf("wisdom") >= 0);
+    const constitutionStatKeys = Object.keys(props.character.abilityModifiers).filter(key => key.toLowerCase().indexOf("constitution") >= 0);
+    const intelligenceStatKeys = Object.keys(props.character.abilityModifiers).filter(key => key.toLowerCase().indexOf("intelligence") >= 0);
+    const dexterityStatKeys = Object.keys(props.character.abilityModifiers).filter(key => key.toLowerCase().indexOf("intelligence") >= 0);
+
+    stats.push(strengthStatKeys.map(key => props.character.abilityModifiers[key]));
+    stats.push(dexterityStatKeys.map(key => props.character.abilityModifiers[key]));
+    stats.push(constitutionStatKeys.map(key => props.character.abilityModifiers[key]));
+    stats.push(intelligenceStatKeys.map(key => props.character.abilityModifiers[key]));
+    stats.push(wisdomStatKeys.map(key => props.character.abilityModifiers[key]));
+    stats.push(charismaStatKeys.map(key => props.character.abilityModifiers[key]));
+  }
 
   return (
       <>
@@ -59,21 +76,26 @@ export default function CharacterCard(props) {
           <GridItem xs={3} sm={3} md={3} lg={3}>
             <GridContainer>
               <GridItem xs={12} sm={12} md={12} lg={12}>
-                <h3 style={labelStyle}>Stats</h3>
+                <h3 style={{...labelStyle, ...{color: 'white'}}}>Stats</h3>
               </GridItem>
-              <GridItem xs={12} sm={12} md={12} lg={12}>
-                <div style={{position: 'absolute'}}>
-                  <div style={{...statBoxStyle, borderRightWidth: '2px'}}>
+              {
+                stats.map((stat, index) => {
+                  return <GridItem key={`stat${index}`} xs={12} sm={12} md={12} lg={12}>
+                    <div style={{position: 'absolute'}}>
+                      <div style={{...statBoxStyle, borderRightWidth: '2px', top: ((76 * index) - 29).toString() + 'px'}}>
+                        <center>{stat[0]}</center>
+                      </div>
+                      <div style={{...statBoxStyle, ...{width: '70px', borderLeftWidth: '1px', top: ((76 * index) - 29).toString() + 'px'}}}>
+                        <span style={{paddingLeft: '10px'}}>{stat[1]}</span>
+                      </div>
+                      <div style={{...statBoxStyle, ...{borderRadius: '50%', backgroundColor: 'white', right: '28px', height: '70px', width: '70px', top: ((76 * index) - 39).toString() + 'px'}}}>
+                        <span style={{left: '50%', top: '18px', fontSize: '20px',position: 'relative', color: '#9c27b0'}}>{stat[2]}</span>
+                      </div>
+                    </div>
+                  </GridItem>
+                })
+              }
 
-                  </div>
-                  <div style={{...statBoxStyle, ...{width: '70px', borderLeftWidth: '1px'}}}>
-
-                  </div>
-                  <div style={{...statBoxStyle, ...{borderRadius: '50%', backgroundColor: 'white', right: '28px', height: '70px', width: '70px', top: '10px'}}}>
-
-                  </div>
-                </div>
-              </GridItem>
             </GridContainer>
           </GridItem>
           <GridItem xs={6} sm={6} md={6} lg={6}>
@@ -86,20 +108,29 @@ export default function CharacterCard(props) {
         </GridContainer>
         <GridContainer>
           <GridItem xs={3} sm={3} md={3} lg={3}>
-            <h5>Personality Traits</h5>
-            {personalityTraits}
+
           </GridItem>
-          <GridItem xs={3} sm={3} md={3} lg={3}>
-            <h5>Ideals</h5>
-            {props.character ? <h6>{props.character.ideal.description}</h6> : ""}
+          <GridItem xs={9} sm={9} md={9} lg={9}>
+            <GridContainer>
+              <GridItem xs={3} sm={3} md={3} lg={3}>
+                <h5>Personality Traits</h5>
+                {personalityTraits}
+              </GridItem>
+              <GridItem xs={3} sm={3} md={3} lg={3}>
+                <h5>Ideals</h5>
+                {props.character ? <h6>{props.character.ideal.description}</h6> : ""}
+              </GridItem>
+              <GridItem xs={3} sm={3} md={3} lg={3}>
+                <h5>Bonds</h5>
+                {props.character ? <h6>{props.character.bond.description}</h6> : ""}
+              </GridItem>
+              <GridItem xs={3} sm={3} md={3} lg={3}>
+                <h5>Flaws</h5>
+              </GridItem>
+            </GridContainer>
           </GridItem>
-          <GridItem xs={3} sm={3} md={3} lg={3}>
-            <h5>Bonds</h5>
-            {props.character ? <h6>{props.character.bond.description}</h6> : ""}
-          </GridItem>
-          <GridItem xs={3} sm={3} md={3} lg={3}>
-            <h5>Flaws</h5>
-          </GridItem>
+
+
         </GridContainer>
       </>
   );
