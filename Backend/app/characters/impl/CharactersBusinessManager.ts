@@ -23,6 +23,7 @@ import IProfessionsDataManager from "../../professions/interfaces/IProfessionsDa
 import SexEnum from "../../enums/sexEnum";
 import IPersonalityTraitsDataManager from "../../personality-traits/interfaces/IPersonalityTraitsDataManager";
 import IIdealDataManager from "../../ideals/interfaces/IIdealDataManager";
+import IBondsDataManager from "../../bonds/interfaces/IBondsDataManager";
 
 // @ts-ignore
 @injectable()
@@ -32,7 +33,8 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
     @inject(types.NamesBusinessManager) private readonly _namesBusinessManager: INamesBusinessManager,
     @inject(types.ProfessionsDataManager)  private readonly _professionsDataManager: IProfessionsDataManager,
     @inject(types.PersonalityTraitsDataManager) private readonly _personalityTraitsDataManager: IPersonalityTraitsDataManager,
-    @inject(types.IdealDataManager) private readonly  _idealDataManager: IIdealDataManager
+    @inject(types.IdealDataManager) private readonly  _idealDataManager: IIdealDataManager,
+    @inject(types.BondsDataManager) private readonly _bondsDataManager: IBondsDataManager
   ) {
   }
 
@@ -54,6 +56,7 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
     character.coin = character.profession ? this.getCoin(character.profession.coin) : "2 sp"
     character.personalityTraits = await this._personalityTraitsDataManager.getRandomPersonalityTraits(2);
     character.ideal = await this._idealDataManager.getRandomIdeal();
+    character.bond = await this._bondsDataManager.getRandomBond();
 
     if (raceName === 'Dragonborn') {
       character.dragonBornAncestry = this.getDragonBornAncestry();

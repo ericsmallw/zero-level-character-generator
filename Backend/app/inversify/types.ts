@@ -14,7 +14,10 @@ const types = {
   PersonalityTraitsDataObject: Symbol("PersonalityTraitsDataObject"),
 
   IdealDataManager: Symbol("IdealDataManager"),
-  IdealDataObject: Symbol("IdealDataObject")
+  IdealDataObject: Symbol("IdealDataObject"),
+
+  BondsDataManager: Symbol("BondsDataManager"),
+  BondsDataObject: Symbol("BondsDataObject"),
 
 };
 

@@ -4,9 +4,30 @@ import React from "react";
 
 export default function CharacterOtherDetails (props) {
   const speedInitAcValStyle = {color: '#9c27b0', fontWeight: 'bold', minHeight: '0', marginBottom: '0', marginTop: '0'};
+  const ageSexStyle = {...speedInitAcValStyle, ...{fontSize: '15px'}}
 
   return (
       <GridContainer>
+        <GridItem xs={6} sm={6} md={6} lg={6}>
+          <center><h4 style={props.labelStyle}>Age</h4></center>
+        </GridItem>
+        <GridItem xs={6} sm={6} md={6} lg={6}>
+          <center><h4 style={props.labelStyle}>Sex</h4></center>
+        </GridItem>
+        <GridItem xs={6} sm={6} md={6} lg={6}>
+          <center>
+            <h3 style={ageSexStyle}>
+              {props.character ? props.character.age : ""}
+            </h3>
+          </center>
+        </GridItem>
+        <GridItem xs={6} sm={6} md={6} lg={6}>
+          <center>
+            <h3 style={ageSexStyle}>
+              {props.character ? props.character.sex : ""}
+            </h3>
+          </center>
+        </GridItem>
         <GridItem xs={4} sm={4} md={4} lg={4}>
           <center><h4 style={props.labelStyle}>Init</h4></center>
         </GridItem>

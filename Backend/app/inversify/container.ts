@@ -25,6 +25,10 @@ import IIdealDataManager from "../ideals/interfaces/IIdealDataManager";
 import IdealDataManager from "../ideals/impl/IdealDataManager";
 import IdealDataObject from "../ideals/impl/IdealDataObject";
 import IIdealDataObject from "../ideals/interfaces/IIdealDataObject";
+import IBondsDataManager from "../bonds/interfaces/IBondsDataManager";
+import BondsDataManager from "../bonds/impl/BondsDataManager";
+import BondsDataObject from "../bonds/impl/BondsDataObject";
+import IBondsDataObject from "../bonds/interfaces/IBondsDataObject";
 
 const container = new Container();
 
@@ -44,5 +48,8 @@ container.bind<IPersonalityTraitsDataObject>(types.PersonalityTraitsDataObject).
 
 container.bind<IIdealDataManager>(types.IdealDataManager).to(IdealDataManager);
 container.bind<IIdealDataObject>(types.IdealDataObject).to(IdealDataObject);
+
+container.bind<IBondsDataManager>(types.BondsDataManager).to(BondsDataManager);
+container.bind<IBondsDataObject>(types.BondsDataObject).to(BondsDataObject);
 
 export default container;

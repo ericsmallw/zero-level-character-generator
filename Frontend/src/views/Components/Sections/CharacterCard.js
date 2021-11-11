@@ -95,7 +95,7 @@ export default function CharacterCard(props) {
           </GridItem>
           <GridItem xs={3} sm={3} md={3} lg={3}>
             <h5>Bonds</h5>
-
+            {props.character ? <h6>{props.character.bond.description}</h6> : ""}
           </GridItem>
           <GridItem xs={3} sm={3} md={3} lg={3}>
             <h5>Flaws</h5>
