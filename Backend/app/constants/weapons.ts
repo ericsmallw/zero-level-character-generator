@@ -1,6 +1,6 @@
 import Weapon from "../models/weapon";
 
-export const LightHammer = new Weapon(0,"Light Hammer", "1d", 5);
+export const LightHammer = new Weapon(0,"Light Hammer", "1d4", 5);
 export const Handaxe = new Weapon(1, "Handaxe", "1d6", 5);
 export const Whip = new Weapon(2,"Whip", "1d4", 10);
 export const Maul = new Weapon(3,"Maul", "2d6", 5);
