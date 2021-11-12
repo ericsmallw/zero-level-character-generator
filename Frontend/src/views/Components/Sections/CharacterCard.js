@@ -89,7 +89,7 @@ export default function CharacterCard(props) {
                         <span style={{paddingLeft: '10px'}}>{stat[1]}</span>
                       </div>
                       <div style={{...statBoxStyle, ...{borderRadius: '50%', backgroundColor: 'white', right: '28px', height: '70px', width: '70px', top: ((76 * index) - 39).toString() + 'px'}}}>
-                        <span style={{left: '50%', top: '18px', fontSize: '20px',position: 'relative', color: '#9c27b0'}}>{stat[2]}</span>
+                        <span style={{left: '43%', top: '18px', fontSize: '20px',position: 'relative', color: '#9c27b0'}}>{stat[2]}</span>
                       </div>
                     </div>
                   </GridItem>

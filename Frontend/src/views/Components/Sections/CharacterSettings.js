@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
+import ReactDOM from "react-dom";
 import styles from "assets/jss/material-kit-react/views/componentsSections/basicsStyle.js";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -12,9 +13,11 @@ import Favorite from "@material-ui/icons/Favorite";
 import Button from "../../../components/CustomButtons/Button";
 import CustomInput from "../../../components/CustomInput/CustomInput";
 import {Input, TextField} from "@material-ui/core";
-import {PersonAdd} from "@material-ui/icons";
+import {PersonAdd, PictureAsPdf} from "@material-ui/icons";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 const useStyles = makeStyles(styles);
 
@@ -31,6 +34,20 @@ export default function CharacterSettings(props) {
 
     const url = 'https://7871p5aik2.execute-api.us-east-1.amazonaws.com/prod/';
 
+    const exportButton = character
+        ? <GridItem xs={4} sm={4} md={4} lg={4} style={{marginTop: '20px'}}>
+            <Button
+                color="primary"
+                round size='lg'
+                style={{margin: 'auto', display: 'block'}}
+                onClick={() => exportPdf()}
+            >
+                <PictureAsPdf className={classes.icons} /> Save As Pdf
+            </Button>
+
+        </GridItem>
+        : "";
+
     const createCharacter = async () => {
         try {
             const newCharacter = await axios.post(url, {racialMix, sex, minAge, maxAge});
@@ -39,8 +56,23 @@ export default function CharacterSettings(props) {
         } catch (error) {
             console.error(error);
         }
+    };
 
-    }
+    const exportPdf = () => {
+        html2canvas(document.querySelector('#character-card'))
+            .then(canvas => {
+
+                const imgData = canvas
+                    .toDataURL('image/png')
+                    .replace("image/png", "image/octet-stream");
+
+                let element = document.createElement("a");
+                element.setAttribute('download', `${character.name}.png`);
+                element.setAttribute(`href`, imgData);
+                element.click();
+                element.remove();
+            });
+    };
 
     return (
         <div className={classes.sections}>
@@ -273,6 +305,7 @@ export default function CharacterSettings(props) {
                             </GridContainer>
                         </GridItem>
                         <GridItem
+                            id={'character-card'}
                             xs={9} sm={9} md={9} lg={9}
                             style={{
                                 border: "5px black solid",
@@ -283,21 +316,19 @@ export default function CharacterSettings(props) {
                             <CharacterCard character={character} playerName={playerName}/>
                         </GridItem>
                     </GridContainer>
-                    <div
-                        style={{
-                            width: '100%',
-                            marginTop: '20px',
-                        }}
-                    >
-                        <Button
-                            color="primary"
-                            round size='lg'
-                            style={{margin: 'auto', display: 'block'}}
-                            onClick={() => createCharacter()}
-                        >
-                            <PersonAdd className={classes.icons} /> Create Character
-                        </Button>
-                    </div>
+                    <GridContainer>
+                        <GridItem xs={4} sm={4} md={4} lg={4} style={{marginTop: '20px'}}>
+                            <Button
+                                color="primary"
+                                round size='lg'
+                                style={{margin: 'auto', display: 'block'}}
+                                onClick={() => createCharacter()}
+                            >
+                                <PersonAdd className={classes.icons} /> Create Character
+                            </Button>
+                        </GridItem>
+                        {exportButton}
+                    </GridContainer>
                 </div>
             </div>
         </div>
