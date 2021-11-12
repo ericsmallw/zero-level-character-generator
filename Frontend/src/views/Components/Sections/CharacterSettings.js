@@ -22,7 +22,6 @@ export default function CharacterSettings(props) {
     const [sex, setSex] = useState(2);
     const [minAge, setMinAge] = useState(18);
     const [maxAge, setMaxAge] = useState(60);
-    const [age, setAge] = useState(0);
     const [character, setCharacter] = useState();
     const [playerName, setPlayerName] = useState('');
 
@@ -283,7 +282,7 @@ export default function CharacterSettings(props) {
                                                 label: classes.label,
                                                 root: classes.labelRoot,
                                             }}
-                                            label="Human"
+                                            label="Human Dominated"
                                         />
                                     </div>
                                 </GridItem>
@@ -305,19 +304,6 @@ export default function CharacterSettings(props) {
                                         value={maxAge}
                                         onChange={(event) => {
                                             setMaxAge(event.target.value)
-                                        }}
-                                    />
-                                </GridItem>
-                            </GridContainer>
-                            <GridContainer>
-                                <GridItem xs={12} sm={12} md={12} lg={12}>
-                                    <h3>setAge</h3>
-                                    <TextField
-                                        label='Age'
-                                        type='number'
-                                        value={age}
-                                        onChange={(event) => {
-                                            setAge(event.target.value)
                                         }}
                                     />
                                 </GridItem>
