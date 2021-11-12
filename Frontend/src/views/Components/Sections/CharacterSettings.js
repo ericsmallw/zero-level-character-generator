@@ -1,23 +1,17 @@
-import React, {useRef, useState} from "react";
-import ReactDOM from "react-dom";
+import React, {useState} from "react";
 import styles from "assets/jss/material-kit-react/views/componentsSections/basicsStyle.js";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Check from "@material-ui/icons/Check";
 import Radio from "@material-ui/core/Radio";
 import FiberManualRecord from "@material-ui/icons/FiberManualRecord";
 import GridItem from "../../../components/Grid/GridItem";
 import GridContainer from "../../../components/Grid/GridContainer";
-import Favorite from "@material-ui/icons/Favorite";
 import Button from "../../../components/CustomButtons/Button";
-import CustomInput from "../../../components/CustomInput/CustomInput";
-import {Input, TextField} from "@material-ui/core";
-import {PersonAdd, PictureAsPdf} from "@material-ui/icons";
+import {TextField} from "@material-ui/core";
+import {PersonAdd, PictureAsPdf, Save} from "@material-ui/icons";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
 import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 
 const useStyles = makeStyles(styles);
 
@@ -48,6 +42,20 @@ export default function CharacterSettings(props) {
         </GridItem>
         : "";
 
+    const saveButton = character
+        ? <GridItem xs={4} sm={4} md={4} lg={4} style={{marginTop: '20px'}}>
+            <Button
+                color="primary"
+                round size='lg'
+                style={{margin: 'auto', display: 'block'}}
+                onClick={() => saveCharacterData()}
+            >
+                <Save className={classes.icons} /> Save Character Data
+            </Button>
+
+        </GridItem>
+        : "";
+
     const createCharacter = async () => {
         try {
             const newCharacter = await axios.post(url, {racialMix, sex, minAge, maxAge});
@@ -61,7 +69,6 @@ export default function CharacterSettings(props) {
     const exportPdf = () => {
         html2canvas(document.querySelector('#character-card'))
             .then(canvas => {
-
                 const imgData = canvas
                     .toDataURL('image/png')
                     .replace("image/png", "image/octet-stream");
@@ -73,6 +80,18 @@ export default function CharacterSettings(props) {
                 element.remove();
             });
     };
+
+    const saveCharacterData = () => {
+        const characterJson = JSON.stringify(character);
+        const data = new Blob([characterJson], {type: 'application/json'});
+
+        const dataUrl = window.URL.createObjectURL(data);
+        let element = document.createElement("a");
+        element.setAttribute('download', `${character.name}.json`);
+        element.setAttribute(`href`, dataUrl);
+        element.click();
+        element.remove();
+    }
 
     return (
         <div className={classes.sections}>
@@ -328,6 +347,7 @@ export default function CharacterSettings(props) {
                             </Button>
                         </GridItem>
                         {exportButton}
+                        {saveButton}
                     </GridContainer>
                 </div>
             </div>
