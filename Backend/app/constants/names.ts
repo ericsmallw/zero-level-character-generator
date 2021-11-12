@@ -491,7 +491,7 @@ export const LastNames = [
   new Name('Lightmace', RaceEnum.Dwarf, SexEnum.None),
   new Name('Hiillbender', RaceEnum.Dwarf, SexEnum.None),
   new Name('Undertank', RaceEnum.Dwarf, SexEnum.None),
-  new Name('Brightkkife', RaceEnum.Dwarf, SexEnum.None),
+  new Name('Brightkknife', RaceEnum.Dwarf, SexEnum.None),
   new Name('Lightsunder', RaceEnum.Dwarf, SexEnum.None),
   new Name('Darkrock', RaceEnum.Dwarf, SexEnum.None),
 
