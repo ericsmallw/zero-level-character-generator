@@ -19,7 +19,7 @@ export default class PersonalityTraitsDataObject implements IPersonalityTraitsDa
         let randIndex = numberGenerator();
         const trait1 = personalityTraitsCopy[randIndex];
 
-        personalityTraits.splice(randIndex, 1);
+        personalityTraitsCopy.splice(randIndex, 1);
 
         numberGenerator = randomNumber.generator({
             min: 0,
