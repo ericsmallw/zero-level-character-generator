@@ -35,7 +35,7 @@ export default function CharacterSettings(props) {
                 style={{margin: 'auto', display: 'block'}}
                 onClick={() => exportPdf()}
             >
-                <PictureAsPdf className={classes.icons} /> Save As Pdf
+                <PictureAsPdf className={classes.icons} /> Save Character Sheet
             </Button>
 
         </GridItem>
