@@ -25,6 +25,7 @@ import IPersonalityTraitsDataManager from "../../personality-traits/interfaces/I
 import IIdealDataManager from "../../ideals/interfaces/IIdealDataManager";
 import IBondsDataManager from "../../bonds/interfaces/IBondsDataManager";
 import IFlawsDataManager from "../../flaws/interfaces/IFlawsDataManager";
+import Races from "../../constants/races";
 
 // @ts-ignore
 @injectable()
@@ -69,38 +70,59 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
   }
 
   private selectRace(racialMix: RacialMix): string {
-    const numberGenerator = randomNumber.generator({
-      min: 1,
-      max: 100,
-      integer: true
-    });
+    switch (racialMix) {
+      case RacialMix.Human:
+        return "Human";
+      case RacialMix.Halfling:
+        return "Halfling";
+      case RacialMix.Gnome:
+        return "Gnome";
+      case RacialMix.Dwarf:
+        return "Dwarf";
+      case RacialMix.Tiefling:
+        return "Tiefling";
+      case RacialMix.Elf:
+        return "Elf";
+      case RacialMix.HalfElf:
+        return "Half-Elf";
+      case RacialMix.HalfOrc:
+        return "Half-Orc";
+      case RacialMix.Dragonborn:
+        return "Dragonborn";
+      default:
+        const numberGenerator = randomNumber.generator({
+          min: 1,
+          max: 100,
+          integer: true
+        });
 
-    const number = numberGenerator();
+        const number = numberGenerator();
 
-    let selectedRacialMix: any = DefaultRacialMix;
-    if (racialMix === RacialMix.HighFantasy) {
-      selectedRacialMix = HighFantasyRacialMix;
-    }
-
-    if (racialMix === RacialMix.HumanDominated) {
-      selectedRacialMix = HumanDominatedRacialMix;
-    }
-
-    let raceKey = '';
-    Object.keys(selectedRacialMix).forEach(key => {
-      const range = key.split(',').map(item => parseInt(item));
-      if (range.length > 1) {
-        if (number >= range[0] && number <= range[1]) {
-          raceKey = key;
+        let selectedRacialMix: any = DefaultRacialMix;
+        if (racialMix === RacialMix.HighFantasy) {
+          selectedRacialMix = HighFantasyRacialMix;
         }
-      } else {
-        if (number === range[0]) {
-          raceKey = key;
-        }
-      }
-    });
 
-    return selectedRacialMix[raceKey];
+        if (racialMix === RacialMix.HumanDominated) {
+          selectedRacialMix = HumanDominatedRacialMix;
+        }
+
+        let raceKey = '';
+        Object.keys(selectedRacialMix).forEach(key => {
+          const range = key.split(',').map(item => parseInt(item));
+          if (range.length > 1) {
+            if (number >= range[0] && number <= range[1]) {
+              raceKey = key;
+            }
+          } else {
+            if (number === range[0]) {
+              raceKey = key;
+            }
+          }
+        });
+
+        return selectedRacialMix[raceKey];
+    }
   }
 
   private getAbilityModifiers(race: Race | undefined): AbilityModifiers {
