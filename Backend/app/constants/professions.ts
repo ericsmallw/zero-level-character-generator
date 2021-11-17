@@ -245,5 +245,6 @@ export const Professions = [
     Bookbinder, Fletcher, Undertaker, GraveDigger, Chestmaker, BroomMaker, SheepShearer, Scrivener, Banker, Barrister,
     Clockmaker, Lampwright, Trapper, Beadle, Cheesemaker, Bowyer, Cobbler, FortuneTeller, Drummer, Confectioner,
     Milliner, Barber, Grinder, Plattner, Porter, Jailer, Wagoner, Gilder, Miniaturist, ChickenButcher, GloveMaker,
-    Jeweler, Parchmenter, Smelter, Cooper, Haenyeo, Roofer, GlassBlower
+    Jeweler, Parchmenter, Smelter, Cooper, Haenyeo, Roofer, GlassBlower, Thresher, Bawd, Pissprophet, Mathematician,
+    Poacher, ScabbardMaker
 ]
