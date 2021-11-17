@@ -8,10 +8,12 @@ import GridItem from "../../../components/Grid/GridItem";
 import GridContainer from "../../../components/Grid/GridContainer";
 import Button from "../../../components/CustomButtons/Button";
 import {TextField} from "@material-ui/core";
-import {PersonAdd, PictureAsPdf, Save} from "@material-ui/icons";
+import {Delete, PersonAdd, PictureAsPdf, Save} from "@material-ui/icons";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
 import html2canvas from "html2canvas";
+import Pagination from '@mui/material/Pagination';
+
 
 const useStyles = makeStyles(styles);
 
@@ -22,13 +24,27 @@ export default function CharacterSettings(props) {
     const [sex, setSex] = useState(2);
     const [minAge, setMinAge] = useState(18);
     const [maxAge, setMaxAge] = useState(60);
+    const [page, setPage] = useState(1);
     const [character, setCharacter] = useState();
+    const [characters, setCharacters] = useState([]);
     const [playerName, setPlayerName] = useState('');
+    const [characterIndex, setCharacterIndex] = useState(-1);
 
     const url = 'https://7871p5aik2.execute-api.us-east-1.amazonaws.com/prod/';
 
+    const createButton = <GridItem xs={3} sm={3} md={3} lg={3} style={{marginTop: '20px'}}>
+      <Button
+          color="primary"
+          round size='lg'
+          style={{margin: 'auto', display: 'block'}}
+          onClick={() => createCharacter()}
+      >
+        <PersonAdd className={classes.icons} /> Create Character
+      </Button>
+    </GridItem>;
+
     const exportButton = character
-        ? <GridItem xs={4} sm={4} md={4} lg={4} style={{marginTop: '20px'}}>
+        ? <GridItem xs={3} sm={3} md={3} lg={3} style={{marginTop: '20px'}}>
             <Button
                 color="primary"
                 round size='lg'
@@ -42,7 +58,7 @@ export default function CharacterSettings(props) {
         : "";
 
     const saveButton = character
-        ? <GridItem xs={4} sm={4} md={4} lg={4} style={{marginTop: '20px'}}>
+        ? <GridItem xs={3} sm={3} md={3} lg={3} style={{marginTop: '20px'}}>
             <Button
                 color="primary"
                 round size='lg'
@@ -55,11 +71,28 @@ export default function CharacterSettings(props) {
         </GridItem>
         : "";
 
+    const deleteButton = character
+        ? <GridItem xs={3} sm={3} md={3} lg={3} style={{marginTop: '20px'}}>
+          <Button
+              color="primary"
+              round size='lg'
+              style={{margin: 'auto', display: 'block'}}
+              onClick={() => deleteCharacter()}
+          >
+            <Delete className={classes.icons} /> Delete Character
+          </Button>
+
+        </GridItem>
+        : "";
+
     const createCharacter = async () => {
         try {
             const newCharacter = await axios.post(url, {racialMix, sex, minAge, maxAge});
-            console.log(newCharacter.data.age);
+            let charactersCopy = characters.slice();
+            charactersCopy.unshift(newCharacter.data);
+            setCharacters(charactersCopy);
             setCharacter(newCharacter.data);
+            setPage(1);
         } catch (error) {
             console.error(error);
         }
@@ -90,6 +123,30 @@ export default function CharacterSettings(props) {
         element.setAttribute(`href`, dataUrl);
         element.click();
         element.remove();
+    }
+
+    const changePage = (event, value) => {
+      setCharacterIndex(value - 1);
+      setCharacter(characters[value - 1]);
+      setPage(value);
+    }
+
+    const deleteCharacter = () => {
+      let charactersCopy = characters.slice();
+      charactersCopy.splice(characterIndex, 1);
+      setCharacters(charactersCopy);
+
+      if (characterIndex === charactersCopy.length) {
+        setCharacter(charactersCopy[charactersCopy.length - 1]);
+        setCharacterIndex(charactersCopy.length - 1);
+        setPage(charactersCopy.length);
+      } else if (characterIndex.length === 0) {
+        setCharacterIndex(-1);
+        setCharacter(null);
+      } else {
+        setCharacterIndex(characterIndex);
+        setCharacter(charactersCopy[characterIndex]);
+      }
     }
 
     return (
@@ -556,18 +613,23 @@ export default function CharacterSettings(props) {
                         </GridItem>
                     </GridContainer>
                     <GridContainer>
-                        <GridItem xs={4} sm={4} md={4} lg={4} style={{marginTop: '20px'}}>
-                            <Button
-                                color="primary"
-                                round size='lg'
-                                style={{margin: 'auto', display: 'block'}}
-                                onClick={() => createCharacter()}
-                            >
-                                <PersonAdd className={classes.icons} /> Create Character
-                            </Button>
-                        </GridItem>
-                        {exportButton}
-                        {saveButton}
+                      <GridItem xs={3} sm={3} md={3} lg={3} />
+                      <GridItem xs={9} sm={9} md={9} lg={9} style={{marginTop: '5px', marginBottom: '5px'}}>
+                        <center>
+                          <Pagination
+                              count={characters.length}
+                              color="secondary"
+                              page={page}
+                              onChange={changePage}
+                          />
+                        </center>
+                      </GridItem>
+                    </GridContainer>
+                    <GridContainer>
+                      {createButton}
+                      {exportButton}
+                      {saveButton}
+                      {deleteButton}
                     </GridContainer>
                 </div>
             </div>
