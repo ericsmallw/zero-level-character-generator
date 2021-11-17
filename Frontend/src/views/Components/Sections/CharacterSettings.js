@@ -7,12 +7,13 @@ import FiberManualRecord from "@material-ui/icons/FiberManualRecord";
 import GridItem from "../../../components/Grid/GridItem";
 import GridContainer from "../../../components/Grid/GridContainer";
 import Button from "../../../components/CustomButtons/Button";
-import {TextField} from "@material-ui/core";
+import {Select, TextField} from "@material-ui/core";
 import {Delete, PersonAdd, PictureAsPdf, Save} from "@material-ui/icons";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
 import html2canvas from "html2canvas";
 import Pagination from '@mui/material/Pagination';
+import {MenuItem} from "@mui/material";
 
 
 const useStyles = makeStyles(styles);
@@ -263,319 +264,26 @@ export default function CharacterSettings(props) {
                                         }
                                     >
                                         <h3>Racial Mix</h3>
-                                        <FormControlLabel
-                                            control={
-                                                <Radio
-                                                    checked={racialMix === 0}
-                                                    onChange={() => setRacialMix(0)}
-                                                    value="0"
-                                                    name="Default"
-                                                    aria-label="Default"
-                                                    icon={
-                                                        <FiberManualRecord className={classes.radioUnchecked} />
-                                                    }
-                                                    checkedIcon={
-                                                        <FiberManualRecord className={classes.radioChecked} />
-                                                    }
-                                                    classes={{
-                                                        checked: classes.radio,
-                                                        root: classes.radioRoot,
-                                                    }}
-                                                />
-                                            }
-                                            classes={{
-                                                label: classes.label,
-                                                root: classes.labelRoot,
-                                            }}
-                                            label="Default"
-                                        />
-                                        <FormControlLabel
-                                            control={
-                                                <Radio
-                                                    checked={racialMix === 1}
-                                                    onChange={() => setRacialMix(1)}
-                                                    value="1"
-                                                    name="High Fantasy"
-                                                    aria-label="High Fantasy"
-                                                    icon={
-                                                        <FiberManualRecord className={classes.radioUnchecked} />
-                                                    }
-                                                    checkedIcon={
-                                                        <FiberManualRecord className={classes.radioChecked} />
-                                                    }
-                                                    classes={{
-                                                        checked: classes.radio,
-                                                        root: classes.radioRoot,
-                                                    }}
-                                                />
-                                            }
-                                            classes={{
-                                                label: classes.label,
-                                                root: classes.labelRoot,
-                                            }}
-                                            label="High Fantasy"
-                                        />
-                                        <FormControlLabel
-                                            control={
-                                                <Radio
-                                                    checked={racialMix === 2}
-                                                    onChange={() => setRacialMix(2)}
-                                                    value="2"
-                                                    name="HumanDominated"
-                                                    aria-label="Human Dominated"
-                                                    icon={
-                                                        <FiberManualRecord className={classes.radioUnchecked} />
-                                                    }
-                                                    checkedIcon={
-                                                        <FiberManualRecord className={classes.radioChecked} />
-                                                    }
-                                                    classes={{
-                                                        checked: classes.radio,
-                                                        root: classes.radioRoot,
-                                                    }}
-                                                />
-                                            }
-                                            classes={{
-                                                label: classes.label,
-                                                root: classes.labelRoot,
-                                            }}
-                                            label="Human Dominated"
-                                        />
-                                      <FormControlLabel
-                                          control={
-                                            <Radio
-                                                checked={racialMix === 3}
-                                                onChange={() => setRacialMix(3)}
-                                                value="3"
-                                                name="Human"
-                                                aria-label="Human"
-                                                icon={
-                                                  <FiberManualRecord className={classes.radioUnchecked} />
-                                                }
-                                                checkedIcon={
-                                                  <FiberManualRecord className={classes.radioChecked} />
-                                                }
-                                                classes={{
-                                                  checked: classes.radio,
-                                                  root: classes.radioRoot,
-                                                }}
-                                            />
-                                          }
-                                          classes={{
-                                            label: classes.label,
-                                            root: classes.labelRoot,
-                                          }}
-                                          label="Human"
-                                      />
-                                      <FormControlLabel
-                                          control={
-                                            <Radio
-                                                checked={racialMix === 4}
-                                                onChange={() => setRacialMix(4)}
-                                                value="4"
-                                                name="Halfling"
-                                                aria-label="Halfling"
-                                                icon={
-                                                  <FiberManualRecord className={classes.radioUnchecked} />
-                                                }
-                                                checkedIcon={
-                                                  <FiberManualRecord className={classes.radioChecked} />
-                                                }
-                                                classes={{
-                                                  checked: classes.radio,
-                                                  root: classes.radioRoot,
-                                                }}
-                                            />
-                                          }
-                                          classes={{
-                                            label: classes.label,
-                                            root: classes.labelRoot,
-                                          }}
-                                          label="Halfling"
-                                      />
-                                      <FormControlLabel
-                                          control={
-                                            <Radio
-                                                checked={racialMix === 5}
-                                                onChange={() => setRacialMix(5)}
-                                                value="5"
-                                                name="Gnome"
-                                                aria-label="Gnome"
-                                                icon={
-                                                  <FiberManualRecord className={classes.radioUnchecked} />
-                                                }
-                                                checkedIcon={
-                                                  <FiberManualRecord className={classes.radioChecked} />
-                                                }
-                                                classes={{
-                                                  checked: classes.radio,
-                                                  root: classes.radioRoot,
-                                                }}
-                                            />
-                                          }
-                                          classes={{
-                                            label: classes.label,
-                                            root: classes.labelRoot,
-                                          }}
-                                          label="Gnome"
-                                      />
-                                      <FormControlLabel
-                                          control={
-                                            <Radio
-                                                checked={racialMix === 6}
-                                                onChange={() => setRacialMix(6)}
-                                                value="6"
-                                                name="Tiefling"
-                                                aria-label="Tiefling"
-                                                icon={
-                                                  <FiberManualRecord className={classes.radioUnchecked} />
-                                                }
-                                                checkedIcon={
-                                                  <FiberManualRecord className={classes.radioChecked} />
-                                                }
-                                                classes={{
-                                                  checked: classes.radio,
-                                                  root: classes.radioRoot,
-                                                }}
-                                            />
-                                          }
-                                          classes={{
-                                            label: classes.label,
-                                            root: classes.labelRoot,
-                                          }}
-                                          label="Tiefling"
-                                      />
-                                      <FormControlLabel
-                                          control={
-                                            <Radio
-                                                checked={racialMix === 7}
-                                                onChange={() => setRacialMix(7)}
-                                                value="7"
-                                                name="Elf"
-                                                aria-label="Elf"
-                                                icon={
-                                                  <FiberManualRecord className={classes.radioUnchecked} />
-                                                }
-                                                checkedIcon={
-                                                  <FiberManualRecord className={classes.radioChecked} />
-                                                }
-                                                classes={{
-                                                  checked: classes.radio,
-                                                  root: classes.radioRoot,
-                                                }}
-                                            />
-                                          }
-                                          classes={{
-                                            label: classes.label,
-                                            root: classes.labelRoot,
-                                          }}
-                                          label="Elf"
-                                      />
-                                      <FormControlLabel
-                                          control={
-                                            <Radio
-                                                checked={racialMix === 8}
-                                                onChange={() => setRacialMix(8)}
-                                                value="8"
-                                                name="Half-Elf"
-                                                aria-label="Half-Elf"
-                                                icon={
-                                                  <FiberManualRecord className={classes.radioUnchecked} />
-                                                }
-                                                checkedIcon={
-                                                  <FiberManualRecord className={classes.radioChecked} />
-                                                }
-                                                classes={{
-                                                  checked: classes.radio,
-                                                  root: classes.radioRoot,
-                                                }}
-                                            />
-                                          }
-                                          classes={{
-                                            label: classes.label,
-                                            root: classes.labelRoot,
-                                          }}
-                                          label="Half-Elf"
-                                      />
-                                      <FormControlLabel
-                                          control={
-                                            <Radio
-                                                checked={racialMix === 9}
-                                                onChange={() => setRacialMix(9)}
-                                                value="9"
-                                                name="Half-Orc"
-                                                aria-label="Half-Orc"
-                                                icon={
-                                                  <FiberManualRecord className={classes.radioUnchecked} />
-                                                }
-                                                checkedIcon={
-                                                  <FiberManualRecord className={classes.radioChecked} />
-                                                }
-                                                classes={{
-                                                  checked: classes.radio,
-                                                  root: classes.radioRoot,
-                                                }}
-                                            />
-                                          }
-                                          classes={{
-                                            label: classes.label,
-                                            root: classes.labelRoot,
-                                          }}
-                                          label="Half-Orc"
-                                      />
-                                      <FormControlLabel
-                                          control={
-                                            <Radio
-                                                checked={racialMix === 10}
-                                                onChange={() => setRacialMix(10)}
-                                                value="10"
-                                                name="Dragonborn"
-                                                aria-label="Dragonborn"
-                                                icon={
-                                                  <FiberManualRecord className={classes.radioUnchecked} />
-                                                }
-                                                checkedIcon={
-                                                  <FiberManualRecord className={classes.radioChecked} />
-                                                }
-                                                classes={{
-                                                  checked: classes.radio,
-                                                  root: classes.radioRoot,
-                                                }}
-                                            />
-                                          }
-                                          classes={{
-                                            label: classes.label,
-                                            root: classes.labelRoot,
-                                          }}
-                                          label="Dragonborn"
-                                      />
-                                      <FormControlLabel
-                                          control={
-                                            <Radio
-                                                checked={racialMix === 11}
-                                                onChange={() => setRacialMix(11)}
-                                                value="11"
-                                                name="Dwarf"
-                                                aria-label="Dwarf"
-                                                icon={
-                                                  <FiberManualRecord className={classes.radioUnchecked} />
-                                                }
-                                                checkedIcon={
-                                                  <FiberManualRecord className={classes.radioChecked} />
-                                                }
-                                                classes={{
-                                                  checked: classes.radio,
-                                                  root: classes.radioRoot,
-                                                }}
-                                            />
-                                          }
-                                          classes={{
-                                            label: classes.label,
-                                            root: classes.labelRoot,
-                                          }}
-                                          label="Dwarf"
-                                      />
-                                  </div>
+                                        <Select
+                                            id="racialMix"
+                                            value={racialMix}
+                                            label="Racial Mix"
+                                            onChange={(event) => setRacialMix(event.target.value)}
+                                        >
+                                            <MenuItem value={0}>Default</MenuItem>
+                                            <MenuItem value={1}>High Fantasy</MenuItem>
+                                            <MenuItem value={2}>Human Dominated</MenuItem>
+                                            <MenuItem value={3}>Human</MenuItem>
+                                            <MenuItem value={4}>Halfling</MenuItem>
+                                            <MenuItem value={5}>Gnome</MenuItem>
+                                            <MenuItem value={6}>Tiefling</MenuItem>
+                                            <MenuItem value={7}>Elf</MenuItem>
+                                            <MenuItem value={8}>Half-Elf</MenuItem>
+                                            <MenuItem value={9}>Half-Orc</MenuItem>
+                                            <MenuItem value={10}>Dragonborn</MenuItem>
+                                            <MenuItem value={11}>Dwarf</MenuItem>
+                                        </Select>
+                                    </div>
                                 </GridItem>
                                 <GridItem xs={12} sm={12} md={12} lg={12}>
                                     <h3>Age Range</h3>

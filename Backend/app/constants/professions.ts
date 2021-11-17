@@ -154,6 +154,7 @@ export const Miniaturist = new Profession(2, "Miniaturist", "d6 cp", PaintersSup
 export const ChickenButcher = new Profession(2, "Chicken Butcher", "d6 cp", Handaxes, ButchersKnife, [ChickenCarcass], Common, ProfessionTypeEnum.Dexterity);
 export const GloveMaker = new Profession(2, "Glove Maker", "d8 sp", LeatherworkerTools, Knife, [LeatherGloves], Common, ProfessionTypeEnum.Dexterity);
 export const Jeweler = new Profession(2, "Jeweler", "d4 gp", JewelersTools, Dagger, [], Fine, ProfessionTypeEnum.Dexterity);
+export const ScabbardMaker = new Profession(1, "Scabbard Maker", "d10 sp", LeatherworkerTools, Longsword, [], Common, ProfessionTypeEnum.Dexterity)
 
 //constitution professions
 export const GongFarmer = new Profession(1, "GongFarmer", "d12 cp", ConSavingThrows, Club, [SackOfManure], Common, ProfessionTypeEnum.Constitution);
@@ -238,5 +239,5 @@ export const Professions = [
     Bookbinder, Fletcher, Undertaker, GraveDigger, Chestmaker, BroomMaker, SheepShearer, Scrivener, Banker, Barrister,
     Clockmaker, Lampwright, Trapper, Beadle, Cheesemaker, Bowyer, Cobbler, FortuneTeller, Drummer, Confectioner,
     Milliner, Barber, Grinder, Plattner, Porter, Jailer, Wagoner, Gilder, Miniaturist, ChickenButcher, GloveMaker,
-    Jeweler, Parchmenter, Smelter, Cooper, Haenyeo, Roofer
+    Jeweler, Parchmenter, Smelter, Cooper, Haenyeo, Roofer, GlassBlower
 ]
