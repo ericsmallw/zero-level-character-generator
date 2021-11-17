@@ -52,3 +52,5 @@ export const Daggers = new Proficiency(34, "Daggers");
 export const Mauls = new Proficiency(34, "Mauls");
 export const LandVehicles = new Proficiency(34, "Land Vehicles (Wagon)");
 export const JewelersTools = new Proficiency(34, "Jeweler's Tools");
+export const DoctorsTools = new Proficiency(34, "Doctor's Tools");
+export const MathematiciansTools =  new Proficiency(34, "Mathematician's Tools");

@@ -83,3 +83,6 @@ export const Parchment = new Item(20, "Parchment (3 sheets)");
 export const IronIngot = new Item(20, "Iron ingot");
 export const WoodenPlank = new Item(20, "Wooden plank");
 export const Oysters = new Item(20, "A bushel of oysters");
+export const FakeJewelery = new Item(20, "Fake Jewelery");
+export const Grain = new Item(20, "5lbs of grain");
+export const SilkScarves = new Item(20, "4 silk scarves");
