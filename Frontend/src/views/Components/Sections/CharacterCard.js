@@ -18,6 +18,7 @@ export default function CharacterCard(props) {
       : "";
 
   let stats = [];
+  let skills = [];
   if(props.character) {
     const charismaStatKeys = Object.keys(props.character.abilityModifiers).filter(key => key.toLowerCase().indexOf("charisma") >= 0);
     const strengthStatKeys = Object.keys(props.character.abilityModifiers).filter(key => key.toLowerCase().indexOf("strength") >= 0);
@@ -32,6 +33,8 @@ export default function CharacterCard(props) {
     stats.push(intelligenceStatKeys.map(key => props.character.abilityModifiers[key]));
     stats.push(wisdomStatKeys.map(key => props.character.abilityModifiers[key]));
     stats.push(charismaStatKeys.map(key => props.character.abilityModifiers[key]));
+
+    skills = props.character.skills;
   }
 
   return (
@@ -112,7 +115,7 @@ export default function CharacterCard(props) {
           </GridItem>
           <GridItem xs={9} sm={9} md={9} lg={9}>
             {
-              Object.keys(props.character.skills).map((key, index) => {
+              Object.keys(skills).map((key, index) => {
                 return <div
                     key={"skill" + index}
                     style={{
@@ -120,6 +123,7 @@ export default function CharacterCard(props) {
                       fontSize: '10px'
                     }}
                 >
+                  <span style={{color: '#9c27b0'}}>{props.character.skills[key].isProficient ? "*" : ""}</span>
                   <span style={{marginRight: '10px'}}>{props.character.skills[key].name}</span>
                   <span style={{marginRight: '25px'}}>
                     {
