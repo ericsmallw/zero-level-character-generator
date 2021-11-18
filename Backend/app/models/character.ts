@@ -7,6 +7,7 @@ import PersonalityTrait from "./personalityTrait";
 import Ideal from "./ideal";
 import Bond from "./bond";
 import Flaw from "./flaw";
+import Skills from "./skills";
 
 export class Character {
     name: string;
@@ -25,4 +26,5 @@ export class Character {
     ideal: Ideal;
     bond: Bond;
     flaw: Flaw;
+    skills: Skills
 }

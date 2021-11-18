@@ -111,6 +111,33 @@ export default function CharacterCard(props) {
 
           </GridItem>
           <GridItem xs={9} sm={9} md={9} lg={9}>
+            {
+              Object.keys(props.character.skills).map((key, index) => {
+                return <div
+                    key={"skill" + index}
+                    style={{
+                      display: 'inline-block',
+                      fontSize: '10px'
+                    }}
+                >
+                  <span style={{marginRight: '10px'}}>{props.character.skills[key].name}</span>
+                  <span style={{marginRight: '25px'}}>
+                    {
+                      props.character.skills[key].value >= 0
+                          ? `+${props.character.skills[key].value}`
+                          : props.character.skills[key].value
+                    }
+                  </span>
+                </div>
+              })
+            }
+          </GridItem>
+        </GridContainer>
+        <GridContainer>
+          <GridItem xs={3} sm={3} md={3} lg={3}>
+
+          </GridItem>
+          <GridItem xs={9} sm={9} md={9} lg={9}>
             <GridContainer>
               <GridItem xs={3} sm={3} md={3} lg={3}>
                 <h5>Personality Traits</h5>

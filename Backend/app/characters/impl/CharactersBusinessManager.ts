@@ -26,6 +26,7 @@ import IIdealDataManager from "../../ideals/interfaces/IIdealDataManager";
 import IBondsDataManager from "../../bonds/interfaces/IBondsDataManager";
 import IFlawsDataManager from "../../flaws/interfaces/IFlawsDataManager";
 import Races from "../../constants/races";
+import Skills from "../../models/skills";
 
 // @ts-ignore
 @injectable()
@@ -56,6 +57,9 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
     character.initiative = abilityModifiers.DexterityModifier;
     character.armorClass = abilityModifiers.DexterityModifier + 10;
     character.profession = await this.setProfession(abilityModifiers);
+    if (character.profession instanceof Profession) {
+      character.skills = new Skills(abilityModifiers, character.profession)
+    }
     character.coin = character.profession ? this.getCoin(character.profession.coin) : "2 sp"
     character.personalityTraits = await this._personalityTraitsDataManager.getRandomPersonalityTraits(2);
     character.ideal = await this._idealDataManager.getRandomIdeal();

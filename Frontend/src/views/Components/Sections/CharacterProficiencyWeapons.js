@@ -22,7 +22,7 @@ export default function CharacterProficiencyWeapons(props) {
             <GridItem xs={6} sm={6} md={6} lg={6}>
                 <h4 style={props.labelStyle}>Weapons</h4>
             </GridItem>
-            <GridItem xs={6} sm={6} md={6} lg={6} style={{...statsContainerLeftStyle,...statDetailsContainer}}>
+            <GridItem xs={6} sm={6} md={6} lg={6} style={{...statsContainerLeftStyle}}>
                 <h4 style={subLabelStyle}>Weapon Proficiency</h4>
                 {
                     props.character

@@ -156,7 +156,7 @@ export default function CharacterSettings(props) {
                 <div className={classes.title}>
                     <h2>Character Settings</h2>
                     <GridContainer>
-                        <GridItem xs={3} sm={3} md={3} lg={3}>
+                        <GridItem xs={2} sm={2} md={2} lg={2}>
                             <GridContainer>
                                 <GridItem xs={12} sm={12} md={12} lg={12}>
                                     <h3>Player Name</h3>
@@ -310,7 +310,7 @@ export default function CharacterSettings(props) {
                         </GridItem>
                         <GridItem
                             id={'character-card'}
-                            xs={9} sm={9} md={9} lg={9}
+                            xs={10} sm={10} md={10} lg={10}
                             style={{
                                 border: "5px black solid",
                                 borderRadius: '15px',
