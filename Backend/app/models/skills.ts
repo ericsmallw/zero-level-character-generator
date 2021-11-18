@@ -9,7 +9,7 @@ export default class Skills {
     athletics: Skill = new Skill("Athletics");
     deception: Skill = new Skill("Deception");
     history: Skill = new Skill("History");
-    insight: Skill = new Skill("Animal Insight");
+    insight: Skill = new Skill("Insight");
     intimidation: Skill = new Skill("Intimidation");
     investigation: Skill = new Skill("Investigation");
     medicine: Skill = new Skill("Medicine");
