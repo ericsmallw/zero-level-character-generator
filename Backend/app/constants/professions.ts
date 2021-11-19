@@ -50,7 +50,7 @@ import {
   Drum,
   Daggers,
   Mauls,
-  LandVehicles, JewelersTools, DoctorsTools, MathematiciansTools
+  LandVehicles, JewelersTools, DoctorsTools, MathematiciansTools, WoodworkersTools, SculptorsTools
 } from "./proficiencies";
 import {
   Blowgun, BoneKnife, Broom, Brush, ButchersKnife, CastIronPan, Chisel,
@@ -59,7 +59,7 @@ import {
   Handaxe, HandCrossbow, Knife, LightCrossbow,
   LightHammer, Longbow,
   Longsword,
-  Mace, Maul, Net, OrnateDagger,
+  Mace, Maul, Net, Oar, OrnateDagger,
   Pitchfork,
   Quarterstaff, Rapier, RollingPin, Scimitar, Scissors, Shortbow,
   Shortsword, Sickle, SteelBeerStein,
@@ -87,7 +87,7 @@ import {
   HealersKit,
   HideArmor, HolySymbol,
   HolySymbolEmblem,
-  HolySymbolReliquary, HuntingTrap, IronIngot, JawPliers,
+  HolySymbolReliquary, HorseShoes, HuntingTrap, IronIngot, JawPliers,
   Jerky,
   JournalPen, Lantern, LawDecree,
   LeatherArmor, LeatherGloves,
@@ -102,10 +102,10 @@ import {
   Rope50Ft,
   SackOfManure,
   SaddleBags,
-  SchoolBook, SetOfKeys, SheepSkin, SheetOfMetal,
+  SchoolBook, SetOfKeys, Shackles, SheepSkin, SheetOfMetal,
   Shield, Shovel, SilkScarves, SmallClock, SmeltingPot,
   Soil,
-  SpeakingTrumpet, SpoolOfThread, StoneBlocks,
+  SpeakingTrumpet, SpoolOfThread, StoneBlocks, Telescope,
   ThievesTools, Towel, WagonBolts, WheelOfCheese, WoodenPlank
 } from "./items";
 import ProfessionTypeEnum from "../enums/professionTypeEnum";
@@ -132,6 +132,7 @@ export const Porter = new Profession(2, "Porter", "d8 cp", Perception, Broom, [L
 export const Jailer = new Profession(2, "Jailer", "d4 sp", Investigation, Club, [SetOfKeys], Common, ProfessionTypeEnum.Strength);
 export const Wagoner = new Profession(2, "Wagoner", "d12 cp", LandVehicles, Whip, [WagonBolts], Common, ProfessionTypeEnum.Strength);
 export const Thresher = new Profession(2, "Thresher", "d6 cp", StrengthSavingThrows, Flail, [Grain], Common, ProfessionTypeEnum.Strength);
+export const Shipwright = new Profession(2, "Shipwright", "d6 sp", WoodworkersTools, Oar, [], Common, ProfessionTypeEnum.Strength);
 
 
 // dexterity professions
@@ -153,13 +154,14 @@ export const Fletcher = new Profession(2, "Fletcher", "d8 sp", Bows, Shortbow, [
 export const Gilder = new Profession(2, "Gilder", "d4 gp", JewelersTools, Knife, [SmeltingPot], Fine, ProfessionTypeEnum.Dexterity);
 export const Miniaturist = new Profession(2, "Miniaturist", "d6 cp", PaintersSupplies, Brush, [], Common, ProfessionTypeEnum.Dexterity);
 export const ChickenButcher = new Profession(2, "Chicken Butcher", "d6 cp", Handaxes, ButchersKnife, [ChickenCarcass], Common, ProfessionTypeEnum.Dexterity);
-export const GloveMaker = new Profession(2, "Glove Maker", "d8 sp", LeatherworkerTools, Knife, [LeatherGloves], Common, ProfessionTypeEnum.Dexterity);
+export const GloveMaker = new Profession(2, "Glove Maker", "d8 sp", LeatherWorkersToolsProf, Knife, [LeatherGloves], Common, ProfessionTypeEnum.Dexterity);
 export const Jeweler = new Profession(2, "Jeweler", "d4 gp", JewelersTools, Dagger, [], Fine, ProfessionTypeEnum.Dexterity);
-export const ScabbardMaker = new Profession(1, "Scabbard Maker", "d10 sp", LeatherworkerTools, Longsword, [], Common, ProfessionTypeEnum.Dexterity)
+export const ScabbardMaker = new Profession(1, "Scabbard Maker", "d10 sp", LeatherworkerTools, Longsword, [], Common, ProfessionTypeEnum.Dexterity);
+export const Sculptor = new Profession(1, "Sculptor", "d6 gp", SculptorsTools, Chisel, [], Common, ProfessionTypeEnum.Dexterity);
 
 //constitution professions
-export const GongFarmer = new Profession(1, "GongFarmer", "d12 cp", ConSavingThrows, Club, [SackOfManure], Common, ProfessionTypeEnum.Constitution);
-export const PigFarmer = new Profession(1, "PigFarmer", "d10 sp", AnimalHandling, Pitchfork, [CuredHam], Common, ProfessionTypeEnum.Constitution);
+export const GongFarmer = new Profession(1, "Gong Farmer", "d12 cp", ConSavingThrows, Club, [SackOfManure], Common, ProfessionTypeEnum.Constitution);
+export const PigFarmer = new Profession(1, "Pig Farmer", "d10 sp", AnimalHandling, Pitchfork, [CuredHam], Common, ProfessionTypeEnum.Constitution);
 export const Leatherworker = new Profession(1, "Leatherworker", "d6 sp", LeatherWorkersToolsProf, Dagger, [LeatherworkerTools], Common, ProfessionTypeEnum.Constitution);
 export const RatCatcher = new Profession(1, "Rat Catcher", "d12 cp", AnimalHandling, Net, [DeadRatBag], Common, ProfessionTypeEnum.Constitution);
 export const Seaman = new Profession(1, "Seaman", "d8 sp", SailingShip, Shortsword, [Rope50Ft], Travelers, ProfessionTypeEnum.Constitution);
@@ -179,6 +181,7 @@ export const Cooper = new Profession(1, "Cooper", "d8 cp", CarpenterTools, Light
 export const Haenyeo = new Profession(1, "Haenyeo (Diver)", "d6 sp", Athletics, Dagger, [Oysters], Common, ProfessionTypeEnum.Constitution);
 export const Roofer = new Profession(1, "Roofer", "d12 cp", CarpenterTools, LightHammer, [], Common, ProfessionTypeEnum.Constitution);
 export const Poacher = new Profession(1, "Poacher", "d4 gp", Stealth, Shortsword, [DeerSkin], Common, ProfessionTypeEnum.Constitution);
+export const HorseTrainer = new Profession(1, "Horse Trainer", "d6 sp", AnimalHandling, Whip, [HorseShoes], Common, ProfessionTypeEnum.Constitution);
 
 //Intelligence occupations
 export const Bookkeeper = new Profession(1, "Bookkeeper", "d8 sp", Investigation, Dagger, [Abacus], Common, ProfessionTypeEnum.Intelligence);
@@ -197,6 +200,7 @@ export const Barrister = new Profession(1, "Barrister", "d4 gp", Persuasion, Clu
 export const Clockmaker = new Profession(1, "Clockmaker", "d6 gp", TinkersTools, Dagger, [SmallClock], Common, ProfessionTypeEnum.Intelligence);
 export const Lampwright = new Profession(1, "Lampwright", "d10 sp", GlassblowersTools, Quarterstaff, [Lantern], Common, ProfessionTypeEnum.Intelligence);
 export const Mathematician = new Profession(1, "Mathematician", "d4 cp", MathematiciansTools, Quarterstaff, [Abacus], Common, ProfessionTypeEnum.Intelligence);
+export const Astrologer = new Profession(1, "Astrologer", "d8 sp", Arcana, Quarterstaff, [Telescope], Common, ProfessionTypeEnum.Intelligence);
 
 //Wisdom occupations
 export const Herbalist = new Profession(1, "Herbalist", "d12 sp", Medicine, Club, [HealersKit], Common, ProfessionTypeEnum.Wisdom);
@@ -215,6 +219,7 @@ export const Cheesemaker = new Profession(1, "Cheesemaker", "d12 cp", CooksUtens
 export const Bowyer = new Profession(1, "Bowyer", "d4 sp", BowsAndCrossbows, Longbow, [BowStaves], Common, ProfessionTypeEnum.Wisdom);
 export const Cobbler = new Profession(1, "Cobbler", "d12 cp", CobblersTools, Dagger, [], Common, ProfessionTypeEnum.Wisdom);
 export const Pissprophet = new Profession(1, "Pissprophet", "d12 sp", DoctorsTools, Club, [], Common, ProfessionTypeEnum.Wisdom);
+export const Constable = new Profession(1, "Constable", "d4 gp", Investigation, Shortsword, [Shackles], Common, ProfessionTypeEnum.Wisdom);
 
 export const Barker = new Profession(1, "Barker", "d8 gp", Perception, Club, [SpeakingTrumpet], Costume, ProfessionTypeEnum.Charisma);
 export const Minstrel = new Profession(1, "Minstrel", "d10 gp", Lute, Dagger, [ALute], Costume, ProfessionTypeEnum.Charisma);
@@ -233,6 +238,7 @@ export const Milliner = new Profession(1, "Milliner", "d8 sp", WeaversTools, Dag
 export const Barber = new Profession(1, "Barber", "d6 sp", Medicine, Scissors, [JawPliers], Costume, ProfessionTypeEnum.Charisma);
 export const Conman = new Profession(1, "Conman", "d5 gp", Persuasion, Knife, [FakeJewelery], Fine, ProfessionTypeEnum.Charisma);
 export const Bawd = new Profession(1, "Bawd", "d8 gp", Persuasion, Knife, [SilkScarves], Fine, ProfessionTypeEnum.Charisma);
+export const Herald = new Profession(1, "Herald", "d5 cp", Performance, Dagger, [Parchment], Common, ProfessionTypeEnum.Charisma);
 
 
 export const Professions = [
@@ -246,5 +252,5 @@ export const Professions = [
     Clockmaker, Lampwright, Trapper, Beadle, Cheesemaker, Bowyer, Cobbler, FortuneTeller, Drummer, Confectioner,
     Milliner, Barber, Grinder, Plattner, Porter, Jailer, Wagoner, Gilder, Miniaturist, ChickenButcher, GloveMaker,
     Jeweler, Parchmenter, Smelter, Cooper, Haenyeo, Roofer, GlassBlower, Thresher, Bawd, Pissprophet, Mathematician,
-    Poacher, ScabbardMaker
+    Poacher, ScabbardMaker, Herald, HorseTrainer, Astrologer, Constable, Shipwright, Sculptor
 ]

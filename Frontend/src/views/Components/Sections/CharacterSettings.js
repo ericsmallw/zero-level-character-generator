@@ -93,6 +93,7 @@ export default function CharacterSettings(props) {
             charactersCopy.unshift(newCharacter.data);
             setCharacters(charactersCopy);
             setCharacter(newCharacter.data);
+            setCharacterIndex(0);
             setPage(1);
         } catch (error) {
             console.error(error);
@@ -141,7 +142,7 @@ export default function CharacterSettings(props) {
         setCharacter(charactersCopy[charactersCopy.length - 1]);
         setCharacterIndex(charactersCopy.length - 1);
         setPage(charactersCopy.length);
-      } else if (characterIndex.length === 0) {
+      } else if (characterIndex === 0 && charactersCopy.length === 1) {
         setCharacterIndex(-1);
         setCharacter(null);
       } else {

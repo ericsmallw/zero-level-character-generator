@@ -38,3 +38,4 @@ export const HandCrossbow = new Weapon(34, "Hand Crossbow", "1d6", "30/120");
 export const Greataxe = new Weapon(35,"Greataxe", "1d12", 5);
 export const Greatclub = new Weapon(35,"Greatclub", "1d8", 5);
 export const LightCrossbow = new Weapon(35,"Light Crossbow", "1d8", "80/320");
+export const Oar = new Weapon(5, "Oar (Club)", "1d4", 5);

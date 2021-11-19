@@ -86,3 +86,6 @@ export const Oysters = new Item(20, "A bushel of oysters");
 export const FakeJewelery = new Item(20, "Fake Jewelery");
 export const Grain = new Item(20, "5lbs of grain");
 export const SilkScarves = new Item(20, "4 silk scarves");
+export const HorseShoes = new Item(20, "4 Horse Shoes");
+export const Shackles = new Item(20, "Shackles");
+export const Telescope = new Item(20, "Telescope");
