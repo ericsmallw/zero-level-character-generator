@@ -123,9 +123,13 @@ export default function CharacterCard(props) {
                       fontSize: '10px'
                     }}
                 >
-                  <span style={{color: '#9c27b0'}}>{props.character.skills[key].isProficient ? "*" : ""}</span>
+                  {
+                    props.character.skills[key].isProficient
+                        ? <span style={{color: '#9c27b0', marginRight: '3px'}}>*</span>
+                        : ""
+                  }
                   <span style={{marginRight: '10px'}}>{props.character.skills[key].name}</span>
-                  <span style={{marginRight: '25px'}}>
+                  <span style={{marginRight: '25px', color: props.character.skills[key].isProficient ? '#9c27b0' : ''}}>
                     {
                       props.character.skills[key].value >= 0
                           ? `+${props.character.skills[key].value}`

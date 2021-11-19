@@ -24,59 +24,113 @@ export default class Skills {
 
 
     constructor(abilityModifiers: AbilityModifiers, profession: Profession) {
-        this.acrobatics.value = abilityModifiers.DexterityModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("acrobatics") >= 0 ? 2 : 0);
+        this.acrobatics.value = abilityModifiers.DexterityModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("acrobatics") >= 0) {
+            this.acrobatics.value += 2;
+            this.acrobatics.isProficient = true;
+        }
 
-        this.animalHandling.value = abilityModifiers.WisdomModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("animal") >= 0 ? 2 : 0);
+        this.animalHandling.value = abilityModifiers.WisdomModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("animal") >= 0) {
+            this.animalHandling.value += 2;
+            this.animalHandling.isProficient = true;
+        }
 
-        this.arcana.value = abilityModifiers.IntelligenceModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("arcana") >= 0 ? 2 : 0);
+        this.arcana.value = abilityModifiers.IntelligenceModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("arcana") >= 0) {
+            this.arcana.value += 2;
+            this.arcana.isProficient = true;
+        }
 
-        this.athletics.value = abilityModifiers.StrengthModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("athletics") >= 0 ? 2 : 0);
+        this.athletics.value = abilityModifiers.StrengthModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("athletics") >= 0) {
+            this.athletics.isProficient = true;
+            this.athletics.value += 2;
+        }
 
-        this.deception.value = abilityModifiers.CharismaModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("charisma") >= 0 ? 2 : 0);
+        this.deception.value = abilityModifiers.CharismaModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("charisma") >= 0) {
+            this.deception.isProficient = true;
+            this.deception.value += 2;
+        }
 
-        this.history.value = abilityModifiers.IntelligenceModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("history") >= 0 ? 2 : 0);
+        this.history.value = abilityModifiers.IntelligenceModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("history") >= 0) {
+            this.history.value += 2;
+            this.history.isProficient = true;
+        }
 
-        this.insight.value = abilityModifiers.WisdomModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("insight") >= 0 ? 2 : 0);
+        this.insight.value = abilityModifiers.WisdomModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("insight") >= 0) {
+            this.insight.isProficient = true;
+            this.insight.value += 2;
+        }
 
-        this.intimidation.value = abilityModifiers.CharismaModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("intimidation") >= 0 ? 2 : 0);
+        this.intimidation.value = abilityModifiers.CharismaModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("intimidation") >= 0) {
+            this.intimidation.isProficient = true;
+            this.intimidation.value += 2;
+        }
 
-        this.investigation.value = abilityModifiers.IntelligenceModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("investigation") >= 0 ? 2 : 0);
+        this.investigation.value = abilityModifiers.IntelligenceModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("investigation") >= 0) {
+            this.investigation.isProficient = true;
+            this.investigation.value += 2;
+        }
 
-        this.medicine.value = abilityModifiers.WisdomModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("medicine") >= 0 ? 2 : 0);
+        this.medicine.value = abilityModifiers.WisdomModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("medicine") >= 0) {
+            this.medicine.isProficient = true;
+            this.medicine.value += 2;
+        }
 
-        this.nature.value = abilityModifiers.IntelligenceModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("nature") >= 0 ? 2 : 0);
+        this.nature.value = abilityModifiers.IntelligenceModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("nature") >= 0) {
+            this.nature.isProficient = true;
+            this.nature.value += 2;
+        }
 
-        this.perception.value = abilityModifiers.WisdomModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("perception") >= 0 ? 2 : 0);
+        this.perception.value = abilityModifiers.WisdomModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("perception") >= 0) {
+            this.perception.isProficient = true;
+            this.perception.value += 2;
+        }
 
-        this.performance.value = abilityModifiers.CharismaModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("performance") >= 0 ? 2 : 0);
+        this.performance.value = abilityModifiers.CharismaModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("performance") >= 0) {
+            this.performance.isProficient = true;
+            this.performance.value += 2;
+        }
 
         this.persuasion.value = abilityModifiers.CharismaModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("persuasion") >= 0 ? 2 : 0);
+        if(profession.proficiency.name.toLowerCase().indexOf("persuasion") >= 0) {
+            this.persuasion.isProficient = true;
+            this.persuasion.value += 2;
+        }
 
-        this.religion.value = abilityModifiers.IntelligenceModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("religion") >= 0 ? 2 : 0);
+        this.religion.value = abilityModifiers.IntelligenceModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("religion") >= 0) {
+            this.religion.isProficient = true;
+            this.religion.value += 2;
+        }
 
-        this.sleightOfHand.value = abilityModifiers.DexterityModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("sleight") >= 0 ? 2 : 0);
+        this.sleightOfHand.value = abilityModifiers.DexterityModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("sleight") >= 0) {
+            this.sleightOfHand.isProficient = true;
+            this.sleightOfHand.value += 2;
+        }
 
-        this.stealth.value = abilityModifiers.DexterityModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("stealth") >= 0 ? 2 : 0);
+        this.stealth.value = abilityModifiers.DexterityModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("stealth") >= 0) {
+            this.stealth.isProficient = true;
+            this.stealth.value += 2;
+        }
 
-        this.survival.value = abilityModifiers.WisdomModifier
-            + (profession.proficiency.name.toLowerCase().indexOf("survival") >= 0 ? 2 : 0);
+        this.survival.value = abilityModifiers.WisdomModifier;
+        if(profession.proficiency.name.toLowerCase().indexOf("survival") >= 0) {
+            this.survival.isProficient = true;
+            this.survival.value += 2;
+        }
     }
 
 
