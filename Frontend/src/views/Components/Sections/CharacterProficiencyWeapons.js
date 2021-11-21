@@ -46,7 +46,7 @@ export default function CharacterProficiencyWeapons(props) {
                           </span>
                             <br />
                             <span style={{fontSize: '10px', paddingLeft: '10px'}}>
-                            To Hit: <span style={{color: '#9c27b0'}}>{`${weaponModifier >= 0 ? "+" : "-"}${weaponModifier}`}</span>
+                            To Hit: <span style={{color: '#9c27b0'}}>+2</span>
                           </span>
                             <span style={{fontSize: '10px', paddingLeft: '10px'}}>
                             Damage: <span style={{color: '#9c27b0'}}>{`${props.character.profession.weapon.damage}${weaponModifier >= 0 ? "+" : "-"}${weaponModifier}`}</span>
