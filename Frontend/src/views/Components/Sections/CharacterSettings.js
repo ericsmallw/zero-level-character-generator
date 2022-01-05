@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "assets/jss/material-kit-react/views/componentsSections/basicsStyle.js";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -8,7 +8,7 @@ import GridItem from "../../../components/Grid/GridItem";
 import GridContainer from "../../../components/Grid/GridContainer";
 import Button from "../../../components/CustomButtons/Button";
 import {Select, TextField} from "@material-ui/core";
-import {Delete, PersonAdd, PictureAsPdf, Save} from "@material-ui/icons";
+import {Delete, PersonAdd, PictureAsPdf, Save, SaveAlt} from "@material-ui/icons";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
 import html2canvas from "html2canvas";
@@ -29,9 +29,51 @@ export default function CharacterSettings(props) {
     const [character, setCharacter] = useState();
     const [characters, setCharacters] = useState([]);
     const [playerName, setPlayerName] = useState('');
+    const [characterName, setCharacterName] = useState('');
     const [characterIndex, setCharacterIndex] = useState(-1);
 
+    useEffect(() => {
+        const localCharactersString = localStorage.getItem('characters');
+        if (localCharactersString) {
+            const localCharacters = JSON.parse(localCharactersString);
+            const chars = [];
+            localCharacters.forEach(char => {
+                char = JSON.parse(char)
+                char.savedLocally = true;
+                console.log(char);
+                chars.push(char);
+            });
+
+            loadCharacters(chars);
+        }
+    }, []);
+
     const url = 'https://7871p5aik2.execute-api.us-east-1.amazonaws.com/prod/';
+
+    const openFile = ($event) => {
+        const input = $event.target;
+        const reader = new FileReader();
+        reader.onload = () => {
+            const json = JSON.parse(reader.result);
+            loadCharacter(json);
+        }
+        reader.readAsText(input.files[0]);
+    }
+
+    const importCharacterButton = <GridItem xs={3} sm={3} md={3} lg={3} style={{marginTop: '20px'}}>
+        <input type='file' id="characterJson" style={{visibility: 'hidden'}} onChange={openFile}/>
+        <Button
+            color="primary"
+            round size='lg'
+            style={{margin: 'auto', display: 'block'}}
+            onClick={() => {
+                const element = document.getElementById('characterJson');
+                element.click();
+            }}
+        >
+            <PersonAdd className={classes.icons} /> Load Character
+        </Button>
+    </GridItem>;
 
     const createButton = <GridItem xs={3} sm={3} md={3} lg={3} style={{marginTop: '20px'}}>
       <Button
@@ -72,6 +114,21 @@ export default function CharacterSettings(props) {
         </GridItem>
         : "";
 
+    const saveLocallyButton = character
+        ? <GridItem xs={3} sm={3} md={3} lg={3} style={{marginTop: '20px'}}>
+            <Button
+                color="primary"
+                round size='lg'
+                style={{margin: 'auto', display: 'block'}}
+                onClick={() => saveCharacterLocally()}
+                disabled={character.savedLocally}
+            >
+                <SaveAlt className={classes.icons} /> Save Character Locally
+            </Button>
+
+        </GridItem>
+        : "";
+
     const deleteButton = character
         ? <GridItem xs={3} sm={3} md={3} lg={3} style={{marginTop: '20px'}}>
           <Button
@@ -93,12 +150,32 @@ export default function CharacterSettings(props) {
             charactersCopy.unshift(newCharacter.data);
             setCharacters(charactersCopy);
             setCharacter(newCharacter.data);
+            setCharacterName(newCharacter.data.name);
             setCharacterIndex(0);
             setPage(1);
         } catch (error) {
             console.error(error);
         }
     };
+
+    const loadCharacter = (character) => {
+        let charactersCopy = characters.slice();
+        charactersCopy.unshift(character);
+        setCharacters(charactersCopy);
+        setCharacter(character);
+        setCharacterName(character.name);
+        setCharacterIndex(0);
+        setPage(1);
+    }
+
+    const loadCharacters = (chars) => {
+        setCharacters(chars);
+        setCharacter(chars[0]);
+        setCharacterName(chars[0].name);
+        setPlayerName(localStorage.getItem('playerName'));
+        setCharacterIndex(0);
+        setPage(1);
+    }
 
     const exportPdf = () => {
         html2canvas(document.querySelector('#character-card'))
@@ -127,9 +204,29 @@ export default function CharacterSettings(props) {
         element.remove();
     }
 
+    const saveCharacterLocally = () => {
+        const characterCopy = {...{}, ...character};
+        characterCopy.savedLocally = true;
+        const characterJson = JSON.stringify(character);
+        setCharacter(characterCopy);
+
+        const localCharactersString = localStorage.getItem('characters');
+        if(!localCharactersString) {
+            localStorage.setItem('characters', JSON.stringify([characterJson]));
+        } else {
+            localStorage.setItem('playerName', playerName);
+            const localCharacters = JSON.parse(localCharactersString);
+            localCharacters.push(characterJson);
+            localStorage.setItem('characters', JSON.stringify(localCharacters));
+        }
+
+    }
+
     const changePage = (event, value) => {
       setCharacterIndex(value - 1);
-      setCharacter(characters[value - 1]);
+      const char = characters[value - 1];
+      setCharacter(char);
+      setCharacterName(char.name);
       setPage(value);
     }
 
@@ -154,6 +251,7 @@ export default function CharacterSettings(props) {
     return (
         <div className={classes.sections}>
             <div className={classes.container}>
+                {importCharacterButton}
                 <div className={classes.title}>
                     <h2>Character Settings</h2>
                     <GridContainer>
@@ -166,6 +264,16 @@ export default function CharacterSettings(props) {
                                         value={playerName}
                                         onChange={(event) => {
                                             setPlayerName(event.target.value)
+                                        }}
+                                    />
+                                </GridItem>
+                                <GridItem xs={12} sm={12} md={12} lg={12}>
+                                    <h3>Character Name</h3>
+                                    <TextField
+                                        label='Character Name'
+                                        value={characterName}
+                                        onChange={(event) => {
+                                            setCharacterName(event.target.value)
                                         }}
                                     />
                                 </GridItem>
@@ -318,7 +426,7 @@ export default function CharacterSettings(props) {
                                 width: '100%'
                             }}
                         >
-                            <CharacterCard character={character} playerName={playerName}/>
+                            <CharacterCard character={character} playerName={playerName} characterName={characterName}/>
                         </GridItem>
                     </GridContainer>
                     <GridContainer>
@@ -338,6 +446,7 @@ export default function CharacterSettings(props) {
                       {createButton}
                       {exportButton}
                       {saveButton}
+                      {saveLocallyButton}
                       {deleteButton}
                     </GridContainer>
                 </div>

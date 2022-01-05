@@ -56,7 +56,7 @@ export default function CharacterCard(props) {
             >
               <h4 style={labelStyle}>Character Name</h4>
               <div style={textContainerStyle}>
-                <span style={{marginLeft: '10px'}}>{props.character ? props.character.name : ''}</span>
+                <span style={{marginLeft: '10px'}}>{props.characterName || ''}</span>
               </div>
             </div>
           </GridItem>
