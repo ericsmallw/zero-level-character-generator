@@ -293,7 +293,7 @@ export default function CharacterSettings(props) {
                                         type='number'
                                         value={minAge}
                                         onChange={(event) => {
-                                            setMinAge(event.target.value)
+                                            setMinAge(parseInt(event.target.value))
                                         }}
                                     />
                                     <br />
@@ -303,7 +303,7 @@ export default function CharacterSettings(props) {
                                         type='number'
                                         value={maxAge}
                                         onChange={(event) => {
-                                            setMaxAge(event.target.value)
+                                            setMaxAge(parseInt(event.target.value));
                                         }}
                                     />
                                 </GridItem>
