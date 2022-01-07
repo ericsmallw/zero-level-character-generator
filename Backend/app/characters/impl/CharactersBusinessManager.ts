@@ -27,6 +27,8 @@ import IBondsDataManager from "../../bonds/interfaces/IBondsDataManager";
 import IFlawsDataManager from "../../flaws/interfaces/IFlawsDataManager";
 import Races from "../../constants/races";
 import Skills from "../../models/skills";
+import {Mannerisms} from "../../constants/Mannerisms";
+import {Talents} from "../../constants/Talents";
 
 // @ts-ignore
 @injectable()
@@ -69,6 +71,10 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
     if (raceName === 'Dragonborn') {
       character.dragonBornAncestry = this.getDragonBornAncestry();
     }
+
+
+    character.mannerism = this.getRandomMannerism();
+    character.Talent = this.getRandomTalent();
 
     return character;
   }
@@ -127,6 +133,30 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
 
         return selectedRacialMix[raceKey];
     }
+  }
+
+  private getRandomMannerism() {
+    const numberGenerator = randomNumber.generator({
+      min: 0,
+      max: Mannerisms.length - 1,
+      integer: true
+    });
+
+    const number = numberGenerator();
+
+    return Mannerisms[number];
+  }
+
+  private getRandomTalent() {
+    const numberGenerator = randomNumber.generator({
+      min: 1,
+      max: Talents.length - 1,
+      integer: true
+    });
+
+    const number = numberGenerator();
+
+    return Talents[number];
   }
 
   private getAbilityModifiers(race: Race | undefined): AbilityModifiers {

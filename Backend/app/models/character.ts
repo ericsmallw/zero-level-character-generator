@@ -3,11 +3,12 @@ import DragonbornAncestry from "./dragonbornAncestry";
 import Race from "./race";
 import Profession from "./profession";
 import SexEnum from "../enums/sexEnum";
-import PersonalityTrait from "./personalityTrait";
+import Personality from "./personality";
 import Ideal from "./ideal";
 import Bond from "./bond";
 import Flaw from "./flaw";
 import Skills from "./skills";
+import Mannerism from "./mannerism";
 
 export class Character {
     name: string;
@@ -22,9 +23,11 @@ export class Character {
     profession: Profession | undefined;
     sex: string;
     coin: string;
-    personalityTraits: PersonalityTrait[];
+    personalityTraits: Personality[];
     ideal: Ideal;
     bond: Bond;
     flaw: Flaw;
-    skills: Skills
+    skills: Skills;
+    mannerism: string;
+    Talent: string;
 }

@@ -1,6 +1,6 @@
 import Trait from "./trait";
 
-export default class Personality extends Trait {
+export default class Mannerism extends Trait {
     constructor(description: string) {
         super(description)
     }
