@@ -29,5 +29,5 @@ export class Character {
     flaw: Flaw;
     skills: Skills;
     mannerism: string;
-    Talent: string;
+    talent: string;
 }
