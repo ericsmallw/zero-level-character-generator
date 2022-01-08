@@ -163,6 +163,14 @@ export default function CharacterCard(props) {
                 <h5>Flaws</h5>
                 {props.character ? <h6>{props.character.flaw.description}</h6> : ""}
               </GridItem>
+              <GridItem xs={3} sm={3} md={3} lg={3}>
+                <h5>Talent</h5>
+                {props.character ? <h6>{props.character.talent}</h6> : ""}
+              </GridItem>
+              <GridItem xs={3} sm={3} md={3} lg={3}>
+                <h5>Mannerism</h5>
+                {props.character ? <h6>{props.character.mannerism}</h6> : ""}
+              </GridItem>
             </GridContainer>
           </GridItem>
 
