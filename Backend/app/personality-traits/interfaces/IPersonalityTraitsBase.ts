@@ -1,5 +1,5 @@
-import PersonalityTrait from "../../models/personalityTrait";
+import Personality from "../../models/personality";
 
 export default interface IPersonalityTraitsBase {
-    getRandomPersonalityTraits(count: number): Promise<PersonalityTrait[]>;
+    getRandomPersonalityTraits(count: number): Promise<Personality[]>;
 }

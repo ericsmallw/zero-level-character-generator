@@ -1,13 +1,13 @@
 import IPersonalityTraitsDataObject from "../interfaces/IPersonalityTraitsDataObject";
 import {injectable} from "inversify";
 import 'reflect-metadata';
-import PersonalityTrait from "../../models/personalityTrait";
+import Personality from "../../models/personality";
 import randomNumber from 'random-number';
 import personalityTraits from "../../constants/personalityTraits";
 
 @injectable()
 export default class PersonalityTraitsDataObject implements IPersonalityTraitsDataObject {
-    getRandomPersonalityTraits(count: number): Promise<PersonalityTrait[]> {
+    getRandomPersonalityTraits(count: number): Promise<Personality[]> {
         let numberGenerator = randomNumber.generator({
             min: 0,
             max: personalityTraits.length - 1,

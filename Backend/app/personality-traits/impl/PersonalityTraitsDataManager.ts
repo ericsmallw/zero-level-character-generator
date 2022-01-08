@@ -1,5 +1,5 @@
 import IPersonalityTraitsDataManager from "../interfaces/IPersonalityTraitsDataManager";
-import PersonalityTrait from "../../models/personalityTrait";
+import Personality from "../../models/personality";
 import {inject, injectable} from "inversify";
 import 'reflect-metadata';
 import types from "../../inversify/types";
@@ -12,7 +12,7 @@ export default class PersonalityTraitsDataManager implements IPersonalityTraitsD
     ) {
     }
 
-    getRandomPersonalityTraits(count: number): Promise<PersonalityTrait[]> {
+    getRandomPersonalityTraits(count: number): Promise<Personality[]> {
         return this.personalityDataObject.getRandomPersonalityTraits(count);
     }
 
