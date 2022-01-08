@@ -49,7 +49,7 @@ export default class Skills {
         }
 
         this.deception.value = abilityModifiers.CharismaModifier;
-        if(profession.proficiency.name.toLowerCase().indexOf("charisma") >= 0) {
+        if(profession.proficiency.name.toLowerCase().indexOf("deception") >= 0) {
             this.deception.isProficient = true;
             this.deception.value += 2;
         }
