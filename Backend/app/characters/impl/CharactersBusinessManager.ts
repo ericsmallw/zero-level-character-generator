@@ -166,13 +166,29 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
     const intelligenceBonus = race ? (race.abilityBonus.Intelligence || 0) : 0;
     const wisdomBonus = race ? (race.abilityBonus.Wisdom || 0) : 0;
     const charismaBonus = race ? (race.abilityBonus.Charisma || 0) : 0;
+    const abilityArrays = [
+      [this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6()],
+      [this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6()],
+      [this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6()],
+      [this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6()],
+    ];
+
+    const abilityTotals = abilityArrays
+        .map(abilityArray => {
+          return abilityArray.reduce((previousValue, currentValue) => {
+            return previousValue + currentValue
+          });
+        })
+
+    const highestIndex = abilityTotals.indexOf(Math.max(...abilityTotals))
+
     return new AbilityModifiers(
-      this.threeD6() + strengthBonus,
-      this.threeD6() + dexterityBonus,
-      this.threeD6() + constitutionBonus,
-      this.threeD6() + intelligenceBonus,
-      this.threeD6() + wisdomBonus,
-      this.threeD6() + charismaBonus,
+      abilityArrays[highestIndex][0] + strengthBonus,
+      abilityArrays[highestIndex][1] + dexterityBonus,
+        abilityArrays[highestIndex][2] + constitutionBonus,
+        abilityArrays[highestIndex][3] + intelligenceBonus,
+        abilityArrays[highestIndex][4] + wisdomBonus,
+        abilityArrays[highestIndex][5] + charismaBonus,
     );
   }
 
