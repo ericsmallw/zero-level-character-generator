@@ -74,7 +74,7 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
 
 
     character.mannerism = this.getRandomMannerism();
-    character.Talent = this.getRandomTalent();
+    character.talent = this.getRandomTalent();
 
     return character;
   }
