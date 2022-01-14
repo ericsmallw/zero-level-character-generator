@@ -29,6 +29,7 @@ import Races from "../../constants/races";
 import Skills from "../../models/skills";
 import {Mannerisms} from "../../constants/Mannerisms";
 import {Talents} from "../../constants/Talents";
+import {sum} from "lodash";
 
 // @ts-ignore
 @injectable()
@@ -167,34 +168,46 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
     const wisdomBonus = race ? (race.abilityBonus.Wisdom || 0) : 0;
     const charismaBonus = race ? (race.abilityBonus.Charisma || 0) : 0;
     const abilityArrays = [
-      [this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6()],
-      [this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6()],
-      [this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6()],
-      [this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6(), this.threeD6()],
+      [this.rollD6(), this.rollD6(), this.rollD6(), this.rollD6()],
+      [this.rollD6(), this.rollD6(), this.rollD6(), this.rollD6()],
+      [this.rollD6(), this.rollD6(), this.rollD6(), this.rollD6()],
+      [this.rollD6(), this.rollD6(), this.rollD6(), this.rollD6()],
+      [this.rollD6(), this.rollD6(), this.rollD6(), this.rollD6()],
+      [this.rollD6(), this.rollD6(), this.rollD6(), this.rollD6()]
     ];
 
     const abilityTotals = abilityArrays
-        .map(abilityArray => {
-          return abilityArray.reduce((previousValue, currentValue) => {
-            return previousValue + currentValue
-          });
+        .map((arr) => {
+          const minVal = Math.min(...arr);
+          const index = arr.findIndex(num => num === minVal);
+          arr.splice(index, 1);
+          return arr;
         })
+        .map(arr => sum(arr));
 
-    const highestIndex = abilityTotals.indexOf(Math.max(...abilityTotals))
+    const statsAreOk = abilityTotals.some(stat => stat >= 16);
+
+    if(!statsAreOk) {
+      const minVal = Math.min(...abilityTotals);
+      const index = abilityTotals.findIndex(stat => stat === minVal);
+      abilityTotals[index] = 16;
+    }
+
+    const s = sum(abilityTotals);
 
     return new AbilityModifiers(
-      abilityArrays[highestIndex][0] + strengthBonus,
-      abilityArrays[highestIndex][1] + dexterityBonus,
-        abilityArrays[highestIndex][2] + constitutionBonus,
-        abilityArrays[highestIndex][3] + intelligenceBonus,
-        abilityArrays[highestIndex][4] + wisdomBonus,
-        abilityArrays[highestIndex][5] + charismaBonus,
+      abilityTotals[0] + strengthBonus,
+      abilityTotals[1] + dexterityBonus,
+        abilityTotals[2] + constitutionBonus,
+        abilityTotals[3] + intelligenceBonus,
+        abilityTotals[4] + wisdomBonus,
+        abilityTotals[5] + charismaBonus,
     );
   }
 
-  private threeD6() {
+  private rollD6() {
     const d6 = randomNumber.generator({ min:1, max: 6, integer: true });
-    return d6() + d6() + d6();
+    return d6();
   }
 
   private getDragonBornAncestry(): DragonbornAncestry {
