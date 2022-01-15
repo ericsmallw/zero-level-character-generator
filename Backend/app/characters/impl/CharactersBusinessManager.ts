@@ -187,13 +187,11 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
 
     const statsAreOk = abilityTotals.some(stat => stat >= 16);
 
-    if(!statsAreOk) {
-      const minVal = Math.min(...abilityTotals);
-      const index = abilityTotals.findIndex(stat => stat === minVal);
-      abilityTotals[index] = 16;
-    }
-
-    const s = sum(abilityTotals);
+    // if(!statsAreOk) {
+    //   const max = Math.max(...abilityTotals);
+    //   const index = abilityTotals.findIndex(stat => stat === max);
+    //   abilityTotals[index] = 16;
+    // }
 
     return new AbilityModifiers(
       abilityTotals[0] + strengthBonus,
