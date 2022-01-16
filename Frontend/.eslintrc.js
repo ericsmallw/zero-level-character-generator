@@ -22,6 +22,7 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": "off",
     'prettier/prettier': 0,
     'no-unused-vars': 'off',
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "no-undef": 'off'
   }
 };

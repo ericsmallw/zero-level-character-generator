@@ -5,7 +5,11 @@ import React from "react";
 export default function CharacterOtherDetails (props) {
   const speedInitAcValStyle = {color: '#9c27b0', fontWeight: 'bold', minHeight: '0', marginBottom: '0', marginTop: '0'};
   const ageSexStyle = {...speedInitAcValStyle, ...{fontSize: '15px'}}
-
+  const initiative = props.character
+      ? (props.character.initiative >= 0
+          ? `+${props.character.initiative}`
+          : props.character.initiative)
+      : ""
   return (
       <GridContainer>
         <GridItem xs={6} sm={6} md={6} lg={6}>
@@ -37,14 +41,13 @@ export default function CharacterOtherDetails (props) {
         <GridItem xs={4} sm={4} md={4} lg={4}>
           <center><h4 style={props.labelStyle}>AC</h4></center>
         </GridItem>
-        <GridItem xs={4} sm={4} md={4} lg={4}>
+        <GridItem
+            xs={4} sm={4} md={4} lg={4}
+            onClick={() => props.roll(`1d20${initiative}`, 'Initiative')}
+        >
           <center>
             <h3 style={speedInitAcValStyle}>
-              {props.character
-                  ? (props.character.initiative >= 0
-                      ? `+${props.character.initiative}`
-                      : props.character.initiative)
-                  : ""}
+              {initiative}
             </h3>
           </center>
         </GridItem>

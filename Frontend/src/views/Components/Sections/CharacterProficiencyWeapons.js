@@ -14,6 +14,9 @@ export default function CharacterProficiencyWeapons(props) {
         ? props.character.abilityModifiers[`${abilityTypes[props.character.profession.type]}Modifier`]
         : 0;
 
+    const weaponDamage = props.character
+        ? `${props.character.profession.weapon.damage}${weaponModifier >= 0 ? "+" : "-"}${weaponModifier}`
+        : '';
     return (
         <GridContainer>
             <GridItem xs={6} sm={6} md={6} lg={6}>
@@ -44,12 +47,20 @@ export default function CharacterProficiencyWeapons(props) {
                           <span style={{fontSize: '14px', fontWeight: 'bolder !important'}}>
                             {props.character.profession.weapon.name}
                           </span>
-                            <br />
-                            <span style={{fontSize: '10px', paddingLeft: '10px'}}>
-                            To Hit: <span style={{color: '#9c27b0'}}>+2</span>
+                          <br />
+                          <span
+                              style={{fontSize: '14px', paddingLeft: '10px', cursor: 'pointer'}}
+                              onClick={() => props.roll('1d20+2', props.character.profession.weapon.name + " To Hit")}
+                          >
+                            To Hit: <span style={{color: '#9c27b0'}}>+2
                           </span>
-                            <span style={{fontSize: '10px', paddingLeft: '10px'}}>
-                            Damage: <span style={{color: '#9c27b0'}}>{`${props.character.profession.weapon.damage}${weaponModifier >= 0 ? "+" : "-"}${weaponModifier}`}</span>
+                          </span>
+                            <span
+                                style={{fontSize: '14px', paddingLeft: '10px', cursor: 'pointer'}}
+                                onClick={() => props.roll(`${weaponDamage}`, props.character.profession.weapon.name + " Attack")}
+                            >
+                              Damage: <span style={{color: '#9c27b0'}}>{weaponDamage}
+                            </span>
                           </span>
                         </div>
                         : ""
