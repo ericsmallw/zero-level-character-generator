@@ -33,7 +33,14 @@ export default function CharacterOtherDetails (props) {
           </center>
         </GridItem>
         <GridItem xs={4} sm={4} md={4} lg={4}>
-          <center><h4 style={props.labelStyle}>Init</h4></center>
+          <center>
+            <h4
+                style={{...props.labelStyle, ...{cursor: 'pointer'}}}
+                onClick={() => props.roll(`1d20${initiative}`, 'Initiative')}
+            >
+              Init
+            </h4>
+          </center>
         </GridItem>
         <GridItem xs={4} sm={4} md={4} lg={4}>
           <center><h4 style={props.labelStyle}>Speed</h4></center>
@@ -44,6 +51,7 @@ export default function CharacterOtherDetails (props) {
         <GridItem
             xs={4} sm={4} md={4} lg={4}
             onClick={() => props.roll(`1d20${initiative}`, 'Initiative')}
+            style={{cursor: 'pointer'}}
         >
           <center>
             <h3 style={speedInitAcValStyle}>
