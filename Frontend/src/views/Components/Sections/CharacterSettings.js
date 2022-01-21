@@ -14,6 +14,7 @@ import CharacterCard from "./CharacterCard";
 import html2canvas from "html2canvas";
 import Pagination from '@mui/material/Pagination';
 import {MenuItem} from "@mui/material";
+import {v4 as uuidv4} from 'uuid';
 
 
 const useStyles = makeStyles(styles);
@@ -146,6 +147,7 @@ export default function CharacterSettings(props) {
     const createCharacter = async () => {
         try {
             const newCharacter = await axios.post(url, {racialMix, sex, minAge, maxAge});
+            newCharacter.id = uuidv4();
             let charactersCopy = characters.slice();
             charactersCopy.unshift(newCharacter.data);
             setCharacters(charactersCopy);
@@ -169,6 +171,7 @@ export default function CharacterSettings(props) {
     }
 
     const loadCharacters = (chars) => {
+        if(chars.length === 0) return;
         setCharacters(chars);
         setCharacter(chars[0]);
         setCharacterName(chars[0].name);
@@ -232,7 +235,7 @@ export default function CharacterSettings(props) {
 
     const deleteCharacter = () => {
       let charactersCopy = characters.slice();
-      charactersCopy.splice(characterIndex, 1);
+      const character = charactersCopy.splice(characterIndex, 1);
       setCharacters(charactersCopy);
 
       if (characterIndex === charactersCopy.length) {
@@ -245,6 +248,16 @@ export default function CharacterSettings(props) {
       } else {
         setCharacterIndex(characterIndex);
         setCharacter(charactersCopy[characterIndex]);
+      }
+
+      const localCharactersString = localStorage.getItem('characters');
+      if (localCharactersString) {
+        const localCharacters = JSON.parse(localCharactersString);
+
+        const index = localCharacters.findIndex(localChar => character.id === localCharacters.id)
+
+        localCharacters.splice(index, 1);
+        localStorage.setItem('characters', JSON.stringify(localCharacters));
       }
     }
 
