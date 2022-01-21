@@ -147,7 +147,7 @@ export default function CharacterSettings(props) {
     const createCharacter = async () => {
         try {
             const newCharacter = await axios.post(url, {racialMix, sex, minAge, maxAge});
-            newCharacter.id = uuidv4();
+            newCharacter.data.id = uuidv4();
             let charactersCopy = characters.slice();
             charactersCopy.unshift(newCharacter.data);
             setCharacters(charactersCopy);
@@ -254,10 +254,13 @@ export default function CharacterSettings(props) {
       if (localCharactersString) {
         const localCharacters = JSON.parse(localCharactersString);
 
-        const index = localCharacters.findIndex(localChar => character.id === localCharacters.id)
-
-        localCharacters.splice(index, 1);
-        localStorage.setItem('characters', JSON.stringify(localCharacters));
+        const index = localCharacters.findIndex(localChar => {
+          return character.id === localChar.id;
+        })
+         if(index >= 0) {
+           localCharacters.splice(index, 1);
+           localStorage.setItem('characters', JSON.stringify(localCharacters));
+         }
       }
     }
 
