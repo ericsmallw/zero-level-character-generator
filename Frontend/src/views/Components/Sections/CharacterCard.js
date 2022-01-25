@@ -45,7 +45,7 @@ export default function CharacterCard(props) {
   }
 
   const roll = (value, description = 'Test') => {
-    const extensionId = "napgbmdljeaeagmboimdmhfjfnhbdaok";
+    const extensionId = "aagdadmhkabeelmiikedbkaciekijegp";
     const rollInput = `&{template:default} {{name= ${props.character.name}}} {{${description}= [[${value}]]}}`;
     window.chrome.runtime.sendMessage(extensionId, {rollInput},(result) => {
       console.log(result);
