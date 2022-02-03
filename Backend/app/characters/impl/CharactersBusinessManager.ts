@@ -100,6 +100,8 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
         return "Half-Orc";
       case RacialMix.Dragonborn:
         return "Dragonborn";
+      case RacialMix.Harengon:
+        return "Harengon";
       default:
         const numberGenerator = randomNumber.generator({
           min: 1,
@@ -200,6 +202,7 @@ export default class CharactersBusinessManager implements ICharactersBusinessMan
         abilityTotals[3] + intelligenceBonus,
         abilityTotals[4] + wisdomBonus,
         abilityTotals[5] + charismaBonus,
+        race?.abilityBonus.Init
     );
   }
 

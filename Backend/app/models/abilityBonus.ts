@@ -5,4 +5,5 @@ export default class AbilityBonus {
     Intelligence: number;
     Wisdom: number;
     Charisma: number;
+    Init: number = 0;
 }

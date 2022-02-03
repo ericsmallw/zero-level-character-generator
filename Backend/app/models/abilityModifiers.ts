@@ -1,11 +1,13 @@
 export default class AbilityModifiers {
+
   constructor(
     strength: number,
     dexterity: number,
     constitution: number,
     intelligence: number,
     wisdom: number,
-    charisma: number
+    charisma: number,
+    initiative: number = 0
   ) {
     this.Strength = strength;
     this.StrengthModifier = this.setModifier(strength);
@@ -19,6 +21,7 @@ export default class AbilityModifiers {
     this.WisdomModifier = this.setModifier(wisdom);
     this.Charisma = charisma;
     this.CharismaModifier = this.setModifier(charisma);
+    this.Initiative = initiative;
   }
 
   Strength: number;
@@ -39,6 +42,7 @@ export default class AbilityModifiers {
   Charisma: number;
   CharismaModifier: number;
   CharismaAbbr = 'CHA';
+  Initiative: number;
 
   private setModifier(score: number) {
     if (score === 3) {

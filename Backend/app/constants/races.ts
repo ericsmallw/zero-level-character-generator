@@ -106,7 +106,20 @@ Dragonborn.extraLanguage = "Draconic";
 Dragonborn.abilityBonus = new AbilityBonus();
 Dragonborn.abilityBonus.Strength = 2;
 Dragonborn.abilityBonus.Charisma = 1;
-Dragonborn.racialAbility = "Draconic Ancestry, Damage Resistance"
+Dragonborn.racialAbility = "Draconic Ancestry, Damage Resistance";
+
+const Harengon = new Race();
+Harengon.id = RaceEnum.Harengon;
+Harengon.name = "Harengon";
+Harengon.size = "Medium";
+Harengon.speed = 30;
+Harengon.extraLanguage = "Sylvan";
+Harengon.abilityBonus = new AbilityBonus();
+Harengon.abilityBonus.Dexterity = 2;
+Harengon.abilityBonus.Wisdom = 1;
+Harengon.abilityBonus.Init = 2;
+Harengon.racialAbility = "Lucky Footwork(on Failed Dex throw), Rabbit Hop (Bonus Action. Jump 10 ft. no op. attacks)";
+
 
 const Races = [
   Human,
@@ -117,7 +130,8 @@ const Races = [
   Elf,
   Tiefling,
   HalfOrc,
-  Dragonborn
+  Dragonborn,
+  Harengon
 ]
 
 export default Races;

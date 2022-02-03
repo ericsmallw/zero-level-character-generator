@@ -8,4 +8,5 @@ export default class RaceEnum {
   static readonly Elf = 6;
   static readonly HalfOrc = 7;
   static readonly Dragonborn = 8;
+  static readonly Harengon = 9;
 }

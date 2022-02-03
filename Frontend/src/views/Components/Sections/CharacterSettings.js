@@ -407,6 +407,7 @@ export default function CharacterSettings(props) {
                                             <MenuItem value={9}>Half-Orc</MenuItem>
                                             <MenuItem value={10}>Dragonborn</MenuItem>
                                             <MenuItem value={11}>Dwarf</MenuItem>
+                                            <MenuItem value={12}>Harengon</MenuItem>
                                         </Select>
                                     </div>
                                 </GridItem>

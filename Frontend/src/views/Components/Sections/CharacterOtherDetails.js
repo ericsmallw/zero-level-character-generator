@@ -7,8 +7,8 @@ export default function CharacterOtherDetails (props) {
   const ageSexStyle = {...speedInitAcValStyle, ...{fontSize: '15px'}}
   const initiative = props.character
       ? (props.character.initiative >= 0
-          ? `+${props.character.initiative}`
-          : props.character.initiative)
+          ? `+${props.character.initiative + props.character.abilityModifiers.Initiative}`
+          : props.character.initiative + props.character.abilityModifiers.Initiative)
       : ""
   return (
       <GridContainer>

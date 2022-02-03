@@ -9,7 +9,8 @@ const DefaultRacialMix = {
   "71,80": "Half-Elf",
   "81,90": "Elf",
   "91,97": "Half-Orc",
-  "98,100": "Dragonborn"
+  "98,99": "Dragonborn",
+  "100": "Harengon"
 };
 
 const HighFantasyRacialMix = {
@@ -21,7 +22,8 @@ const HighFantasyRacialMix = {
   "61,70": "Half-Elf",
   "71,80": "Elf",
   "81,90": "Half-Orc",
-  "91,100": "Dragonborn"
+  "91,95": "Dragonborn",
+  "96,100": "Harengon"
 };
 
 const HumanDominatedRacialMix = {
@@ -32,8 +34,9 @@ const HumanDominatedRacialMix = {
   "80,89": "Tiefling",
   "90,95": "Half-Elf",
   "96,97": "Elf",
-  "98,99": "Half-Orc",
-  "100": "Dragonborn"
+  "98": "Half-Orc",
+  "99": "Dragonborn",
+  "100": "Harengon"
 }
 
 const DragonbornAncestryTable: any = {

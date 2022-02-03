@@ -11,4 +11,5 @@ export default class RacialMix {
   static readonly HalfOrc = 9;
   static readonly Dragonborn = 10;
   static readonly Dwarf = 11;
+  static readonly Harengon = 12;
 }
