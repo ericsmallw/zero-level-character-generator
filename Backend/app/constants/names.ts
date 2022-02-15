@@ -53,6 +53,17 @@ export const FirstNames = [
   new Name("Crispin", RaceEnum.Human, SexEnum.Male),
   new Name("Godfrey", RaceEnum.Human, SexEnum.Male),
   new Name("Godric", RaceEnum.Human, SexEnum.Male),
+  new Name("Nathan", RaceEnum.Human, SexEnum.Male),
+  new Name("Eric", RaceEnum.Human, SexEnum.Male),
+  new Name("Aric", RaceEnum.Human, SexEnum.Male),
+  new Name("Yaric", RaceEnum.Human, SexEnum.Male),
+  new Name("Amranth", RaceEnum.Human, SexEnum.Male),
+  new Name("Flavio", RaceEnum.Human, SexEnum.Male),
+  new Name("Justice", RaceEnum.Human, SexEnum.Male),
+  new Name("Gordon", RaceEnum.Human, SexEnum.Male),
+  new Name("Blake", RaceEnum.Human, SexEnum.Male),
+  new Name("Aaron", RaceEnum.Human, SexEnum.Male),
+
 
 
   new Name("Edna", RaceEnum.Human, SexEnum.Female),
@@ -106,6 +117,19 @@ export const FirstNames = [
   new Name("Mirabel", RaceEnum.Human, SexEnum.Female),
   new Name("Laria", RaceEnum.Human, SexEnum.Female),
   new Name("Pacifa", RaceEnum.Human, SexEnum.Female),
+  new Name("Baby", RaceEnum.Human, SexEnum.Female),
+  new Name("Barbara", RaceEnum.Human, SexEnum.Female),
+  new Name("Sandy", RaceEnum.Human, SexEnum.Female),
+  new Name("Sandra", RaceEnum.Human, SexEnum.Female),
+  new Name("Flora", RaceEnum.Human, SexEnum.Female),
+  new Name("Dream", RaceEnum.Human, SexEnum.Female),
+  new Name("Donna", RaceEnum.Human, SexEnum.Female),
+  new Name("Lola", RaceEnum.Human, SexEnum.Female),
+  new Name("Dreya", RaceEnum.Human, SexEnum.Female),
+  new Name("Suri", RaceEnum.Human, SexEnum.Female),
+  new Name("Fayre", RaceEnum.Human, SexEnum.Female),
+  new Name("Coraline", RaceEnum.Human, SexEnum.Female),
+  new Name("Rainbow", RaceEnum.Human, SexEnum.Female),
 
 
   new Name("Sankin", RaceEnum.Halfling, SexEnum.Male),

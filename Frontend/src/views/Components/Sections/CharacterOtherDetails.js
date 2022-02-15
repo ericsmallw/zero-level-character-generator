@@ -5,10 +5,13 @@ import React from "react";
 export default function CharacterOtherDetails (props) {
   const speedInitAcValStyle = {color: '#9c27b0', fontWeight: 'bold', minHeight: '0', marginBottom: '0', marginTop: '0'};
   const ageSexStyle = {...speedInitAcValStyle, ...{fontSize: '15px'}}
+  const initiativeModifier = props.character && props.character.abilityModifiers.Initiative
+      ? props.character.abilityModifiers.Initiative
+      : 0;
   const initiative = props.character
       ? (props.character.initiative >= 0
-          ? `+${props.character.initiative + props.character.abilityModifiers.Initiative}`
-          : props.character.initiative + props.character.abilityModifiers.Initiative)
+          ? `+${props.character.initiative + initiativeModifier}`
+          : props.character.initiative + initiativeModifier)
       : ""
   return (
       <GridContainer>
