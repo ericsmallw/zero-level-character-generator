@@ -5,6 +5,8 @@
   "private": true,
   "main": "src/index.js",
   "dependencies": {
+    "@3d-dice/dice-box": "^1.0.5",
+    "@3d-dice/dice-ui": "^0.4.2",
     "@babel/core": "7.14.0",
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
@@ -26,6 +28,7 @@
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.3",
     "react-slick": "0.28.1",
+    "react-toast": "^1.0.3",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -64,6 +67,10 @@
       "not dead",
       "not op_mini all"
     ],
-    "development": []
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

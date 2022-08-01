@@ -8,6 +8,10 @@ export default class NamesDataManager implements INamesDataManager {
   constructor(@inject(types.NamesDataObject) private readonly _dao: INamesDataObject) {
   }
 
+  getFirstName(sex: number): string {
+        return this._dao.getFirstName(sex);
+    }
+
   getDragonbornFirstName(sex: number): string {
     return this._dao.getDragonbornFirstName(sex);
   }

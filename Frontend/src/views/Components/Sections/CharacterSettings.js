@@ -15,6 +15,10 @@ import html2canvas from "html2canvas";
 import Pagination from '@mui/material/Pagination';
 import {MenuItem} from "@mui/material";
 import {v4 as uuidv4} from 'uuid';
+import { Dice } from "../../../components/diceBox";
+import { ToastContainer, toast } from 'react-toast'
+
+Dice.init();
 
 
 const useStyles = makeStyles(styles);
@@ -32,6 +36,42 @@ export default function CharacterSettings(props) {
     const [playerName, setPlayerName] = useState('');
     const [characterName, setCharacterName] = useState('');
     const [characterIndex, setCharacterIndex] = useState(-1);
+    const [rollTotal, setRollTotal] = useState(0);
+    const [rollDescription, setRollDescription] = useState();
+
+    // This method is triggered whenever dice are finished rolling
+    Dice.onRollComplete = () => {
+      toast(rollTotal);
+      const extensionId = "aagdadmhkabeelmiikedbkaciekijegp";
+      const rollInput = `&{template:default} {{name= ${character.name}}} {{${rollDescription}= [[${rollTotal}]]}}`;
+      window.chrome.runtime.sendMessage(extensionId, {rollInput},(result) => {
+        console.log(result);
+      });
+      setTimeout(() => {
+        const diceBox = document.getElementById('dice-box');
+        diceBox.classList.add('fade-out');
+        setTimeout(() => {
+          Dice.hide().clear();
+          diceBox.classList.remove('fade-out');
+        }, 2000);
+      }, 1000);
+    };
+
+    const rollDice = (rollVal, description) => {
+      let extraVal = 0;
+      setRollDescription(description);
+      if(rollVal.indexOf('+') >= 0) {
+        extraVal += parseInt(rollVal.substring(rollVal.indexOf('+') + 1));
+      }
+
+      if(rollVal.indexOf('-') >= 0) {
+        extraVal -= parseInt(rollVal.substring(rollVal.indexOf('-') + 1));
+      }
+
+      Dice.show().roll(rollVal).then(result => {
+        setRollTotal(result.map(a => a.value).reduce((a,b) => a + b, 0) + extraVal);
+      });
+    };
 
     useEffect(() => {
         const localCharactersString = localStorage.getItem('characters');
@@ -266,6 +306,7 @@ export default function CharacterSettings(props) {
 
     return (
         <div className={classes.sections}>
+            <ToastContainer />
             <div className={classes.container}>
                 {importCharacterButton}
                 <div className={classes.title}>
@@ -443,7 +484,12 @@ export default function CharacterSettings(props) {
                                 width: '100%'
                             }}
                         >
-                            <CharacterCard character={character} playerName={playerName} characterName={characterName}/>
+                            <CharacterCard
+                                character={character}
+                                playerName={playerName}
+                                characterName={characterName}
+                                rollDice={rollDice}
+                            />
                         </GridItem>
                     </GridContainer>
                     <GridContainer>

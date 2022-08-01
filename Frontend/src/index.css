@@ -1,0 +1,30 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+body {
+    position: relative;
+    font-size: 1rem;
+}
+
+button {
+    font-size: 1rem;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#dice-box,
+#dice-box canvas {
+    position: fixed;
+    top: 0;
+    pointer-events: none;
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease;
+}

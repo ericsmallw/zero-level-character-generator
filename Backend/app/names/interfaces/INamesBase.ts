@@ -13,4 +13,5 @@ export default interface INamesBase {
   getOrcFirstName(sex: number): string;
   getDragonbornFirstName(sex: number): string;
   getDragonbornLastName(): string;
+  getFirstName(sex: number): string;
 }

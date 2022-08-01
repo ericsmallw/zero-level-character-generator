@@ -7,6 +7,11 @@ import RaceEnum from "../../enums/raceEnum";
 @injectable()
 export default class NamesDataObject implements INamesDataObject {
 
+  getFirstName(sex: number): string {
+    const randomFirstName = FirstNames.filter(name => name.sex === sex)[Math.floor(Math.random() * FirstNames.length)];
+    return randomFirstName.value
+  }
+
   getDragonbornFirstName(sex: number): string {
     const dragonBornFirstNames = FirstNames.filter(name => {
       return name.race === RaceEnum.Dragonborn && name.sex === sex;

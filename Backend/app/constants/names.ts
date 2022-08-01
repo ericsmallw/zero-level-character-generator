@@ -64,8 +64,6 @@ export const FirstNames = [
   new Name("Blake", RaceEnum.Human, SexEnum.Male),
   new Name("Aaron", RaceEnum.Human, SexEnum.Male),
 
-
-
   new Name("Edna", RaceEnum.Human, SexEnum.Female),
   new Name("Nadia", RaceEnum.Human, SexEnum.Female),
   new Name("Bethany", RaceEnum.Human, SexEnum.Female),
@@ -130,7 +128,6 @@ export const FirstNames = [
   new Name("Fayre", RaceEnum.Human, SexEnum.Female),
   new Name("Coraline", RaceEnum.Human, SexEnum.Female),
   new Name("Rainbow", RaceEnum.Human, SexEnum.Female),
-
 
   new Name("Sankin", RaceEnum.Halfling, SexEnum.Male),
   new Name("Falgin", RaceEnum.Halfling, SexEnum.Male),

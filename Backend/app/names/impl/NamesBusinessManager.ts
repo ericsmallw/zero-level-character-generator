@@ -10,25 +10,25 @@ export default class NamesBusinessManager implements INamesBusinessManager {
   }
 
   getDragonbornName(sex: number): string {
-    const firstName = this.namesDataManager.getDragonbornFirstName(sex);
+    const firstName = this.namesDataManager.getFirstName(sex);
     const lastName = this.namesDataManager.getDragonbornLastName();
     return `${firstName} ${lastName}`;
   }
 
   getDwarfName(sex: number): string {
-    const firstName = this.namesDataManager.getDwarfFirstName(sex);
+    const firstName = this.namesDataManager.getFirstName(sex);
     const lastName = this.namesDataManager.getDwarfLastName();
     return `${firstName} ${lastName}`;
   }
 
   getElfName(sex: number): string {
-    const firstName = this.namesDataManager.getElfFirstName(sex);
+    const firstName = this.namesDataManager.getFirstName(sex);
     const lastName = this.namesDataManager.getElfLastName();
     return `${firstName} ${lastName}`;
   }
 
   getGnomeName(sex: number): string {
-    const firstName = this.namesDataManager.getGnomeFirstName(sex);
+    const firstName = this.namesDataManager.getFirstName(sex);
     const lastName = this.namesDataManager.getGnomeLastName();
     return `${firstName} ${lastName}`;
   }
@@ -36,9 +36,7 @@ export default class NamesBusinessManager implements INamesBusinessManager {
   getHalfElfName(sex: number): string {
     const generator = randomNumber.generator({min: 0, max: 1, integer: true});
 
-    const firstName = generator() === 0
-      ? this.namesDataManager.getElfFirstName(sex)
-      : this.namesDataManager.getHumanFirstName(sex);
+    const firstName = this.namesDataManager.getHumanFirstName(sex);
 
     const lastName = generator() === 0
       ? this.namesDataManager.getElfLastName()
@@ -56,7 +54,7 @@ export default class NamesBusinessManager implements INamesBusinessManager {
 
     const firstName = generator() === 0
       ? this.namesDataManager.getOrcFirstName(sex)
-      : this.namesDataManager.getHumanFirstName(sex);
+      : this.namesDataManager.getFirstName(sex);
 
     const lastName = this.namesDataManager.getHumanLastName();
 
@@ -64,14 +62,14 @@ export default class NamesBusinessManager implements INamesBusinessManager {
   }
 
   getHalflingName(sex: number): string {
-    const firstName = this.namesDataManager.getHalflingFirstName(sex);
+    const firstName = this.namesDataManager.getFirstName(sex);
     const lastName = this.namesDataManager.getHalflingLastName();
 
     return `${firstName} ${lastName}`;
   }
 
   getHumanName(sex: number): string {
-    const firstName = this.namesDataManager.getHumanFirstName(sex);
+    const firstName = this.namesDataManager.getFirstName(sex);
     const lastName = this.namesDataManager.getHumanLastName();
 
     return `${firstName} ${lastName}`;
@@ -81,12 +79,10 @@ export default class NamesBusinessManager implements INamesBusinessManager {
     const generator = randomNumber.generator({min: 0, max: 1, integer: true});
 
     if(generator() === 0) {
-      return this.namesDataManager.getTieflingFirstName(sex);
+      return this.namesDataManager.getFirstName(sex);
     }
 
-    const firstName = generator() === 0
-      ? this.namesDataManager.getTieflingFirstName(sex)
-      : this.namesDataManager.getHumanFirstName(sex);
+    const firstName = this.namesDataManager.getFirstName(sex);
 
     const lastName = this.namesDataManager.getHumanLastName();
 
